@@ -1,16 +1,18 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Outfit } from "next/font/google"
+import { Oswald } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const outfit = Outfit({ subsets: ["latin"] })
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+})
 
 export const metadata: Metadata = {
-  title: "CELLA | Content Strategy & Social Media",
-  description:
-    "Creating content that actually connects. Specialising in content creation, social strategy advice, and AI guidance for businesses.",
-  keywords: "content creator, social media strategy, content creation, AI guidance, social content, CELLA",
+  title: "CELLA | Content That Books",
+  description: "Content creator specializing in food, travel, and lifestyle. Creating content that actually books.",
+  keywords: "content creator, food content, travel content, lifestyle, video, CELLA",
   generator: "v0.app",
   icons: {
     icon: [
@@ -38,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={outfit.className}>
+      <body className={oswald.className}>
         {children}
         <Analytics />
       </body>
