@@ -175,69 +175,93 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trusted By section */}
-      <section className="py-16 md:py-20 bg-background relative z-10 scroll-fade opacity-0">
-        <div className="container mx-auto px-4 sm:px-6">
-          <p className="text-center text-sm tracking-[0.2em] text-muted-foreground uppercase mb-12">Trusted By</p>
-          <div className="overflow-hidden">
-            <div className="flex gap-16 md:gap-20 animate-scroll-left">
-              {[...Array(2)].map((_, batch) => (
-                <div key={batch} className="flex gap-16 md:gap-20 flex-shrink-0">
-                  <Image
-                    src="/images/brands/merivale-logo.png"
-                    alt="Merivale"
-                    width={200}
-                    height={120}
-                    className="opacity-70 hover:opacity-100 transition-opacity"
-                  />
-                  <Image
-                    src="/images/brands/kitchenaid-logo.png"
-                    alt="KitchenAid"
-                    width={200}
-                    height={100}
-                    className="opacity-70 hover:opacity-100 transition-opacity"
-                  />
-                  <Image
-                    src="/images/brands/mirvac-logo.svg"
-                    alt="Mirvac"
-                    width={200}
-                    height={100}
-                    className="opacity-70 hover:opacity-100 transition-opacity"
-                  />
-                  <Image
-                    src="/images/brands/google-logo.webp"
-                    alt="Google"
-                    width={200}
-                    height={100}
-                    className="opacity-70 hover:opacity-100 transition-opacity"
-                  />
-                  <Image
-                    src="/images/brands/paddys-logo.png"
-                    alt="Paddy's Markets"
-                    width={200}
-                    height={100}
-                    className="opacity-70 hover:opacity-100 transition-opacity"
-                  />
-                  <Image
-                    src="/images/brands/nsw-placemaking-logo.png"
-                    alt="NSW Placemaking"
-                    width={200}
-                    height={100}
-                    className="opacity-70 hover:opacity-100 transition-opacity"
-                  />
-                  <Image
-                    src="/images/brands/ninja-logo.png"
-                    alt="Ninja"
-                    width={200}
-                    height={100}
-                    className="opacity-70 hover:opacity-100 transition-opacity"
-                  />
-                </div>
-              ))}
+ {/* Trusted By section */}
+<section className="py-16 md:py-20 bg-background relative z-10 scroll-fade opacity-0">
+  <div className="container mx-auto px-4 sm:px-6">
+    <p className="text-center text-sm tracking-[0.2em] text-muted-foreground uppercase mb-12">
+      Trusted By
+    </p>
+
+    <div className="overflow-hidden">
+      <div className="flex gap-16 md:gap-20 animate-scroll-left">
+        {[...Array(2)].map((_, batch) => (
+          <div key={batch} className="flex items-center gap-16 md:gap-20 flex-shrink-0">
+            <div className="flex items-center justify-center h-12 md:h-14 w-40">
+              <Image
+                src="/images/brands/merivale-logo.png"
+                alt="Merivale"
+                width={300}
+                height={120}
+                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+
+            <div className="flex items-center justify-center h-12 md:h-14 w-40">
+              <Image
+                src="/images/brands/kitchenaid-logo.png"
+                alt="KitchenAid"
+                width={300}
+                height={120}
+                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+
+            <div className="flex items-center justify-center h-12 md:h-14 w-40">
+              <Image
+                src="/images/brands/mirvac-logo.svg"
+                alt="Mirvac"
+                width={300}
+                height={120}
+                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+
+            <div className="flex items-center justify-center h-12 md:h-14 w-40">
+              <Image
+                src="/images/brands/google-logo.webp"
+                alt="Google"
+                width={300}
+                height={120}
+                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+
+            <div className="flex items-center justify-center h-12 md:h-14 w-40">
+              <Image
+                src="/images/brands/paddys-logo.png"
+                alt="Paddy's Markets"
+                width={300}
+                height={120}
+                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+
+            <div className="flex items-center justify-center h-12 md:h-14 w-40">
+              <Image
+                src="/images/brands/nsw-placemaking-logo.png"
+                alt="NSW Placemaking"
+                width={300}
+                height={120}
+                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+
+            <div className="flex items-center justify-center h-12 md:h-14 w-40">
+              <Image
+                src="/images/brands/ninja-logo.png"
+                alt="Ninja"
+                width={300}
+                height={120}
+                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
             </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Projects Section - editorial grid */}
       <section id="work" className="py-20 md:py-32 bg-card relative z-10 scroll-fade opacity-0">
