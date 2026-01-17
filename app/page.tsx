@@ -103,9 +103,10 @@ export default function Home() {
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center px-4">
-            <h1 className="text-white font-bold uppercase tracking-tight leading-none">
-              <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-9xl animate-phase-in whitespace-nowrap">
-                CONTENT THAT BOOKS
+          
+            <h1 className="text-white font-bold uppercase tracking-tight leading-tight">
+              <span className="block animate-phase-in text-[clamp(2.5rem,6vw,6rem)] sm:text-[clamp(3rem,5vw,7rem)] md:text-[clamp(4rem,4vw,8rem)] lg:text-[clamp(5rem,3vw,9rem)]">
+               CONTENT THAT BOOKS
               </span>
             </h1>
             <p className="text-white/80 text-lg md:text-xl mt-6 max-w-3xl mx-auto font-light tracking-wide animate-phase-in-delay">
@@ -175,8 +176,8 @@ export default function Home() {
         </div>
       </section>
 
- {/* Trusted By section */}
-<section className="py-16 md:py-20 bg-background relative z-10 scroll-fade opacity-0">
+ {/* Trusted By Section */}
+<section className="py-16 md:py-20 bg-background relative z-10">
   <div className="container mx-auto px-4 sm:px-6">
     <p className="text-center text-sm tracking-[0.2em] text-muted-foreground uppercase mb-12">
       Trusted By
@@ -195,7 +196,6 @@ export default function Home() {
                 className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             </div>
-
             <div className="flex items-center justify-center h-12 md:h-14 w-40">
               <Image
                 src="/images/brands/kitchenaid-logo.png"
@@ -205,7 +205,6 @@ export default function Home() {
                 className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             </div>
-
             <div className="flex items-center justify-center h-12 md:h-14 w-40">
               <Image
                 src="/images/brands/mirvac-logo.svg"
@@ -215,7 +214,6 @@ export default function Home() {
                 className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             </div>
-
             <div className="flex items-center justify-center h-12 md:h-14 w-40">
               <Image
                 src="/images/brands/google-logo.webp"
@@ -225,7 +223,6 @@ export default function Home() {
                 className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             </div>
-
             <div className="flex items-center justify-center h-12 md:h-14 w-40">
               <Image
                 src="/images/brands/paddys-logo.png"
@@ -235,7 +232,6 @@ export default function Home() {
                 className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             </div>
-
             <div className="flex items-center justify-center h-12 md:h-14 w-40">
               <Image
                 src="/images/brands/nsw-placemaking-logo.png"
@@ -245,7 +241,6 @@ export default function Home() {
                 className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             </div>
-
             <div className="flex items-center justify-center h-12 md:h-14 w-40">
               <Image
                 src="/images/brands/ninja-logo.png"

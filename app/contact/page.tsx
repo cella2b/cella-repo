@@ -96,9 +96,11 @@ export default function Contact() {
       <section className="pt-32 pb-16 md:pt-40 md:pb-24 px-4 sm:px-6">
         <div className="container mx-auto max-w-4xl text-center">
           <div className="mb-8 overflow-hidden">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground uppercase tracking-tight leading-none animate-fade-in-up">
-              Let's Work Together
-            </h1>
+            <h1 className="text-white font-bold uppercase tracking-tight leading-tight">
+  <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-9xl animate-phase-in">
+    CONTENT <wbr /> THAT <wbr /> BOOKS
+  </span>
+</h1>
           </div>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
             Let's get to know each other a little more. We'll be in touch within 48 hours.
