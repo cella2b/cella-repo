@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, Check } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export const metadata = {
   title: "Kings Cross Quarter | CELLA",
@@ -11,24 +11,75 @@ export const metadata = {
 
 export default function KingsCrossPage() {
   return (
-    <div className="min-h-screen bg-cream-50">
+    <main className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-purple-100/50">
-        <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/images/cella-logo.png" alt="CELLA" width={40} height={40} className="mix-blend-multiply" />
+      <nav className="fixed top-0 left-0 right-0 z-50 p-6 md:p-8 bg-background/80 backdrop-blur-lg border-b border-border">
+        <div className="flex items-center justify-between max-w-7xl mx-auto">
+          <Link href="/" className="text-white text-xl md:text-2xl font-bold tracking-wider">
+            CELLA
           </Link>
-          <Link href="/#projects">
-            <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-600">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Back to Projects
-            </Button>
+
+          <Link
+            href="/#projects"
+            className="flex items-center gap-2 text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Projects
           </Link>
         </div>
       </nav>
 
+      {/* Project Breadcrumb Navigation */}
+      <div className="fixed top-20 left-0 right-0 z-40 bg-background/60 backdrop-blur-lg border-b border-border/30">
+        <div className="px-6 md:px-8 py-3 overflow-x-auto scrollbar-hide">
+          <div className="flex items-center gap-1 min-w-max">
+            <Link
+              href="/projects/kings-cross"
+              className="text-white text-xs font-medium tracking-wide uppercase px-3 py-1.5 whitespace-nowrap transition-colors"
+            >
+              Kings Cross
+            </Link>
+            <span className="text-white/40 text-xs px-1">•</span>
+            <Link
+              href="/projects/google-gemini-paddys"
+              className="text-white/60 text-xs tracking-wide uppercase hover:text-white px-3 py-1.5 whitespace-nowrap transition-colors"
+            >
+              Google x Paddy's
+            </Link>
+            <span className="text-white/40 text-xs px-1">•</span>
+            <Link
+              href="/projects/barangaroo"
+              className="text-white/60 text-xs tracking-wide uppercase hover:text-white px-3 py-1.5 whitespace-nowrap transition-colors"
+            >
+              Barangaroo
+            </Link>
+            <span className="text-white/40 text-xs px-1">•</span>
+            <Link
+              href="/projects/doordash-opentable"
+              className="text-white/60 text-xs tracking-wide uppercase hover:text-white px-3 py-1.5 whitespace-nowrap transition-colors"
+            >
+              DoorDash x OpenTable
+            </Link>
+            <span className="text-white/40 text-xs px-1">•</span>
+            <Link
+              href="/projects/prince-shiomi"
+              className="text-white/60 text-xs tracking-wide uppercase hover:text-white px-3 py-1.5 whitespace-nowrap transition-colors"
+            >
+              Prince Shiomi
+            </Link>
+            <span className="text-white/40 text-xs px-1">•</span>
+            <Link
+              href="/projects/milford-sound"
+              className="text-white/60 text-xs tracking-wide uppercase hover:text-white px-3 py-1.5 whitespace-nowrap transition-colors"
+            >
+              TranzAlpine & Pure Milford
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Hero Image */}
-      <div className="relative h-[60vh] w-full">
+      <div className="relative h-[60vh] w-full mt-32">
         <Image
           src="/images/projects/kings-cross-coca-cola.webp"
           alt="Kings Cross Quarter"
@@ -36,165 +87,102 @@ export default function KingsCrossPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12">
-          <div className="container mx-auto">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">Kings Cross Quarter</h1>
-            <p className="text-xl text-white/90 max-w-3xl">
-              A 7-part series spotlighting the streets, venues, and hidden finds that make Kings Cross worth
-              discovering. Content created to light up the Cross, one spotlight at a time.
-            </p>
+          <div className="max-w-7xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white uppercase tracking-tight mb-4">
+              Kings Cross Quarter
+            </h1>
           </div>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <div className="max-w-4xl mx-auto space-y-12">
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">The Project</h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              A 7-part content series designed to change how people see Kings Cross—moving beyond the nightlife
-              reputation to spotlight the neighbourhood's food scene, creative spaces, street culture, and the venues
-              worth discovering.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">The Brief</h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Create a campaign called "Light Up the Cross" that showcases different aspects of Kings Cross through
-              dedicated content spotlights. Each piece needed to feel distinct while contributing to an overall
-              narrative about the neighbourhood's diversity and energy.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">The Approach</h2>
-            <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              Seven separate content pieces, each focusing on a specific element:
-            </p>
-            <ul className="space-y-2 text-lg text-gray-700 mb-4">
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Street culture and public art</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Coffee and breakfast spots</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Lunch and casual dining</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Dinner destinations</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Bars and evening venues</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Hidden finds and local favourites</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>The people who make the neighbourhood work</span>
-              </li>
-            </ul>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Each spotlight was shot and edited to stand alone while maintaining visual consistency across the series.
-              The content needed to appeal to both locals who thought they knew the area and visitors discovering it for
-              the first time.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Content Delivered</h2>
-            <ul className="space-y-3 text-lg text-gray-700">
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>7 distinct video pieces for social media</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Location photography highlighting key venues</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Street photography capturing neighbourhood character</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Social cutdowns optimized for Instagram, TikTok, and Facebook</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-600 mr-3">•</span>
-                <span>Behind-the-scenes content from shoots</span>
-              </li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Instagram Videos</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Instagram embeds will be added here - provide Instagram URLs */}
-              <div className="bg-gray-100 rounded-lg aspect-[9/16] flex items-center justify-center">
-                <p className="text-gray-500 text-center p-4">Instagram video embed placeholder</p>
-              </div>
-              <div className="bg-gray-100 rounded-lg aspect-[9/16] flex items-center justify-center">
-                <p className="text-gray-500 text-center p-4">Instagram video embed placeholder</p>
-              </div>
+      {/* Main Content */}
+      <div className="px-6 md:px-8 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto">
+          {/* Project Metadata */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 pb-16 border-b border-border/30">
+            <div>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2">Client</p>
+              <p className="text-lg text-white font-light">Kings Cross Precinct</p>
             </div>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Photo Gallery</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <div className="relative aspect-[4/3] mb-3 rounded-lg overflow-hidden">
-                  <div className="bg-gray-100 w-full h-full flex items-center justify-center">
-                    <p className="text-gray-500">Photo placeholder</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm italic">Photo caption goes here.</p>
-              </div>
-              <div>
-                <div className="relative aspect-[4/3] mb-3 rounded-lg overflow-hidden">
-                  <div className="bg-gray-100 w-full h-full flex items-center justify-center">
-                    <p className="text-gray-500">Photo placeholder</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm italic">Photo caption goes here.</p>
-              </div>
+            <div>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2">Project</p>
+              <p className="text-lg text-white font-light">Light Up the Cross</p>
             </div>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">The Impact</h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Content that repositioned Kings Cross as a destination beyond nightlife—a place with depth, culture, and
-              reasons to visit throughout the day. The series format allowed for sustained engagement rather than a
-              single campaign push, keeping the neighbourhood in conversation over multiple weeks.
-            </p>
-          </section>
-
-          <div className="pt-8 border-t border-gray-200">
-            <Link href="/#projects">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-purple-300 text-purple-600 hover:bg-purple-50 rounded-full px-8 bg-transparent"
-              >
-                <ArrowLeft className="mr-2 w-5 h-5" />
-                View All Projects
-              </Button>
-            </Link>
+            <div>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2">Year</p>
+              <p className="text-lg text-white font-light">2025</p>
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground uppercase tracking-widest mb-2">Service</p>
+              <p className="text-lg text-white font-light">Content Creation</p>
+            </div>
           </div>
+
+          {/* The Brief */}
+          <section className="mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-wide mb-6">The Brief</h2>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+              Create a 7-part content series called "Light Up the Cross" that repositions Kings Cross as a destination
+              beyond nightlife. Showcase the neighbourhood's food scene, creative spaces, street culture, and venues
+              worth discovering. Each piece needed to feel distinct while contributing to an overall narrative about
+              the area's diversity and energy.
+            </p>
+          </section>
+
+          {/* What We Delivered */}
+          <section className="mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-wide mb-6">What We Delivered</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <li className="flex items-start gap-4">
+                <Check className="w-6 h-6 text-white flex-shrink-0 mt-0.5" />
+                <span className="text-base text-muted-foreground">7 distinct video pieces optimized for social media</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <Check className="w-6 h-6 text-white flex-shrink-0 mt-0.5" />
+                <span className="text-base text-muted-foreground">Location photography highlighting key venues</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <Check className="w-6 h-6 text-white flex-shrink-0 mt-0.5" />
+                <span className="text-base text-muted-foreground">Street photography capturing neighbourhood character</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <Check className="w-6 h-6 text-white flex-shrink-0 mt-0.5" />
+                <span className="text-base text-muted-foreground">
+                  Social cutdowns for Instagram, TikTok, and Facebook
+                </span>
+              </li>
+              <li className="flex items-start gap-4">
+                <Check className="w-6 h-6 text-white flex-shrink-0 mt-0.5" />
+                <span className="text-base text-muted-foreground">Behind-the-scenes content from production</span>
+              </li>
+              <li className="flex items-start gap-4">
+                <Check className="w-6 h-6 text-white flex-shrink-0 mt-0.5" />
+                <span className="text-base text-muted-foreground">Sustained engagement strategy over 7 weeks</span>
+              </li>
+            </ul>
+          </section>
+
+          {/* Sample Videos */}
+          <section className="mb-16">
+            <h2 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-wide mb-12">Sample Videos</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-card/50 border border-border rounded-lg aspect-[9/16] flex items-center justify-center overflow-hidden hover:border-purple-400/50 transition-colors">
+                <p className="text-muted-foreground text-center p-4">Video 1</p>
+              </div>
+              <div className="bg-card/50 border border-border rounded-lg aspect-[9/16] flex items-center justify-center overflow-hidden hover:border-purple-400/50 transition-colors">
+                <p className="text-muted-foreground text-center p-4">Video 2</p>
+              </div>
+              <div className="bg-card/50 border border-border rounded-lg aspect-[9/16] flex items-center justify-center overflow-hidden hover:border-purple-400/50 transition-colors">
+                <p className="text-muted-foreground text-center p-4">Video 3</p>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
-    </div>
+
+      <Footer />
+    </main>
   )
 }

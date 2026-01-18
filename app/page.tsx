@@ -185,71 +185,28 @@ export default function Home() {
 
     <div className="overflow-hidden">
       <div className="flex gap-16 md:gap-20 animate-scroll-left">
-        {[...Array(2)].map((_, batch) => (
+        {/* Repeat logos 3 times to cover width and remove black gap */}
+        {[...Array(3)].map((_, batch) => (
           <div key={batch} className="flex items-center gap-16 md:gap-20 flex-shrink-0">
-            <div className="flex items-center justify-center h-12 md:h-14 w-40">
-              <Image
-                src="/images/brands/merivale-logo.png"
-                alt="Merivale"
-                width={300}
-                height={120}
-                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-              />
-            </div>
-            <div className="flex items-center justify-center h-12 md:h-14 w-40">
-              <Image
-                src="/images/brands/kitchenaid-logo.png"
-                alt="KitchenAid"
-                width={300}
-                height={120}
-                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-              />
-            </div>
-            <div className="flex items-center justify-center h-12 md:h-14 w-40">
-              <Image
-                src="/images/brands/mirvac-logo.svg"
-                alt="Mirvac"
-                width={300}
-                height={120}
-                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-              />
-            </div>
-            <div className="flex items-center justify-center h-12 md:h-14 w-40">
-              <Image
-                src="/images/brands/google-logo.webp"
-                alt="Google"
-                width={300}
-                height={120}
-                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-              />
-            </div>
-            <div className="flex items-center justify-center h-12 md:h-14 w-40">
-              <Image
-                src="/images/brands/paddys-logo.png"
-                alt="Paddy's Markets"
-                width={300}
-                height={120}
-                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-              />
-            </div>
-            <div className="flex items-center justify-center h-12 md:h-14 w-40">
-              <Image
-                src="/images/brands/nsw-placemaking-logo.png"
-                alt="NSW Placemaking"
-                width={300}
-                height={120}
-                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-              />
-            </div>
-            <div className="flex items-center justify-center h-12 md:h-14 w-40">
-              <Image
-                src="/images/brands/ninja-logo.png"
-                alt="Ninja"
-                width={300}
-                height={120}
-                className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-              />
-            </div>
+            {[
+              "/images/brands/merivale-logo.png",
+              "/images/brands/kitchenaid-logo.png",
+              "/images/brands/mirvac-logo.svg",
+              "/images/brands/google-logo.webp",
+              "/images/brands/paddys-logo.png",
+              "/images/brands/nsw-placemaking-logo.png",
+              "/images/brands/ninja-logo.png"
+            ].map((src, i) => (
+              <div key={i} className="flex items-center justify-center h-12 md:h-14 w-40">
+                <Image
+                  src={src}
+                  alt={src.split("/").pop()?.split(".")[0]}
+                  width={300}
+                  height={120}
+                  className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            ))}
           </div>
         ))}
       </div>

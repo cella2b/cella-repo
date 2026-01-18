@@ -426,7 +426,7 @@
   }
 
   .animate-scroll-left {
-    animation: scroll-left 15s linear infinite;
+    animation: scroll-left 23s linear infinite;
   }
 
   /* Adding new animation utility classes for enhanced dynamic movement */
@@ -553,7 +553,7 @@
   .animate-scroll-left {
   display: flex;
   min-width: 200%; /* ensures there’s enough content for seamless loop */
-  animation: scroll-left 15s linear infinite;
+  animation: scroll-left 23s linear infinite;
 }
 
   .animate-fade-in-up {

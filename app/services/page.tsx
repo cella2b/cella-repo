@@ -4,14 +4,15 @@ import Link from "next/link"
 import { ArrowLeft, Check } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
+import { Footer } from "@/components/footer"
 
 export default function ServicesPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <main className="min-h-screen bg-[#FDFCFA]">
+    <main className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-purple-100/50 shadow-sm">
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
@@ -25,13 +26,13 @@ export default function ServicesPage() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-gray-900 hover:text-purple-600 transition-colors">
+            <Link href="/" className="text-foreground hover:text-purple-400 transition-colors">
               Home
             </Link>
-            <Link href="/services" className="text-purple-600 font-medium">
+            <Link href="/services" className="text-purple-400 font-medium">
               Services
             </Link>
-            <Link href="/#projects" className="text-gray-900 hover:text-purple-600 transition-colors">
+            <Link href="/#projects" className="text-foreground hover:text-purple-400 transition-colors">
               Projects
             </Link>
             <Link
@@ -49,26 +50,26 @@ export default function ServicesPage() {
             aria-label="Toggle menu"
           >
             <span
-              className={`w-6 h-0.5 bg-gray-900 transition-all ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}
+              className={`w-6 h-0.5 bg-foreground transition-all ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}
             />
-            <span className={`w-6 h-0.5 bg-gray-900 transition-all ${mobileMenuOpen ? "opacity-0" : ""}`} />
+            <span className={`w-6 h-0.5 bg-foreground transition-all ${mobileMenuOpen ? "opacity-0" : ""}`} />
             <span
-              className={`w-6 h-0.5 bg-gray-900 transition-all ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+              className={`w-6 h-0.5 bg-foreground transition-all ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
             />
           </button>
         </div>
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-purple-100">
+          <div className="md:hidden bg-background border-t border-border">
             <div className="px-6 py-4 space-y-4">
-              <Link href="/" className="block text-gray-900 hover:text-purple-600 transition-colors">
+              <Link href="/" className="block text-foreground hover:text-purple-400 transition-colors">
                 Home
               </Link>
-              <Link href="/services" className="block text-purple-600 font-medium">
+              <Link href="/services" className="block text-purple-400 font-medium">
                 Services
               </Link>
-              <Link href="/#projects" className="block text-gray-900 hover:text-purple-600 transition-colors">
+              <Link href="/#projects" className="block text-foreground hover:text-purple-400 transition-colors">
                 Projects
               </Link>
               <Link
@@ -85,14 +86,14 @@ export default function ServicesPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <Link href="/" className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 mb-8">
+          <Link href="/" className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 mb-8">
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Home</span>
           </Link>
 
-          <h1 className="text-5xl md:text-7xl font-light text-gray-900 mb-6">Services</h1>
+          <h1 className="text-5xl md:text-7xl font-light text-foreground mb-6">Services</h1>
 
-          <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
             Content and strategy for hospitality and travel brands that want to stand out. Specialising in video
             storytelling that actually connects with your audience, AI and advice that drives results.
           </p>
@@ -105,56 +106,55 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <Link
               href="/services/content-creation"
-              className="group bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:shadow-xl transition-all flex flex-col justify-between min-h-[280px]"
+              className="group bg-card rounded-2xl p-6 shadow-lg border border-border hover:shadow-xl transition-all flex flex-col justify-between min-h-[280px]"
             >
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Content Creation</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Content tailored to your brand and platform. Specialising in video and storytelling that makes your
-                  brand stand out.
+                <h3 className="text-xl font-semibold text-foreground mb-3">Content Creation</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Scroll-stopping content that grows your audience and converts them into clients.
                 </p>
               </div>
-              <span className="text-purple-600 text-sm font-medium group-hover:underline mt-4">Learn more →</span>
+              <span className="text-purple-400 text-sm font-medium group-hover:underline mt-4">Let's create →</span>
             </Link>
 
             <Link
               href="/services/social-strategy"
-              className="group bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:shadow-xl transition-all flex flex-col justify-between min-h-[280px]"
+              className="group bg-card rounded-2xl p-6 shadow-lg border border-border hover:shadow-xl transition-all flex flex-col justify-between min-h-[280px]"
             >
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Social Strategy</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Strategic planning for how you want your brand to be perceived and the roadmap to get there.
+                <h3 className="text-xl font-semibold text-foreground mb-3">Social Strategy</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Smart, trend-forward strategies that turn content into measurable growth.
                 </p>
               </div>
-              <span className="text-purple-600 text-sm font-medium group-hover:underline mt-4">Learn more →</span>
-            </Link>
-
-            <Link
-              href="/services/ai-guidance"
-              className="group bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:shadow-xl transition-all flex flex-col justify-between min-h-[280px]"
-            >
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">AI Guidance</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  For those ready to leap ahead with AI. Answering questions, implementing tools, or setting up business
-                  automation.
-                </p>
-              </div>
-              <span className="text-purple-600 text-sm font-medium group-hover:underline mt-4">Learn more →</span>
+              <span className="text-purple-400 text-sm font-medium group-hover:underline mt-4">Plan to win →</span>
             </Link>
 
             <Link
               href="/services/coaching"
-              className="group bg-white rounded-2xl p-6 shadow-lg border border-purple-100 hover:shadow-xl transition-all flex flex-col justify-between min-h-[280px]"
+              className="group bg-card rounded-2xl p-6 shadow-lg border border-border hover:shadow-xl transition-all flex flex-col justify-between min-h-[280px]"
             >
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Coaching & Mentoring</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Teaching and providing tailored advice for entrepreneurs working with AI and content creation.
+                <h3 className="text-xl font-semibold text-foreground mb-3">Coaching & Mentoring</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Hands-on guidance to level up your content game.
                 </p>
               </div>
-              <span className="text-purple-600 text-sm font-medium group-hover:underline mt-4">Learn more →</span>
+              <span className="text-purple-400 text-sm font-medium group-hover:underline mt-4">Level up →</span>
+            </Link>
+
+            <Link
+              href="/services/ai-guidance"
+              className="group bg-card rounded-2xl p-6 shadow-lg border border-border hover:shadow-xl transition-all flex flex-col justify-between min-h-[280px]"
+            >
+              <div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">AI Guidance</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  For those ready to leap ahead with AI, whether that's answering questions, implementing tools, or setting up
+                  business automation. Learn what works, skip what doesn't, and stay ahead.
+                </p>
+              </div>
+              <span className="text-purple-400 text-sm font-medium group-hover:underline mt-4">Learn more →</span>
             </Link>
           </div>
         </div>
@@ -341,6 +341,8 @@ export default function ServicesPage() {
           </Link>
         </div>
       </section>
+
+      <Footer />
     </main>
   )
 }
