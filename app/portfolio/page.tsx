@@ -29,7 +29,19 @@ export default function Portfolio() {
           {projects.map((project) => (
             <Link key={project.href} href={project.href} className="group block">
               <div className="relative aspect-[4/5] overflow-hidden bg-secondary">
-                <Image src={project.image} alt={project.alt} fill className={`object-cover transition duration-700 group-hover:scale-105 ${project.href === "/projects/milford-sound" ? "scale-[1.58] object-center group-hover:scale-[1.64]" : ""}`} />
+                <Image
+                  src={project.image}
+                  alt={project.alt}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className={`object-cover transition duration-700 group-hover:scale-105 ${
+                    project.href === "/projects/prince-shiomi"
+                      ? "scale-[1.02] object-center group-hover:scale-[1.06]"
+                      : project.href === "/projects/milford-sound"
+                        ? "scale-[2.1] object-center group-hover:scale-[2.18]"
+                        : ""
+                  }`}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-6">
                   <p className="mb-2 text-xs uppercase tracking-[0.25em] text-white/65">{project.category}</p>
