@@ -9,7 +9,7 @@ const projects = [
   { href: "/projects/google-gemini-paddys", title: "Google Gemini x Paddy's Market", category: "Brand Partnership", image: "/images/projects/paddys-markets.jpg", alt: "Paddy's Market campaign" },
   { href: "/projects/barangaroo", title: "Barangaroo Precinct", category: "Brand Campaign", image: "/images/projects/barangaroo-house.jpg", alt: "Barangaroo House campaign" },
   { href: "/projects/doordash-opentable", title: "DoorDash x OpenTable", category: "Content Creation", image: "/images/projects/doordash-delivery.avif", alt: "DoorDash delivery campaign" },
-  { href: "/projects/prince-shiomi", title: "Prince Shiomi Hotel", category: "Content Creation", image: "/images/projects/prince-shiomi-hotel.webp", alt: "Prince Shiomi Hotel lobby" },
+  { href: "/projects/prince-shiomi", title: "Prince Shiomi Hotel", category: "Content Creation", image: "/images/projects/barangaroo-house.jpg", alt: "Editorial hospitality campaign" },
   { href: "/projects/milford-sound", title: "TranzAlpine & Pure Milford", category: "Brand Campaign", image: "/images/projects/milford-sound.jpg", alt: "Milford Sound travel campaign" },
 ]
 

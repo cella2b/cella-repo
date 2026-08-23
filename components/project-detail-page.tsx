@@ -17,7 +17,6 @@ type ProjectDetailPageProps = {
   sections: ProjectSection[]
   videos?: string[]
   heroClassName?: string
-  imageClassName?: string
 }
 
 const projects = [
@@ -29,7 +28,7 @@ const projects = [
   ["TranzAlpine & Pure Milford", "/projects/milford-sound"],
 ] as const
 
-export function ProjectDetailPage({ title, slug, description, image, imageAlt, client, project, year, service, sections, videos = [], heroClassName, imageClassName }: ProjectDetailPageProps) {
+export function ProjectDetailPage({ title, slug, description, image, imageAlt, client, project, year, service, sections, videos = [], heroClassName }: ProjectDetailPageProps) {
   return (
     <main className="min-h-screen bg-background">
       <nav className="fixed left-0 right-0 top-0 z-50 border-b border-border bg-background/80 p-6 backdrop-blur-lg md:p-8">
@@ -53,7 +52,7 @@ export function ProjectDetailPage({ title, slug, description, image, imageAlt, c
         </div>
       </div>
       <div className={`relative mt-32 h-[60vh] w-full ${heroClassName ?? ""}`}>
-        <Image src={image} alt={imageAlt} fill className={`object-cover ${imageClassName ?? ""}`} priority />
+        <Image src={image} alt={imageAlt} fill className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12"><div className="mx-auto max-w-7xl"><h1 className="mb-4 text-4xl font-bold uppercase tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">{title}</h1><p className="max-w-3xl text-lg leading-relaxed text-white/80 md:text-xl">{description}</p></div></div>
       </div>
