@@ -17,7 +17,7 @@ export default function BarangarooPage() {
           <Link href="/" className="flex items-center gap-2">
             <Image src="/images/cella-logo.png" alt="CELLA" width={40} height={40} className="mix-blend-multiply" />
           </Link>
-          <Link href="/#projects">
+          <Link href="/#work">
             <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-600">
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Projects
@@ -211,7 +211,7 @@ export default function BarangarooPage() {
           </section>
 
           <div className="pt-8 border-t border-gray-200">
-            <Link href="/#projects">
+            <Link href="/#work">
               <Button
                 size="lg"
                 variant="outline"

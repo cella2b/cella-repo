@@ -20,7 +20,7 @@ export default function KingsCrossPage() {
           </Link>
 
           <Link
-            href="/#projects"
+            href="/#work"
             className="flex items-center gap-2 text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />

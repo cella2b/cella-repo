@@ -200,7 +200,7 @@ export default function Home() {
               <div key={i} className="flex items-center justify-center h-12 md:h-14 w-40">
                 <Image
                   src={src}
-                  alt={src.split("/").pop()?.split(".")[0]}
+                  alt="CELLA partner logo"
                   width={300}
                   height={120}
                   className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"

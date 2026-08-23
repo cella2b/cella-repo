@@ -1,7 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowRight, Instagram, Mail, Menu, X } from "lucide-react"
+import SiteHeader from "@/components/site-header"
+import { Footer } from "@/components/footer"
+import { ArrowRight, Instagram, Mail } from "lucide-react"
 
 export default function Contact() {
   const [formData, setFormData] = useState({ 
@@ -15,14 +17,14 @@ export default function Contact() {
     socialHandles: "",
     message: "" 
   })
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const subject = `New Enquiry from ${formData.firstName} ${formData.lastName} - ${formData.brand}`
-    const servicesText = formData.services.join(', ')
-    const body = `Name: ${formData.firstName} ${formData.lastName}%0D%0ARole: ${formData.role}%0D%0ABrand: ${formData.brand}%0D%0ALocation: ${formData.location}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AServices Interested In: ${servicesText}%0D%0ASocial Handles: ${formData.socialHandles}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`
-    window.location.href = `mailto:info@heycella.com?subject=${subject}&body=${body}`
+    const body = [`Name: ${formData.firstName} ${formData.lastName}`, `Role: ${formData.role}`, `Brand: ${formData.brand}`, `Location: ${formData.location}`, `Email: ${formData.email}`, `Services Interested In: ${formData.services.join(", ")}`, `Social Handles: ${formData.socialHandles}`, ``, `Message:`, formData.message].join("\\n")
+    window.location.href = `mailto:info@heycella.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    setSubmitted(true)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -40,57 +42,7 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 p-6 md:p-8 bg-background/80 backdrop-blur-lg border-b border-border">
-        <div className="flex items-center justify-between">
-          <a href="/" className="text-white text-xl md:text-2xl font-bold tracking-wider">
-            CELLA
-          </a>
-
-          <div className="hidden md:flex items-center gap-8">
-            <a
-              href="/#work"
-              className="text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
-            >
-              Work
-            </a>
-            <a
-              href="/#services"
-              className="text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
-            >
-              Services
-            </a>
-            <a
-              href="/contact"
-              className="text-white text-sm tracking-widest uppercase"
-            >
-              Book a Call
-            </a>
-          </div>
-
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-white"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-lg p-6 space-y-4">
-            <a href="/#work" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
-              Work
-            </a>
-            <a href="/#services" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
-              Services
-            </a>
-            <a href="/contact" className="block text-white text-sm tracking-widest uppercase">
-              Book a Call
-            </a>
-          </div>
-        )}
-      </nav>
+      <SiteHeader current="contact" />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24 px-4 sm:px-6">
@@ -318,33 +270,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-background border-t border-border">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <span className="text-foreground text-xl font-bold tracking-wider">CELLA</span>
-
-            <div className="flex items-center gap-6">
-              <a
-                href="https://www.instagram.com/cella.au"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:info@heycella.com"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
-
-            <p className="text-muted-foreground text-xs tracking-widest uppercase">Sydney, Australia</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <style jsx global>{`
         @keyframes fade-in-up {
