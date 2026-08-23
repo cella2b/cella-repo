@@ -110,7 +110,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-white/80 text-lg md:text-xl mt-6 max-w-3xl mx-auto font-light tracking-wide animate-phase-in-delay">
-              Content, strategy, and guidance that turns audiences into clients.
+              Content Creation, Strategy and Mentoring for business' ready to scale.
             </p>
 
             <Link
@@ -163,10 +163,10 @@ export default function Home() {
             <Link href="/services/coaching" className="group bg-background p-8 md:p-12 hover:bg-card transition-colors">
               <span className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-4 block">03</span>
               <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 uppercase tracking-tight group-hover:text-white/80 transition-colors">
-                Coaching
+                Mentoring
               </h3>
               <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
-                Hands-on guidance to level up your content game.
+                Hands-on mentoring to help you build, position, and scale your business.
               </p>
               <span className="text-foreground text-sm tracking-widest uppercase group-hover:tracking-[0.4em] transition-all">
                 Level up. →
