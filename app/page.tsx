@@ -177,13 +177,14 @@ export default function Home() {
       </section>
 
  {/* Trusted By Section */}
-<section className="trust-section py-16 md:py-20 relative z-10">
+<section className="trust-section py-10 md:py-12 relative z-10">
   <div className="container mx-auto px-4 sm:px-6">
-    <p className="text-center text-sm tracking-[0.2em] text-trust-muted uppercase mb-12">
-      Trusted By
-    </p>
+    <div className="trust-banner px-5 py-7 md:px-8 md:py-8">
+      <p className="text-center text-sm tracking-[0.2em] text-trust-muted uppercase mb-7">
+        Trusted By
+      </p>
 
-    <div className="overflow-hidden">
+      <div className="overflow-hidden">
       <div className="flex gap-16 md:gap-20 animate-scroll-left">
         {/* Repeat logos 3 times to cover width and remove black gap */}
         {[...Array(3)].map((_, batch) => (
@@ -210,6 +211,7 @@ export default function Home() {
         ))}
       </div>
     </div>
+  </div>
   </div>
 </section>
 
