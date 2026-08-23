@@ -236,7 +236,7 @@ export default function Home() {
                 src="/images/projects/kings-cross-coca-cola.webp"
                 alt="Kings Cross Quarter"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
@@ -255,7 +255,7 @@ export default function Home() {
                 src="/images/projects/paddys-markets.jpg"
                 alt="Google Gemini x Paddy's"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
@@ -271,7 +271,7 @@ export default function Home() {
                 src="/images/projects/barangaroo-house.jpg"
                 alt="Barangaroo Precinct"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
@@ -290,7 +290,7 @@ export default function Home() {
                 src="/images/projects/doordash-delivery.avif"
                 alt="DoorDash x OpenTable"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
@@ -306,7 +306,7 @@ export default function Home() {
                 src="/images/projects/prince-shiomi.webp"
                 alt="Prince Shiomi Hotel lobby with Japanese-inspired details"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">

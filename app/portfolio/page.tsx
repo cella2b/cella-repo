@@ -34,7 +34,7 @@ export default function Portfolio() {
                   alt={project.alt}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  className={`object-cover transition duration-700 group-hover:scale-105 ${
+                  className={`object-cover transition duration-700 ease-out group-hover:scale-110 ${
                     project.href === "/projects/prince-shiomi"
                       ? "scale-[1.02] object-center group-hover:scale-[1.06]"
                       : project.href === "/projects/milford-sound"
