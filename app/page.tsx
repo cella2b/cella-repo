@@ -1,13 +1,11 @@
 "use client"
 
-import type React from "react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { ArrowRight, Instagram, Mail, Menu, X } from "lucide-react"
 import Image from "next/image"
 
 export default function Home() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -30,16 +28,9 @@ export default function Home() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const subject = `Enquiry from ${formData.name}`
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`
-    window.location.href = `mailto:cella.foodie@gmail.com?subject=${subject}&body=${body}`
-  }
-
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative min-h-[92vh] w-full overflow-hidden rounded-b-[2.5rem] md:min-h-screen">
         {/* Video Background */}
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
           <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/copy_609EA116-4303-4201-A986-82779EE24CCC-fSh9zYmlnaJhudebiyaAnN2AZzr5d0.mov" type="video/mp4" />
@@ -49,9 +40,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Navigation - minimal, floating */}
-        <nav className="absolute top-0 left-0 right-0 z-50 p-6 md:p-8">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-white text-xl md:text-2xl font-bold tracking-wider">
+        <nav className="absolute left-0 right-0 top-0 z-50 px-4 py-5 sm:px-6 md:py-8">
+          <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/20 bg-black/25 px-5 py-3 backdrop-blur-md md:px-7">
+            <Link href="/" className="text-xl font-bold tracking-[0.18em] text-white md:text-2xl">
               CELLA
             </Link>
 
@@ -102,7 +93,7 @@ export default function Home() {
         </nav>
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center px-4">
+          <div className="max-w-5xl px-6 text-center">
           
             <h1 className="text-white font-bold uppercase tracking-tight leading-tight">
               <span className="block animate-phase-in text-[clamp(2.5rem,6vw,6rem)] sm:text-[clamp(3rem,5vw,7rem)] md:text-[clamp(4rem,4vw,8rem)] lg:text-[clamp(5rem,3vw,9rem)]">
@@ -127,7 +118,7 @@ export default function Home() {
       {/* Services Section - minimal editorial style */}
       <section id="services" className="py-20 md:py-32 bg-background relative z-10 scroll-fade opacity-0">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <Link
               href="/services/content-creation"
               className="group bg-background p-8 md:p-12 hover:bg-card transition-colors"
@@ -233,7 +224,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <Link href="/projects/kings-cross" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
+            <Link href="/projects/kings-cross" className="group relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-secondary ring-1 ring-border/60">
               <Image
                 src="/images/projects/kings-cross-coca-cola.webp"
                 alt="Kings Cross Quarter"
@@ -251,7 +242,7 @@ export default function Home() {
 
             <Link
               href="/projects/google-gemini-paddys"
-              className="group relative aspect-[4/5] overflow-hidden bg-secondary"
+              className="group relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-secondary ring-1 ring-border/60"
             >
               <Image
                 src="/images/projects/paddys-markets.jpg"
@@ -268,7 +259,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/projects/barangaroo" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
+            <Link href="/projects/barangaroo" className="group relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-secondary ring-1 ring-border/60">
               <Image
                 src="/images/projects/barangaroo-house.jpg"
                 alt="Barangaroo Precinct"
@@ -286,7 +277,7 @@ export default function Home() {
 
             <Link
               href="/projects/doordash-opentable"
-              className="group relative aspect-[4/5] overflow-hidden bg-secondary"
+              className="group relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-secondary ring-1 ring-border/60"
             >
               <Image
                 src="/images/projects/doordash-delivery.avif"
@@ -303,7 +294,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/projects/prince-shiomi" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
+            <Link href="/projects/prince-shiomi" className="group relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-secondary ring-1 ring-border/60">
               <Image
                 src="/images/projects/prince-shiomi.webp"
                 alt="Prince Shiomi Hotel lobby with Japanese-inspired details"
@@ -319,7 +310,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/projects/milford-sound" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
+            <Link href="/projects/milford-sound" className="group relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-secondary ring-1 ring-border/60">
               <Image
                   src="/images/projects/milford-sound.jpg"
                   alt="TranzAlpine & Pure Milford"
