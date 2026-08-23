@@ -137,12 +137,12 @@
 }
 
 .trust-banner {
-  background-color: oklch(1 0 0);
-  color: oklch(0.12 0 0);
+  background-color: var(--trust-background);
+  color: var(--foreground);
 }
 
 .trust-banner p {
-  color: oklch(0.42 0 0);
+  color: var(--foreground);
 }
 
 @keyframes float {
