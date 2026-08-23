@@ -177,9 +177,9 @@ export default function Home() {
       </section>
 
  {/* Trusted By Section */}
-<section className="py-16 md:py-20 bg-background relative z-10">
+<section className="trust-section py-16 md:py-20 relative z-10">
   <div className="container mx-auto px-4 sm:px-6">
-    <p className="text-center text-sm tracking-[0.2em] text-muted-foreground uppercase mb-12">
+    <p className="text-center text-sm tracking-[0.2em] text-trust-muted uppercase mb-12">
       Trusted By
     </p>
 

@@ -25,6 +25,9 @@
   --input: oklch(0.15 0 0);
   --ring: oklch(0.98 0 0);
   --radius: 0.5rem;
+  --trust-background: oklch(1 0 0);
+  --trust-foreground: oklch(0.12 0 0);
+  --trust-muted: oklch(0.42 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -99,6 +102,9 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-trust-background: var(--trust-background);
+  --color-trust-foreground: var(--trust-foreground);
+  --color-trust-muted: var(--trust-muted);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -119,6 +125,15 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+}
+
+.trust-section {
+  background-color: var(--trust-background);
+  color: var(--trust-foreground);
+}
+
+.trust-section p {
+  color: var(--trust-muted);
 }
 
 @keyframes float {
