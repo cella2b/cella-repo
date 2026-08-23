@@ -303,7 +303,12 @@ export default function Home() {
             </Link>
 
             <Link href="/projects/prince-shiomi" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
-              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 to-zinc-900" />
+              <Image
+                src="/images/projects/prince-shiomi-hotel.webp"
+                alt="Prince Shiomi Hotel lobby"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                 <span className="text-white/60 text-xs tracking-[0.3em] uppercase mb-2 block">Content Creation</span>
