@@ -194,8 +194,7 @@ export default function Home() {
               "/images/brands/mirvac-logo.svg",
               "/images/brands/google-logo.webp",
               "/images/brands/paddys-logo.png",
-              "/images/brands/nsw-placemaking-logo.png",
-              "/images/brands/ninja-logo.png"
+              "/images/brands/nsw-placemaking-logo.png"
             ].map((src, i) => (
               <div key={i} className="flex items-center justify-center h-12 md:h-14 w-40">
                 <Image
