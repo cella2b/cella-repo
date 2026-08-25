@@ -17,7 +17,7 @@ export default function ServicesPage() {
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/images/cella-logo.png"
-              alt="Cella Logo"
+              alt="CELLA"
               width={45}
               height={45}
               className="hover:opacity-80 transition-opacity"
@@ -32,7 +32,7 @@ export default function ServicesPage() {
             <Link href="/services" className="text-purple-400 font-medium">
               Services
             </Link>
-            <Link href="/#projects" className="text-foreground hover:text-purple-400 transition-colors">
+            <Link href="/#work" className="text-foreground hover:text-purple-400 transition-colors">
               Projects
             </Link>
             <Link
@@ -47,7 +47,9 @@ export default function ServicesPage() {
           <button
             className="md:hidden flex flex-col gap-1.5 w-8 h-8 justify-center items-center"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="services-mobile-menu"
           >
             <span
               className={`w-6 h-0.5 bg-foreground transition-all ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}
@@ -61,7 +63,7 @@ export default function ServicesPage() {
 
         {/* Mobile Menu Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-background border-t border-border">
+          <div id="services-mobile-menu" className="md:hidden bg-background border-t border-border">
             <div className="px-6 py-4 space-y-4">
               <Link href="/" className="block text-foreground hover:text-purple-400 transition-colors">
                 Home
@@ -69,7 +71,7 @@ export default function ServicesPage() {
               <Link href="/services" className="block text-purple-400 font-medium">
                 Services
               </Link>
-              <Link href="/#projects" className="block text-foreground hover:text-purple-400 transition-colors">
+              <Link href="/#work" className="block text-foreground hover:text-purple-400 transition-colors">
                 Projects
               </Link>
               <Link
@@ -94,8 +96,8 @@ export default function ServicesPage() {
           <h1 className="text-5xl md:text-7xl font-light text-foreground mb-6">Services</h1>
 
           <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
-            Content and strategy for hospitality and travel brands that want to stand out. Specialising in video
-            storytelling that actually connects with your audience, AI and advice that drives results.
+            Social-first content, strategy and practical guidance for hospitality, travel and lifestyle brands that
+            want to be remembered and chosen.
           </p>
         </div>
       </section>

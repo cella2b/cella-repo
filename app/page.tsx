@@ -1,13 +1,21 @@
 "use client"
 
-import type React from "react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { ArrowRight, Instagram, Mail, Menu, X } from "lucide-react"
+import { ArrowRight, Menu, X } from "lucide-react"
 import Image from "next/image"
+import { Footer } from "@/components/footer"
+
+const brandLogos = [
+  { src: "/images/brands/merivale-logo.png", alt: "Merivale" },
+  { src: "/images/brands/kitchenaid-logo.png", alt: "KitchenAid" },
+  { src: "/images/brands/mirvac-logo.svg", alt: "Mirvac" },
+  { src: "/images/brands/google-logo.webp", alt: "Google" },
+  { src: "/images/brands/nsw-placemaking-logo.png", alt: "Placemaking NSW" },
+  { src: "/images/brands/ninja-logo.png", alt: "Ninja" },
+]
 
 export default function Home() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
@@ -29,13 +37,6 @@ export default function Home() {
 
     return () => observer.disconnect()
   }, [])
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const subject = `Enquiry from ${formData.name}`
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`
-    window.location.href = `mailto:cella.foodie@gmail.com?subject=${subject}&body=${body}`
-  }
 
   return (
     <main className="min-h-screen bg-background relative overflow-hidden">
@@ -79,7 +80,9 @@ export default function Home() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2 text-white"
-              aria-label="Toggle menu"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="home-mobile-menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -87,7 +90,7 @@ export default function Home() {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-lg p-6 space-y-4">
+            <div id="home-mobile-menu" className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-lg p-6 space-y-4">
               <Link href="#work" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
                 Work
               </Link>
@@ -110,14 +113,14 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-white/80 text-lg md:text-xl mt-6 max-w-3xl mx-auto font-light tracking-wide animate-phase-in-delay">
-              Content, strategy, and guidance that turns audiences into clients.
+              Social-first content and strategy for hospitality, travel and lifestyle brands.
             </p>
 
             <Link
               href="/contact"
               className="inline-flex items-center gap-3 mt-12 bg-white text-black px-8 py-3 text-sm tracking-[0.2em] uppercase hover:bg-white/90 transition-colors font-semibold"
             >
-              Work with me
+              Start a project
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -127,7 +130,7 @@ export default function Home() {
       {/* Services Section - minimal editorial style */}
       <section id="services" className="py-20 md:py-32 bg-background relative z-10 scroll-fade opacity-0">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             <Link
               href="/services/content-creation"
               className="group bg-background p-8 md:p-12 hover:bg-card transition-colors"
@@ -172,6 +175,13 @@ export default function Home() {
                 Level up. →
               </span>
             </Link>
+
+            <Link href="/services/ai-guidance" className="group bg-background p-8 md:p-12 hover:bg-card transition-colors">
+              <span className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-4 block">04</span>
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 uppercase tracking-tight group-hover:text-white/80 transition-colors">AI Guidance</h3>
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">Practical AI guidance and workflows shaped around the way your business operates.</p>
+              <span className="text-foreground text-sm tracking-widest uppercase group-hover:tracking-[0.4em] transition-all">Work smarter. →</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -187,20 +197,12 @@ export default function Home() {
       <div className="flex gap-16 md:gap-20 animate-scroll-left">
         {/* Repeat logos 3 times to cover width and remove black gap */}
         {[...Array(3)].map((_, batch) => (
-          <div key={batch} className="flex items-center gap-16 md:gap-20 flex-shrink-0">
-            {[
-              "/images/brands/merivale-logo.png",
-              "/images/brands/kitchenaid-logo.png",
-              "/images/brands/mirvac-logo.svg",
-              "/images/brands/google-logo.webp",
-              "/images/brands/paddys-logo.png",
-              "/images/brands/nsw-placemaking-logo.png",
-              "/images/brands/ninja-logo.png"
-            ].map((src, i) => (
-              <div key={i} className="flex items-center justify-center h-12 md:h-14 w-40">
+          <div key={batch} aria-hidden={batch > 0} className="flex items-center gap-16 md:gap-20 flex-shrink-0">
+            {brandLogos.map((logo) => (
+              <div key={logo.src} className="flex items-center justify-center h-12 md:h-14 w-40">
                 <Image
-                  src={src}
-                  alt={src.split("/").pop()?.split(".")[0]}
+                  src={logo.src}
+                  alt={batch === 0 ? logo.alt : ""}
                   width={300}
                   height={120}
                   className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
@@ -220,14 +222,8 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="mb-16 md:mb-24 overflow-hidden">
             <div className="flex gap-12 animate-scroll-left">
-              {[...Array(8)].map((_, i) => (
-                <h2
-                  key={i}
-                  className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase"
-                >
-                  PROJECTS
-                </h2>
-              ))}
+              <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase">PROJECTS</h2>
+              {[...Array(7)].map((_, i) => <span key={i} aria-hidden="true" className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase">PROJECTS</span>)}
             </div>
           </div>
 
@@ -303,7 +299,12 @@ export default function Home() {
             </Link>
 
             <Link href="/projects/prince-shiomi" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
-              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 to-zinc-900" />
+              <Image
+                src="/luxury-japanese-hotel-traditional-architecture-zen.jpg"
+                alt="Prince Shiomi Hotel in Tokyo"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                 <span className="text-white/60 text-xs tracking-[0.3em] uppercase mb-2 block">Content Creation</span>
@@ -347,14 +348,8 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="mb-16 md:mb-24 overflow-hidden">
             <div className="flex gap-12 animate-scroll-left">
-              {[...Array(8)].map((_, i) => (
-                <h2
-                  key={i}
-                  className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase"
-                >
-                  TESTIMONIALS
-                </h2>
-              ))}
+              <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase">TESTIMONIALS</h2>
+              {[...Array(7)].map((_, i) => <span key={i} aria-hidden="true" className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase">TESTIMONIALS</span>)}
             </div>
           </div>
 
@@ -363,7 +358,7 @@ export default function Home() {
               <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 font-light">
                 "Really enjoyed working with you... Videos are my favourite so far. Super authentic and warm."
               </p>
-              <p className="text-muted-foreground text-sm tracking-widest uppercase">Justin — Kings Cross</p>
+              <p className="text-muted-foreground text-sm tracking-widest uppercase">Justin, Kings Cross</p>
             </div>
 
             <div className="border-l border-border pl-6 md:pl-8">
@@ -371,7 +366,7 @@ export default function Home() {
                 "Thank you again for the amazing content... it was fantastic! The support as part of the Eat Parramatta
                 campaign."
               </p>
-              <p className="text-muted-foreground text-sm tracking-widest uppercase">Vanessa — City of Parramatta</p>
+              <p className="text-muted-foreground text-sm tracking-widest uppercase">Vanessa, City of Parramatta</p>
             </div>
           </div>
         </div>
@@ -396,33 +391,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer - minimal */}
-      <footer className="py-12 bg-background border-t border-border">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <span className="text-foreground text-xl font-bold tracking-wider">CELLA</span>
-
-            <div className="flex items-center gap-6">
-              <a
-                href="https://www.instagram.com/cella.au"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:cella.foodie@gmail.com"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
-
-            <p className="text-muted-foreground text-xs tracking-widest uppercase">Sydney, Australia</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   )
 }

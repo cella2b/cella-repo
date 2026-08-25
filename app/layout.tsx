@@ -10,9 +10,23 @@ const oswald = Oswald({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.heycella.com"),
   title: "CELLA | Content That Books",
-  description: "Content creator specializing in food, travel, and lifestyle. Creating content that actually books.",
-  keywords: "content creator, food content, travel content, lifestyle, video, CELLA",
+  description:
+    "Social-first content and strategy for hospitality, travel, lifestyle and experience-led brands, created by Marcella in Sydney.",
+  keywords: ["content creator", "social media strategy", "hospitality content", "travel content", "Sydney", "CELLA"],
+  openGraph: {
+    type: "website",
+    locale: "en_AU",
+    siteName: "CELLA",
+    title: "CELLA | Content That Books",
+    description: "Social-first content and strategy for hospitality, travel, lifestyle and experience-led brands.",
+  },
+  twitter: {
+    card: "summary",
+    title: "CELLA | Content That Books",
+    description: "Social-first content and strategy for hospitality, travel, lifestyle and experience-led brands.",
+  },
   icons: {
     icon: [
       {

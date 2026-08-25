@@ -2,21 +2,23 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export const metadata = {
   title: "Prince Shiomi Hotel | CELLA",
   description: "Showcasing a 5-star Tokyo property just outside the city centre for couples and families.",
+  alternates: { canonical: "/projects/prince-shiomi" },
 }
 
 export default function PrinceShiomiPage() {
   return (
-    <div className="min-h-screen bg-cream-50">
+    <main className="min-h-screen bg-[#FDFCFA] text-gray-900">
       <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-purple-100/50">
         <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/images/cella-logo.png" alt="CELLA" width={40} height={40} className="mix-blend-multiply" />
           </Link>
-          <Link href="/#projects">
+          <Link href="/#work">
             <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-600">
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Projects
@@ -52,7 +54,7 @@ export default function PrinceShiomiPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">The Project</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               Visual content showcasing Prince Shiomi Hotel as a 5-star destination just outside central
-              Tokyo—positioned for couples and families seeking larger rooms, premium facilities, and an authentic
+              Tokyo, positioned for couples and families seeking larger rooms, premium facilities, and an authentic
               travel experience away from the typical tourist centres.
             </p>
           </section>
@@ -61,7 +63,7 @@ export default function PrinceShiomiPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">The Brief</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               Create content that appeals to international travellers looking for luxury and space without sacrificing
-              access to Tokyo. Position the property as a destination itself, not just accommodation—somewhere worth
+              access to Tokyo. Position the property as a destination itself, not just accommodation, somewhere worth
               choosing specifically, not settling for.
             </p>
           </section>
@@ -74,7 +76,7 @@ export default function PrinceShiomiPage() {
               atmosphere, and experiences that feel distinctly Japanese.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Content balanced luxury presentation with authentic cultural elements—showing premium facilities while
+              Content balanced luxury presentation with authentic cultural elements, showing premium facilities while
               highlighting traditional touches, demonstrating space and comfort while maintaining the aesthetic
               sophistication expected from Japanese hospitality.
             </p>
@@ -111,40 +113,6 @@ export default function PrinceShiomiPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Instagram Videos</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-100 rounded-lg aspect-[9/16] flex items-center justify-center">
-                <p className="text-gray-500 text-center p-4">Instagram video embed placeholder</p>
-              </div>
-              <div className="bg-gray-100 rounded-lg aspect-[9/16] flex items-center justify-center">
-                <p className="text-gray-500 text-center p-4">Instagram video embed placeholder</p>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Photo Gallery</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <div className="relative aspect-[4/3] mb-3 rounded-lg overflow-hidden">
-                  <div className="bg-gray-100 w-full h-full flex items-center justify-center">
-                    <p className="text-gray-500">Photo placeholder</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm italic">Photo caption goes here.</p>
-              </div>
-              <div>
-                <div className="relative aspect-[4/3] mb-3 rounded-lg overflow-hidden">
-                  <div className="bg-gray-100 w-full h-full flex items-center justify-center">
-                    <p className="text-gray-500">Photo placeholder</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm italic">Photo caption goes here.</p>
-              </div>
-            </div>
-          </section>
-
-          <section>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Target Audience</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               Couples seeking romantic experiences, families needing space and facilities, travellers wanting authentic
@@ -157,13 +125,13 @@ export default function PrinceShiomiPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">The Impact</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               A visual narrative that positioned Prince Shiomi as a deliberate choice, not a compromise. Showcased the
-              property's strengths—space, facilities, location, authenticity—in ways that appealed to the specific needs
+              property's strengths, space, facilities, location, authenticity, in ways that appealed to the specific needs
               of couples and families rather than trying to compete directly with central Tokyo luxury hotels.
             </p>
           </section>
 
           <div className="pt-8 border-t border-gray-200">
-            <Link href="/#projects">
+            <Link href="/#work">
               <Button
                 size="lg"
                 variant="outline"
@@ -176,6 +144,7 @@ export default function PrinceShiomiPage() {
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </main>
   )
 }

@@ -382,6 +382,30 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  :focus-visible {
+    outline: 2px solid oklch(0.72 0.2 295);
+    outline-offset: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .scroll-fade,
+  .animate-phase-in,
+  .animate-phase-in-scale,
+  .animate-fade-in-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 @layer utilities {

@@ -9,22 +9,26 @@ export function Footer() {
 
           <div className="flex items-center gap-6">
             <a
-              href="https://www.instagram.com/cella.au"
+              href="https://www.instagram.com/cella.channel/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="CELLA on Instagram"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               <Instagram className="w-5 h-5" />
             </a>
             <a
-              href="mailto:cella.foodie@gmail.com"
+              href="mailto:info@heycella.com"
+              aria-label="Email CELLA"
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
               <Mail className="w-5 h-5" />
             </a>
           </div>
 
-          <p className="text-muted-foreground text-xs tracking-widest uppercase">Sydney, Australia</p>
+          <p className="text-muted-foreground text-xs tracking-widest uppercase">
+            © {new Date().getFullYear()} CELLA, Sydney
+          </p>
         </div>
       </div>
     </footer>

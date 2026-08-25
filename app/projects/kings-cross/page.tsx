@@ -7,6 +7,7 @@ export const metadata = {
   title: "Kings Cross Quarter | CELLA",
   description:
     "A 7-part series spotlighting the streets, venues, and hidden finds that make Kings Cross worth discovering.",
+  alternates: { canonical: "/projects/kings-cross" },
 }
 
 export default function KingsCrossPage() {
@@ -20,7 +21,7 @@ export default function KingsCrossPage() {
           </Link>
 
           <Link
-            href="/#projects"
+            href="/#work"
             className="flex items-center gap-2 text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -164,21 +165,6 @@ export default function KingsCrossPage() {
             </ul>
           </section>
 
-          {/* Sample Videos */}
-          <section className="mb-16">
-            <h2 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-wide mb-12">Sample Videos</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-card/50 border border-border rounded-lg aspect-[9/16] flex items-center justify-center overflow-hidden hover:border-purple-400/50 transition-colors">
-                <p className="text-muted-foreground text-center p-4">Video 1</p>
-              </div>
-              <div className="bg-card/50 border border-border rounded-lg aspect-[9/16] flex items-center justify-center overflow-hidden hover:border-purple-400/50 transition-colors">
-                <p className="text-muted-foreground text-center p-4">Video 2</p>
-              </div>
-              <div className="bg-card/50 border border-border rounded-lg aspect-[9/16] flex items-center justify-center overflow-hidden hover:border-purple-400/50 transition-colors">
-                <p className="text-muted-foreground text-center p-4">Video 3</p>
-              </div>
-            </div>
-          </section>
         </div>
       </div>
 

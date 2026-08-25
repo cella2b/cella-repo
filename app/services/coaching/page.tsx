@@ -1,26 +1,13 @@
-"use client"
-
 import Link from "next/link"
 import { ArrowLeft, Check, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { LightHeader } from "@/components/light-header"
+import { Footer } from "@/components/footer"
 
 export default function CoachingPage() {
   return (
     <main className="min-h-screen bg-[#FDFCFA]">
-      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-purple-100/50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/images/cella-logo.png"
-              alt="Cella Logo"
-              width={45}
-              height={45}
-              className="hover:opacity-80 transition-opacity"
-            />
-          </Link>
-        </div>
-      </nav>
+      <LightHeader />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 bg-[#FDFCFA]">
@@ -41,7 +28,7 @@ export default function CoachingPage() {
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed">
-            This coaching focuses on the practical business side—the things that determine whether you succeed or stay
+            This coaching focuses on the practical business side, the things that determine whether you succeed or stay
             stuck. From how you present yourself online to overcoming imposter syndrome to pricing strategies that
             reflect your value, this covers the real challenges that hold people back.
           </p>
@@ -163,7 +150,7 @@ export default function CoachingPage() {
           <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-8">The approach</h2>
 
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
-            This isn't motivational speaking. It's practical guidance based on real experience—what works, what doesn't,
+            This isn't motivational speaking. It's practical guidance based on real experience, what works, what doesn't,
             and why most advice about "building your brand" misses the mark. Sessions are direct, focused on your
             specific situation, and designed to give you clarity and actionable steps.
           </p>
@@ -196,7 +183,7 @@ export default function CoachingPage() {
           <p className="text-xl text-gray-600 mb-10">
             Let's build a content strategy and personal brand that positions you as the go-to expert in your field.
           </p>
-          <Link href="/#contact">
+          <Link href="/contact">
             <Button
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white hover:from-purple-700 hover:to-fuchsia-700 px-10 py-7 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all"
@@ -207,6 +194,7 @@ export default function CoachingPage() {
           </Link>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }
