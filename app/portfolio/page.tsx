@@ -39,7 +39,17 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <Link key={project.href} href={project.href} className="group relative aspect-[4/5] overflow-hidden bg-card">
-                <Image src={project.image} alt={project.alt} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                <Image
+                  src={project.image}
+                  alt={project.alt}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className={`object-cover transition-transform duration-700 ${
+                    project.href === "/projects/milford-sound"
+                      ? "scale-[1.35] group-hover:scale-[1.42]"
+                      : "group-hover:scale-105"
+                  }`}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                   <p className="mb-2 text-xs uppercase tracking-[0.3em] text-white/65">{project.category}</p>
