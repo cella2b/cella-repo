@@ -1,27 +1,13 @@
-"use client"
-
 import Link from "next/link"
 import { ArrowLeft, Check, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { LightHeader } from "@/components/light-header"
+import { Footer } from "@/components/footer"
 
 export default function ContentCreationPage() {
   return (
     <main className="min-h-screen bg-[#FDFCFA]">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-purple-100/50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/images/cella-logo.png"
-              alt="Cella Logo"
-              width={45}
-              height={45}
-              className="hover:opacity-80 transition-opacity"
-            />
-          </Link>
-        </div>
-      </nav>
+      <LightHeader />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 bg-[#FDFCFA]">
@@ -43,7 +29,7 @@ export default function ContentCreationPage() {
           <p className="text-lg text-gray-700 leading-relaxed">
             This service focuses on creating content tailored specifically to your brand and the platforms where your
             audience actually lives. Specializing in video and storytelling because that's what cuts through the
-            noise—authentic narratives that show what makes you different, not just another pretty feed.
+            noise, authentic narratives that show what makes you different, not just another pretty feed.
           </p>
         </div>
       </section>
@@ -130,7 +116,7 @@ export default function ContentCreationPage() {
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
             Every brand has a story, but most are telling it wrong. This starts with understanding who you are, who
             you're trying to reach, and what actually makes you different. Then creating content that communicates
-            that—through video, through storytelling, through showing instead of telling.
+            that, through video, through storytelling, through showing instead of telling.
           </p>
 
           <h3 className="text-2xl font-semibold text-gray-900 mb-4">Who this is for</h3>
@@ -143,7 +129,7 @@ export default function ContentCreationPage() {
           <h3 className="text-2xl font-semibold text-gray-900 mb-4">Why video and storytelling</h3>
           <p className="text-lg text-gray-700 leading-relaxed">
             Because static images get scrolled past. Video stops people. Stories make them care. And when you combine
-            both with authentic brand messaging, you create content that doesn't just perform—it connects.
+            both with authentic brand messaging, you create content that doesn't just perform, it connects.
           </p>
         </div>
       </section>
@@ -175,7 +161,7 @@ export default function ContentCreationPage() {
           <p className="text-xl text-gray-600 mb-10">
             Let's create content that shows what makes your place worth visiting.
           </p>
-          <Link href="/#contact">
+          <Link href="/contact">
             <Button
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white hover:from-purple-700 hover:to-fuchsia-700 px-10 py-7 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all"
@@ -186,6 +172,7 @@ export default function ContentCreationPage() {
           </Link>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

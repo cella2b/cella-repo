@@ -2,21 +2,23 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export const metadata = {
   title: "TranzAlpine and Pure Milford | CELLA",
   description: "Documenting the Pure Milford tour and TranzAlpine train experience with KiwiRail.",
+  alternates: { canonical: "/projects/milford-sound" },
 }
 
 export default function MilfordSoundPage() {
   return (
-    <div className="min-h-screen bg-cream-50">
+    <main className="min-h-screen bg-[#FDFCFA] text-gray-900">
       <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-purple-100/50">
         <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/images/cella-logo.png" alt="CELLA" width={40} height={40} className="mix-blend-multiply" />
           </Link>
-          <Link href="/#projects">
+          <Link href="/#work">
             <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-600">
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Projects
@@ -50,7 +52,7 @@ export default function MilfordSoundPage() {
           <section>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Project Overview</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Milford Sound is New Zealand's most famous fjord—dramatic peaks rising straight from the water, waterfalls
+              Milford Sound is New Zealand's most famous fjord, dramatic peaks rising straight from the water, waterfalls
               cascading hundreds of metres, and wilderness that feels genuinely untouched. This project focused on
               capturing the landscape in conditions that show why it's worth the journey.
             </p>
@@ -60,7 +62,7 @@ export default function MilfordSoundPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">The Project</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               Content documenting the Pure Milford tour experience and TranzAlpine train journey with
-              KiwiRail—showcasing the ways to explore New Zealand's South Island and the landscapes that make these
+              KiwiRail, showcasing the ways to explore New Zealand's South Island and the landscapes that make these
               journeys unforgettable.
             </p>
           </section>
@@ -80,7 +82,7 @@ export default function MilfordSoundPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Pure Milford Tour</h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Documented the full tour experience from departure to return—the drive through Fiordland, the boat
+                  Documented the full tour experience from departure to return, the drive through Fiordland, the boat
                   cruise through Milford Sound, wildlife encounters, waterfall approaches, and the scale of the
                   landscape. Content focused on conveying the dramatic scenery in ways that still photos rarely capture.
                 </p>
@@ -88,7 +90,7 @@ export default function MilfordSoundPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">TranzAlpine Train</h3>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Captured the journey as an experience itself—passing through Canterbury Plains, climbing through
+                  Captured the journey as an experience itself, passing through Canterbury Plains, climbing through
                   Arthur's Pass, descending into the West Coast. Content emphasized the changing landscapes visible from
                   the train and positioned rail travel as a destination choice, not just transportation.
                 </p>
@@ -135,7 +137,7 @@ export default function MilfordSoundPage() {
             <p className="text-lg text-gray-700 leading-relaxed">
               Capturing landscapes of this scale requires conveying depth, movement, and atmosphere that static
               photography often misses. Video content focused on sequences that give viewers a sense of actually being
-              there—watching waterfalls cascade, seeing the train wind through mountain passes, experiencing the
+              there, watching waterfalls cascade, seeing the train wind through mountain passes, experiencing the
               changing light on the fjord.
             </p>
           </section>
@@ -146,6 +148,8 @@ export default function MilfordSoundPage() {
               <div className="rounded-lg overflow-hidden shadow-lg bg-black">
                 <iframe
                   src="https://www.instagram.com/reel/C_FfYv1qBgr/embed/captioned"
+                  title="Pure Milford travel campaign reel"
+                  loading="lazy"
                   className="w-full aspect-[9/16]"
                   frameBorder="0"
                   scrolling="no"
@@ -156,6 +160,8 @@ export default function MilfordSoundPage() {
               <div className="rounded-lg overflow-hidden shadow-lg bg-black">
                 <iframe
                   src="https://www.instagram.com/reel/C9qQOO8K51S/embed/captioned"
+                  title="TranzAlpine travel campaign reel"
+                  loading="lazy"
                   className="w-full aspect-[9/16]"
                   frameBorder="0"
                   scrolling="no"
@@ -167,38 +173,16 @@ export default function MilfordSoundPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Photo Gallery</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <div className="relative aspect-[4/3] mb-3 rounded-lg overflow-hidden">
-                  <div className="bg-gray-100 w-full h-full flex items-center justify-center">
-                    <p className="text-gray-500">Photo placeholder</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm italic">Photo caption goes here.</p>
-              </div>
-              <div>
-                <div className="relative aspect-[4/3] mb-3 rounded-lg overflow-hidden">
-                  <div className="bg-gray-100 w-full h-full flex items-center justify-center">
-                    <p className="text-gray-500">Photo placeholder</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm italic">Photo caption goes here.</p>
-              </div>
-            </div>
-          </section>
-
-          <section>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">The Impact</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Content that positions these experiences as must-dos for New Zealand visitors—not just checking boxes but
+              Content that positions these experiences as must-dos for New Zealand visitors, not just checking boxes but
               genuinely memorable journeys. Shows why people travel across the world to see these specific places and
               why the journey matters as much as the destination.
             </p>
           </section>
 
           <div className="pt-8 border-t border-gray-200">
-            <Link href="/#projects">
+            <Link href="/#work">
               <Button
                 size="lg"
                 variant="outline"
@@ -211,6 +195,7 @@ export default function MilfordSoundPage() {
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </main>
   )
 }

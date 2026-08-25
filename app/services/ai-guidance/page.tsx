@@ -1,27 +1,13 @@
-"use client"
-
 import Link from "next/link"
 import { ArrowLeft, Check, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { LightHeader } from "@/components/light-header"
+import { Footer } from "@/components/footer"
 
 export default function AIGuidancePage() {
   return (
     <main className="min-h-screen bg-[#FDFCFA]">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-purple-100/50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/images/cella-logo.png"
-              alt="Cella Logo"
-              width={45}
-              height={45}
-              className="hover:opacity-80 transition-opacity"
-            />
-          </Link>
-        </div>
-      </nav>
+      <LightHeader />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 bg-[#FDFCFA]">
@@ -37,7 +23,7 @@ export default function AIGuidancePage() {
 
           <p className="text-xl text-gray-600 leading-relaxed mb-8">
             AI is moving fast, and most people are either overwhelmed or using it wrong. This service is for those ready
-            to leap ahead—whether you have questions, want to implement specific tools, or need help setting up business
+            to leap ahead, whether you have questions, want to implement specific tools, or need help setting up business
             automation.
           </p>
 
@@ -144,7 +130,7 @@ export default function AIGuidancePage() {
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
             This is flexible based on where you are. Some people just need answers to specific questions. Others want
             full implementation support for automating parts of their business. The approach adapts to your
-            needs—whether that's a single consultation or ongoing guidance.
+            needs, whether that's a single consultation or ongoing guidance.
           </p>
 
           <h3 className="text-2xl font-semibold text-gray-900 mb-4">Who this is for</h3>
@@ -335,7 +321,7 @@ export default function AIGuidancePage() {
           <p className="text-xl text-gray-600 mb-10">
             Let's explore how AI can help you save time and create better content.
           </p>
-          <Link href="/#contact">
+          <Link href="/contact">
             <Button
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white hover:from-purple-700 hover:to-fuchsia-700 px-10 py-7 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all"
@@ -346,6 +332,7 @@ export default function AIGuidancePage() {
           </Link>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

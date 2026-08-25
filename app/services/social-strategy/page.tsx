@@ -1,27 +1,13 @@
-"use client"
-
 import Link from "next/link"
 import { ArrowLeft, Check, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
+import { LightHeader } from "@/components/light-header"
+import { Footer } from "@/components/footer"
 
 export default function SocialStrategyPage() {
   return (
     <main className="min-h-screen bg-[#FDFCFA]">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-purple-100/50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/images/cella-logo.png"
-              alt="Cella Logo"
-              width={45}
-              height={45}
-              className="hover:opacity-80 transition-opacity"
-            />
-          </Link>
-        </div>
-      </nav>
+      <LightHeader />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6 bg-[#FDFCFA]">
@@ -42,7 +28,7 @@ export default function SocialStrategyPage() {
           </p>
 
           <p className="text-lg text-gray-700 leading-relaxed">
-            This service focuses on brand perception and positioning—figuring out how you want to be seen, who you want
+            This service focuses on brand perception and positioning, figuring out how you want to be seen, who you want
             to reach, and what you need to do to make that happen. It's less about content calendars and more about
             strategic positioning that builds a brand people recognize and remember.
           </p>
@@ -154,7 +140,7 @@ export default function SocialStrategyPage() {
 
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
             Most social strategies focus on metrics and posting frequency. This focuses on perception and positioning
-            first—because if people don't understand what you stand for or why you matter, posting more won't help.
+            first, because if people don't understand what you stand for or why you matter, posting more won't help.
           </p>
 
           <h3 className="text-2xl font-semibold text-gray-900 mb-4">Who this is for</h3>
@@ -166,7 +152,7 @@ export default function SocialStrategyPage() {
           <h3 className="text-2xl font-semibold text-gray-900 mb-4">The outcome</h3>
           <p className="text-lg text-gray-700 leading-relaxed">
             A clear understanding of your brand positioning, a strategic roadmap for how to communicate it, and the
-            confidence to show up online in a way that's authentic and effective. Not just a content calendar—a brand
+            confidence to show up online in a way that's authentic and effective. Not just a content calendar, a brand
             strategy.
           </p>
         </div>
@@ -179,7 +165,7 @@ export default function SocialStrategyPage() {
           <p className="text-xl text-gray-600 mb-10">
             Let's build a strategy that works for your business and your audience.
           </p>
-          <Link href="/#contact">
+          <Link href="/contact">
             <Button
               size="lg"
               className="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white hover:from-purple-700 hover:to-fuchsia-700 px-10 py-7 text-lg rounded-full shadow-xl hover:shadow-2xl transition-all"
@@ -190,6 +176,7 @@ export default function SocialStrategyPage() {
           </Link>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }

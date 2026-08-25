@@ -1,7 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { ArrowRight, Instagram, Mail, Menu, X } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export default function Contact() {
   const [formData, setFormData] = useState({ 
@@ -19,10 +21,21 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = `New Enquiry from ${formData.firstName} ${formData.lastName} - ${formData.brand}`
-    const servicesText = formData.services.join(', ')
-    const body = `Name: ${formData.firstName} ${formData.lastName}%0D%0ARole: ${formData.role}%0D%0ABrand: ${formData.brand}%0D%0ALocation: ${formData.location}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AServices Interested In: ${servicesText}%0D%0ASocial Handles: ${formData.socialHandles}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`
-    window.location.href = `mailto:info@heycella.com?subject=${subject}&body=${body}`
+    const subject = `New enquiry from ${formData.firstName} ${formData.lastName}: ${formData.brand}`
+    const body = [
+      `Name: ${formData.firstName} ${formData.lastName}`,
+      `Role: ${formData.role}`,
+      `Brand: ${formData.brand}`,
+      `Location: ${formData.location}`,
+      `Email: ${formData.email}`,
+      "",
+      `Services: ${formData.services.join(", ")}`,
+      `Social handles: ${formData.socialHandles}`,
+      "",
+      "Project details:",
+      formData.message,
+    ].join("\n")
+    window.location.href = `mailto:info@heycella.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -30,12 +43,12 @@ export default function Contact() {
   }
 
   const handleCheckboxChange = (service: string) => {
-    const currentServices = formData.services
-    if (currentServices.includes(service)) {
-      setFormData({ ...formData, services: currentServices.filter(s => s !== service) })
-    } else {
-      setFormData({ ...formData, services: [...currentServices, service] })
-    }
+    setFormData((current) => ({
+      ...current,
+      services: current.services.includes(service)
+        ? current.services.filter((item) => item !== service)
+        : [...current.services, service],
+    }))
   }
 
   return (
@@ -43,51 +56,53 @@ export default function Contact() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 p-6 md:p-8 bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="flex items-center justify-between">
-          <a href="/" className="text-white text-xl md:text-2xl font-bold tracking-wider">
+          <Link href="/" className="text-white text-xl md:text-2xl font-bold tracking-wider">
             CELLA
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            <a
+            <Link
               href="/#work"
               className="text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
             >
               Work
-            </a>
-            <a
+            </Link>
+            <Link
               href="/#services"
               className="text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
             >
               Services
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
               className="text-white text-sm tracking-widest uppercase"
             >
               Book a Call
-            </a>
+            </Link>
           </div>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 text-white"
-            aria-label="Toggle menu"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="contact-mobile-menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-lg p-6 space-y-4">
-            <a href="/#work" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
+          <div id="contact-mobile-menu" className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-lg p-6 space-y-4">
+            <Link href="/#work" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
               Work
-            </a>
-            <a href="/#services" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
+            </Link>
+            <Link href="/#services" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
               Services
-            </a>
-            <a href="/contact" className="block text-white text-sm tracking-widest uppercase">
+            </Link>
+            <Link href="/contact" className="block text-white text-sm tracking-widest uppercase">
               Book a Call
-            </a>
+            </Link>
           </div>
         )}
       </nav>
@@ -98,12 +113,12 @@ export default function Contact() {
           <div className="mb-8 overflow-hidden">
             <h1 className="text-white font-bold uppercase tracking-tight leading-tight">
   <span className="block text-5xl sm:text-7xl md:text-8xl lg:text-9xl animate-phase-in">
-    CONTENT <wbr /> THAT <wbr /> BOOKS
+    START <wbr /> A <wbr /> PROJECT
   </span>
 </h1>
           </div>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            Let's get to know each other a little more. We'll be in touch within 48 hours.
+            Tell me what you are building and I will get back to you with the best next step.
           </p>
         </div>
       </section>
@@ -111,7 +126,7 @@ export default function Contact() {
       {/* Contact Form Section */}
       <section className="pb-20 md:pb-32 px-4 sm:px-6">
         <div className="container mx-auto max-w-2xl">
-          <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <form onSubmit={handleSubmit} className="space-y-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             {/* Name Fields */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -212,12 +227,12 @@ export default function Contact() {
             </div>
 
             {/* What are you after - Checkboxes */}
-            <div>
-              <label className="block text-sm tracking-widest text-muted-foreground uppercase mb-4">
+            <fieldset>
+              <legend className="block text-sm tracking-widest text-muted-foreground uppercase mb-4">
                 What are you after? <span className="text-xs">(Select all that apply)</span>
-              </label>
+              </legend>
               <div className="space-y-3">
-                {['Video Content', 'Photo Content', 'Social Strategy', 'Coaching & Mentoring', 'Brand Partnership'].map((service) => (
+                {['Video Content', 'Photo Content', 'Social Strategy', 'AI Guidance', 'Coaching & Mentoring', 'Brand Partnership'].map((service) => (
                   <label key={service} className="flex items-center gap-3 cursor-pointer group">
                     <input
                       type="checkbox"
@@ -229,7 +244,7 @@ export default function Contact() {
                   </label>
                 ))}
               </div>
-            </div>
+            </fieldset>
 
             {/* Social Handles */}
             <div>
@@ -267,14 +282,14 @@ export default function Contact() {
             {/* Submit Button */}
             <div className="pt-4">
               <button
-                onClick={handleSubmit}
+                type="submit"
                 className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-foreground text-background px-12 py-4 text-sm tracking-[0.3em] uppercase hover:bg-foreground/90 transition-colors font-semibold cursor-pointer"
               >
                 Let's do it!
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </section>
 
@@ -300,7 +315,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://www.instagram.com/cella.au"
+                href="https://www.instagram.com/cella.channel/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group border border-border p-8 hover:border-foreground transition-colors"
@@ -310,7 +325,7 @@ export default function Contact() {
                   Instagram
                 </h3>
                 <p className="text-muted-foreground text-sm group-hover:text-foreground transition-colors">
-                  @cella.au
+                  @cella.channel
                 </p>
               </a>
             </div>
@@ -318,50 +333,8 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-background border-t border-border">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <span className="text-foreground text-xl font-bold tracking-wider">CELLA</span>
+      <Footer />
 
-            <div className="flex items-center gap-6">
-              <a
-                href="https://www.instagram.com/cella.au"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:info@heycella.com"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
-
-            <p className="text-muted-foreground text-xs tracking-widest uppercase">Sydney, Australia</p>
-          </div>
-        </div>
-      </footer>
-
-      <style jsx global>{`
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-          opacity: 0;
-        }
-      `}</style>
     </main>
   )
 }

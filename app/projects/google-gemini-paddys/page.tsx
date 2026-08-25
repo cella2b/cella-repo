@@ -2,21 +2,23 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { Footer } from "@/components/footer"
 
 export const metadata = {
   title: "Google Gemini x Paddy's Markets | CELLA",
   description: "Exploring Paddy's Markets through local produce, vendors, and culture using Google Gemini AI.",
+  alternates: { canonical: "/projects/google-gemini-paddys" },
 }
 
 export default function GoogleGeminiPaddysPage() {
   return (
-    <div className="min-h-screen bg-cream-50">
+    <main className="min-h-screen bg-[#FDFCFA] text-gray-900">
       <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-purple-100/50">
         <div className="container mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image src="/images/cella-logo.png" alt="CELLA" width={40} height={40} className="mix-blend-multiply" />
           </Link>
-          <Link href="/#projects">
+          <Link href="/#work">
             <Button variant="ghost" size="sm" className="text-gray-600 hover:text-purple-600">
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Projects
@@ -52,7 +54,7 @@ export default function GoogleGeminiPaddysPage() {
           <section>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">The Project</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              A campaign exploring Paddy's Markets through the lens of Google's Gemini AI—showing how technology can
+              A campaign exploring Paddy's Markets through the lens of Google's Gemini AI, showing how technology can
               help people understand the produce they're seeing, learn about vendors, and discover how to actually use
               what they're buying.
             </p>
@@ -70,12 +72,12 @@ export default function GoogleGeminiPaddysPage() {
           <section>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">The Approach</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              Documented authentic market experiences—people discovering unfamiliar produce, vendors sharing their
+              Documented authentic market experiences, people discovering unfamiliar produce, vendors sharing their
               stories, and the AI providing context that bridges knowledge gaps. The focus was on showing Gemini as a
               helpful tool rather than a gimmick.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Content captured the sensory overload of the markets—the colours, the crowds, the variety—then
+              Content captured the sensory overload of the markets, the colours, the crowds, the variety, then
               demonstrated how AI can help make sense of it all. From identifying exotic fruits to translating vendor
               signs to suggesting recipes, the content showed practical applications people could actually use.
             </p>
@@ -113,6 +115,8 @@ export default function GoogleGeminiPaddysPage() {
               <div className="rounded-lg overflow-hidden shadow-lg bg-black">
                 <iframe
                   src="https://www.instagram.com/reel/DMIJ1koT_Ac/embed/captioned"
+                  title="Google Gemini at Paddy's Markets campaign reel"
+                  loading="lazy"
                   className="w-full aspect-[9/16]"
                   frameBorder="0"
                   scrolling="no"
@@ -120,34 +124,8 @@ export default function GoogleGeminiPaddysPage() {
                   allow="encrypted-media"
                 />
               </div>
-              <div className="bg-gray-100 rounded-lg aspect-[9/16] flex items-center justify-center">
-                <p className="text-gray-500 text-center p-4">Additional Instagram video can be added here</p>
-              </div>
             </div>
           </section>
-
-          <section>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Photo Gallery</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <div className="relative aspect-[4/3] mb-3 rounded-lg overflow-hidden">
-                  <div className="bg-gray-100 w-full h-full flex items-center justify-center">
-                    <p className="text-gray-500">Photo placeholder</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm italic">Photo caption goes here.</p>
-              </div>
-              <div>
-                <div className="relative aspect-[4/3] mb-3 rounded-lg overflow-hidden">
-                  <div className="bg-gray-100 w-full h-full flex items-center justify-center">
-                    <p className="text-gray-500">Photo placeholder</p>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm italic">Photo caption goes here.</p>
-              </div>
-            </div>
-          </section>
-
           <section>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">The Impact</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
@@ -158,7 +136,7 @@ export default function GoogleGeminiPaddysPage() {
           </section>
 
           <div className="pt-8 border-t border-gray-200">
-            <Link href="/#projects">
+            <Link href="/#work">
               <Button
                 size="lg"
                 variant="outline"
@@ -171,6 +149,7 @@ export default function GoogleGeminiPaddysPage() {
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </main>
   )
 }
