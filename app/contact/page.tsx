@@ -232,7 +232,7 @@ export default function Contact() {
                 What are you after? <span className="text-xs">(Select all that apply)</span>
               </legend>
               <div className="space-y-3">
-                {['Video Content', 'Photo Content', 'Social Strategy', 'AI Guidance', 'Coaching & Mentoring', 'Brand Partnership'].map((service) => (
+                {['Video Content', 'Photo Content', 'Social Strategy', 'Coaching & Mentoring', 'Brand Partnership'].map((service) => (
                   <label key={service} className="flex items-center gap-3 cursor-pointer group">
                     <input
                       type="checkbox"

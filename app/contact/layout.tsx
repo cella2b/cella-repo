@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Contact | CELLA",
-  description: "Start a content, social strategy, coaching or AI guidance project with CELLA in Sydney.",
+  description: "Start a content creation, social strategy, coaching or brand partnership project with CELLA in Sydney.",
   alternates: { canonical: "/contact" },
 }
 
