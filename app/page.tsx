@@ -355,7 +355,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 max-w-5xl mx-auto">
             <div className="border-l border-border pl-6 md:pl-8">
               <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 font-light">
                 "Really enjoyed working with you... Videos are my favourite so far. Super authentic and warm."
@@ -365,10 +365,37 @@ export default function Home() {
 
             <div className="border-l border-border pl-6 md:pl-8">
               <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 font-light">
-                "Thank you again for the amazing content... it was fantastic! The support as part of the Eat Parramatta
-                campaign."
+                "Thank you again for the amazing content... it was fantastic! The support as part of the Eat Parramatta campaign."
               </p>
               <p className="text-muted-foreground text-sm tracking-widest uppercase">Vanessa — City of Parramatta</p>
+            </div>
+
+            <div className="border-l border-border pl-6 md:pl-8">
+              <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 font-light">
+                "Draft testimonial: A clear, confident content direction that finally made our brand feel like us."
+              </p>
+              <p className="text-muted-foreground text-sm tracking-widest uppercase">Draft — Hospitality Partner</p>
+            </div>
+
+            <div className="border-l border-border pl-6 md:pl-8">
+              <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 font-light">
+                "Draft testimonial: Practical strategy, thoughtful mentoring, and content we were proud to share."
+              </p>
+              <p className="text-muted-foreground text-sm tracking-widest uppercase">Draft — Growing Business</p>
+            </div>
+
+            <div className="border-l border-border pl-6 md:pl-8">
+              <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 font-light">
+                "Draft testimonial: The process was focused, collaborative, and gave our next campaign real momentum."
+              </p>
+              <p className="text-muted-foreground text-sm tracking-widest uppercase">Draft — Brand Campaign Client</p>
+            </div>
+
+            <div className="border-l border-border pl-6 md:pl-8">
+              <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 font-light">
+                "Draft testimonial: We left with a stronger point of view and a content plan we could actually use."
+              </p>
+              <p className="text-muted-foreground text-sm tracking-widest uppercase">Draft — Strategy Client</p>
             </div>
           </div>
         </div>
