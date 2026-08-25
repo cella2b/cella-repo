@@ -9,7 +9,6 @@ const brandLogos = [
   { src: "/images/brands/google-logo.webp", alt: "Google" },
   { src: "/images/brands/merivale-logo.png", alt: "Merivale" },
   { src: "/images/brands/mirvac-logo.svg", alt: "Mirvac" },
-  { src: "/images/brands/paddys-logo.png", alt: "Paddy's Markets" },
   { src: "/images/brands/nsw-placemaking-logo.png", alt: "Placemaking NSW" },
   { src: "/images/brands/kitchenaid-logo.png", alt: "KitchenAid" },
   { src: "/images/brands/ninja-logo.png", alt: "Ninja" },
