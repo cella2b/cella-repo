@@ -130,7 +130,7 @@ export default function Home() {
       {/* Services Section - minimal editorial style */}
       <section id="services" className="py-20 md:py-32 bg-background relative z-10 scroll-fade opacity-0">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
             <Link
               href="/services/content-creation"
               className="group bg-background p-8 md:p-12 hover:bg-card transition-colors"
@@ -176,12 +176,6 @@ export default function Home() {
               </span>
             </Link>
 
-            <Link href="/services/ai-guidance" className="group bg-background p-8 md:p-12 hover:bg-card transition-colors">
-              <span className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-4 block">04</span>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 uppercase tracking-tight group-hover:text-white/80 transition-colors">AI Guidance</h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">Practical AI guidance and workflows shaped around the way your business operates.</p>
-              <span className="text-foreground text-sm tracking-widest uppercase group-hover:tracking-[0.4em] transition-all">Work smarter. →</span>
-            </Link>
           </div>
         </div>
       </section>
