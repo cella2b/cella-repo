@@ -313,7 +313,7 @@ export default function Home() {
                 src="/images/projects/milford-sound.jpg"
                 alt="TranzAlpine & Pure Milford"
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="scale-[1.35] object-cover transition-transform duration-700 group-hover:scale-[1.42]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
