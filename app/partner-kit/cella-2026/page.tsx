@@ -1,27 +1,9 @@
-import type { Metadata } from "next"
+"use client"
+
 import Image from "next/image"
 import { ArrowDown, ArrowUpRight, Instagram, LockKeyhole, Mail } from "lucide-react"
-import {
-  getMediaKitRates,
-  hasMediaKitAccess,
-  lockMediaKit,
-  type RateItem,
-  unlockMediaKit,
-} from "./actions"
-
-export const dynamic = "force-dynamic"
-
-export const metadata: Metadata = {
-  title: "CELLA | 2026 Media Kit",
-  description: "Private partnership information and rates for CELLA.",
-  robots: {
-    index: false,
-    follow: false,
-    noarchive: true,
-    nosnippet: true,
-    noimageindex: true,
-  },
-}
+import { useState, type FormEvent } from "react"
+import { decryptMediaKitRates, type MediaKitRates, type RateItem } from "./vault"
 
 const brandLogos = [
   { src: "/images/brands/google-logo.webp", alt: "Google" },
@@ -95,7 +77,19 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   )
 }
 
-function PasswordGate({ hasError }: { hasError: boolean }) {
+type PasswordGateProps = {
+  error: string
+  isUnlocking: boolean
+  onUnlock: (password: string) => Promise<void>
+}
+
+function PasswordGate({ error, isUnlocking, onUnlock }: PasswordGateProps) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+    await onUnlock(String(formData.get("password") ?? ""))
+  }
+
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f4efff] px-5 py-20 text-black">
       <Image
@@ -119,7 +113,7 @@ function PasswordGate({ hasError }: { hasError: boolean }) {
         <p className="mt-5 max-w-md text-base leading-7 text-black/60">
           Enter the password supplied by CELLA to view partnership information and rates.
         </p>
-        <form action={unlockMediaKit} className="mt-9">
+        <form onSubmit={handleSubmit} className="mt-9">
           <label htmlFor="media-kit-password" className="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-black/55">
             Password
           </label>
@@ -133,40 +127,38 @@ function PasswordGate({ hasError }: { hasError: boolean }) {
               className="min-h-12 flex-1 border border-black/20 bg-white px-4 text-base outline-none transition-colors focus:border-[#5d16f4]"
             />
             <button type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 bg-[#5d16f4] px-6 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-black">
-              View kit
+              {isUnlocking ? "Unlocking..." : "View kit"}
               <ArrowUpRight className="h-4 w-4" />
             </button>
           </div>
-          {hasError ? <p className="mt-3 text-sm font-medium text-red-700">That password is not correct. Please try again.</p> : null}
+          {error ? <p className="mt-3 text-sm font-medium text-red-700">{error}</p> : null}
         </form>
       </section>
     </main>
   )
 }
 
-type PageProps = {
-  searchParams: Promise<{ error?: string }>
-}
+export default function CellaMediaKitPage() {
+  const [rates, setRates] = useState<MediaKitRates | null>(null)
+  const [error, setError] = useState("")
+  const [isUnlocking, setIsUnlocking] = useState(false)
 
-export default async function CellaMediaKitPage({ searchParams }: PageProps) {
-  const [isAuthorised, query] = await Promise.all([hasMediaKitAccess(), searchParams])
+  async function unlockKit(password: string) {
+    setError("")
+    setIsUnlocking(true)
+    const unlockedRates = await decryptMediaKitRates(password)
+    setIsUnlocking(false)
 
-  if (!isAuthorised) {
-    return <PasswordGate hasError={query.error === "incorrect-password"} />
+    if (!unlockedRates) {
+      setError("That password is not correct. Please try again.")
+      return
+    }
+
+    setRates(unlockedRates)
   }
 
-  const rates = await getMediaKitRates()
-
   if (!rates) {
-    return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f4efff] px-5 text-center text-black">
-        <div className="max-w-lg">
-          <p className="text-lg font-bold tracking-[0.2em]">CELLA</p>
-          <h1 className="mt-8 text-4xl font-semibold uppercase tracking-[-0.04em]">Media kit temporarily unavailable</h1>
-          <p className="mt-4 text-black/60">Please contact info@heycella.com for the current partnership information.</p>
-        </div>
-      </main>
-    )
+    return <PasswordGate error={error} isUnlocking={isUnlocking} onUnlock={unlockKit} />
   }
 
   return (
@@ -177,11 +169,9 @@ export default async function CellaMediaKitPage({ searchParams }: PageProps) {
             CELLA
           </a>
           <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-black/60">Partner kit / 2026</p>
-          <form action={lockMediaKit}>
-            <button type="submit" className="text-xs font-semibold uppercase tracking-[0.18em] text-black transition-opacity hover:opacity-60">
-              Lock kit
-            </button>
-          </form>
+          <button type="button" onClick={() => setRates(null)} className="text-xs font-semibold uppercase tracking-[0.18em] text-black transition-opacity hover:opacity-60">
+            Lock kit
+          </button>
         </div>
       </nav>
 
