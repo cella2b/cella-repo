@@ -2,8 +2,8 @@
 
 import Image from "next/image"
 import { ArrowDown, ArrowUpRight, Instagram, LockKeyhole, Mail } from "lucide-react"
-import { useEffect, useRef, useState, type FormEvent } from "react"
-import { decryptMediaKitRates, type MediaKitRates, type RateItem } from "./vault"
+import { useState, type FormEvent } from "react"
+import { decryptMediaKitRates, decryptMidTierRates, type MediaKitRates, type RateItem } from "./vault"
 
 const brandLogos = [
   { src: "/images/brands/google-logo.webp", alt: "Google" },
@@ -40,96 +40,11 @@ const workImages = [
     label: "Places",
   },
   {
-    src: "/images/projects/travel-media-kit.png",
+    src: "/images/projects/milford-sound.jpg",
     alt: "Milford Sound travel campaign",
     label: "Travel",
   },
 ]
-
-
-function AnimatedNumber({ value, className }: { value: string; className?: string }) {
-  const elementRef = useRef<HTMLSpanElement>(null)
-  const [displayValue, setDisplayValue] = useState("1")
-
-  useEffect(() => {
-    const match = value.match(/^([\d.]+)(.*)$/)
-    if (!match) {
-      setDisplayValue(value)
-      return
-    }
-
-    const target = Number(match[1])
-    const suffix = match[2]
-    const decimals = match[1].includes(".") ? match[1].split(".")[1].length : 0
-    let animationFrame = 0
-    let hasAnimated = false
-
-    const setFinalValue = () => {
-      setDisplayValue(
-        target.toLocaleString("en-US", {
-          minimumFractionDigits: decimals,
-          maximumFractionDigits: decimals,
-        }) + suffix,
-      )
-    }
-
-    const startAnimation = () => {
-      if (hasAnimated) return
-      hasAnimated = true
-
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        setFinalValue()
-        return
-      }
-
-      const startTime = performance.now()
-      const duration = 1600
-
-      const tick = (time: number) => {
-        const progress = Math.min((time - startTime) / duration, 1)
-        const eased = 1 - Math.pow(1 - progress, 3)
-        const current = 1 + (target - 1) * eased
-        setDisplayValue(
-          current.toLocaleString("en-US", {
-            minimumFractionDigits: decimals,
-            maximumFractionDigits: decimals,
-          }) + suffix,
-        )
-
-        if (progress < 1) {
-          animationFrame = requestAnimationFrame(tick)
-        } else {
-          setFinalValue()
-        }
-      }
-
-      animationFrame = requestAnimationFrame(tick)
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          startAnimation()
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.35 },
-    )
-
-    if (elementRef.current) observer.observe(elementRef.current)
-
-    return () => {
-      observer.disconnect()
-      cancelAnimationFrame(animationFrame)
-    }
-  }, [value])
-
-  return (
-    <span ref={elementRef} className={className}>
-      {displayValue}
-    </span>
-  )
-}
 
 type RateRowProps = {
   item: RateItem
@@ -176,13 +91,15 @@ function PasswordGate({ error, isUnlocking, onUnlock }: PasswordGateProps) {
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#f4efff] px-5 py-20 text-black">
-      <video autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover">
-        <source
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/copy_609EA116-4303-4201-A986-82779EE24CCC-fSh9zYmlnaJhudebiyaAnN2AZzr5d0.mov"
-          type="video/mp4"
-        />
-      </video>
-      <div className="absolute inset-0 bg-black/35" />
+      <Image
+        src="/images/fluid-purple-2.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover opacity-75"
+      />
+      <div className="absolute inset-0 bg-white/15" />
       <section className="relative z-10 w-full max-w-xl border border-black/15 bg-white/80 p-7 shadow-[0_30px_100px_rgba(93,22,244,0.2)] backdrop-blur-xl sm:p-12">
         <div className="mb-12 flex items-center justify-between">
           <p className="text-lg font-bold tracking-[0.2em]">CELLA</p>
@@ -228,7 +145,7 @@ export default function CellaMediaKitPage() {
   async function unlockKit(password: string) {
     setError("")
     setIsUnlocking(true)
-    const unlockedRates = await decryptMediaKitRates(password)
+    const unlockedRates = await (window.location.pathname === "/partner-kit/2" ? decryptMidTierRates(password) : decryptMediaKitRates(password))
     setIsUnlocking(false)
 
     if (!unlockedRates) {
@@ -258,14 +175,15 @@ export default function CellaMediaKitPage() {
       </nav>
 
       <section id="top" className="relative min-h-screen border-b border-black/10 bg-[#f4efff] pt-20">
-        <video autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover">
-          <source
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/copy_609EA116-4303-4201-A986-82779EE24CCC-fSh9zYmlnaJhudebiyaAnN2AZzr5d0.mov"
-            type="video/mp4"
-          />
-        </video>
-        <div className="absolute inset-0 bg-white/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-[#f7f4ff]" />
+        <Image
+          src="/images/fluid-purple-2.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-65"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-[#f7f4ff]" />
 
         <div className="relative z-10 mx-auto grid min-h-[calc(100vh-5rem)] max-w-[1500px] grid-cols-1 items-end gap-10 px-5 pb-8 pt-12 sm:px-8 sm:pb-12 lg:grid-cols-[1.15fr_0.85fr] lg:px-12 lg:pb-16">
           <div>
@@ -328,7 +246,7 @@ export default function CellaMediaKitPage() {
           <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-white/65">The statistics</p>
-              <h2 className="text-4xl font-semibold uppercase tracking-[-0.04em] sm:text-6xl"><AnimatedNumber value="55K+" /> followers</h2>
+              <h2 className="text-4xl font-semibold uppercase tracking-[-0.04em] sm:text-6xl">55K+ followers</h2>
             </div>
             <p className="max-w-md text-sm leading-6 text-white/70">
               A cross-platform audience following fresh food experiences, Sydney discoveries and international travel stories.
@@ -338,7 +256,7 @@ export default function CellaMediaKitPage() {
             {socialStats.map((stat) => (
               <div key={`${stat.platform}-${stat.metric}`} className="border-b border-r border-white/25 p-5 sm:p-6">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/55">{stat.platform}</p>
-                <AnimatedNumber value={stat.value} className="mt-4 block text-4xl font-semibold tracking-[-0.04em] sm:text-5xl" />
+                <p className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">{stat.value}</p>
                 <p className="mt-2 text-xs uppercase tracking-[0.18em] text-white/70">{stat.metric}</p>
               </div>
             ))}
@@ -379,7 +297,7 @@ export default function CellaMediaKitPage() {
           <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
             {workImages.map((work, index) => (
               <figure key={work.src} className={`group relative overflow-hidden ${index % 2 === 0 ? "aspect-[3/4]" : "aspect-[3/5] md:mt-12"}`}>
-                <Image src={work.src} alt={work.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className={index === 3 ? "object-cover scale-[1.62] object-[50%_52%]" : "object-cover transition-transform duration-700 group-hover:scale-105"} />
+                <Image src={work.src} alt={work.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <figcaption className="absolute bottom-0 left-0 p-4 text-xs font-semibold uppercase tracking-[0.22em] text-white sm:p-6">{work.label}</figcaption>
               </figure>
@@ -414,6 +332,33 @@ export default function CellaMediaKitPage() {
             <article className="border-b border-r border-black/15 bg-white/70 p-6 backdrop-blur-sm sm:p-8">
               <p className="mb-6 bg-black px-4 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white">Extras</p>
               <ul>{rates.extras.map((item) => <RateRow key={item[0]} item={item} />)}</ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-black/10 bg-[#ede5ff] px-5 py-20 sm:px-8 md:py-28 lg:px-12">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="mb-12">
+            <SectionLabel>Content for your own channels</SectionLabel>
+            <h2 className="max-w-4xl text-4xl font-semibold uppercase tracking-[-0.04em] sm:text-6xl">Built for your business to post.</h2>
+          </div>
+          <div className="grid grid-cols-1 gap-px bg-black/15 lg:grid-cols-2">
+            <article className="bg-[#f7f4ff] p-7 sm:p-10">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#5d16f4]">Bulk creation</p>
+              <p className="mb-8 max-w-xl text-base leading-7 text-black/60">A bank of social-first content created in one focused shoot, generally one to three hours.</p>
+              <ul>{rates.bulkCreation.map((item) => <RateRow key={item[0]} item={item} />)}</ul>
+              <p className="mt-7 text-xs leading-5 text-black/45">These packages are not posted on @cella.channel. The finished videos are supplied for your business to use on its own social channels.</p>
+            </article>
+            <article className="bg-[#f7f4ff] p-7 sm:p-10">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#5d16f4]">Social management</p>
+              <p className="mb-8 max-w-xl text-base leading-7 text-black/60">Consistent strategy, production and publishing support across two social platforms of your choice.</p>
+              <ul>{rates.socialManagement.map((item) => <RateRow key={item[0]} item={item} />)}</ul>
+              <ul className="mt-7 space-y-2 text-xs leading-5 text-black/45">
+                <li>Content shoots are a minimum of eight weeks apart.</li>
+                <li>Social packages have a two-month minimum.</li>
+                <li>Professional photography packages are also available.</li>
+              </ul>
             </article>
           </div>
         </div>
