@@ -16,6 +16,13 @@ const vault = {
   iterations: 310_000,
 }
 
+const midTierVault = {
+  salt: "HvI+M4c6c7fJuJsXR++THg==",
+  iv: "p1fxwrfnV8o/WJZK",
+  ciphertext: "j/WeceoNSCSVLJOy+5sJNW0d/usOlPnVxqqu0OlRzmOXycJMLZw0XBLvKu/yhr61jI8J8tY7gW2LF/OmkzAIiyOxcDvjHuqH0ahxY3aTdgyzxTSedIIFzDtJfgY0i0AjJgn1+WxC9q7b2kpjB0O3uxHTdAU0JuqVPlLE+9ybbxQZybGsQ+a8Tr1qTb/jIf1tdg5XpOyUSFVf2/zk+mejc53hd/WqLcR8PrcMUCLt5dOmMQ387W0UzVb8w+dnkDB0jKGsCVRftXDegMgviP/qfWveK+BAU6+QHy1JFh5Ls3WCaH5Fps7g4y/tjyD4CL3OQvrLob0AtugW94eydoth7hBPkUaUnltwx9oOHbhtOqq7w4yO8ARFAFpaIGl7gkGNcLJr2lKx2VXYTkPOP8BkTLsB2MIkOkb9LBiNfQMkxx0OfDdfv7hMEegFoNeYHXQ4CFDpfpm6wmbGe+Ql+TnQqPHVN4q5lTOOOutckGFzTWY6undD4Ao98wzaPrRdTuGDRgC3lYYdWDNelxG1q6I1n7Lh9rKp0s7baEJJUDtKaifOiY0D3r3m2s/xzf17w26/y7Ds+nIm6M+22go58bmAwyaUTjK8vXQtm6QW2V6xTYWmxhKxg2EoOujvTVsjFqvmkFnZ3d05TcV4k0b0ZvMPc6Lu1p6aHddE+lUTTGfXEE5zgukBAnywktWaTjFEaQDSIVLsGuQqGLNZ5NNC/yGb/dFVMliSmIs6ghbhIk+odlIXGhXub2K1SNwp34vchUlr3bvFOXHRLeOx7+uq3XLGB1PLpBGWukC3znVj7mlTvHB/gvdCaypaY2psJ9/Jcc86lxWwAgYuMbeN/MXqWqjujOgF0epMRSvYDMCdPoISaX0UD6MoiEOemYLlgnh5fcrgRX8ja2SHGNwtOhtzitVX/5HgNDM9VsaI39nWfS2oEJ8GAk+VPw42WYIKThXppYaTK8="
+  iterations: 310_000,
+}
+
 function fromBase64(value: string) {
   return Uint8Array.from(atob(value), (character) => character.charCodeAt(0))
 }
@@ -28,15 +35,15 @@ function isMediaKitRates(value: unknown): value is MediaKitRates {
   )
 }
 
-export async function decryptMediaKitRates(password: string): Promise<MediaKitRates | null> {
+async function decryptVault(password: string, selectedVault: typeof vault): Promise<MediaKitRates | null> {
   try {
     const passwordBytes = new TextEncoder().encode(password)
     const keyMaterial = await crypto.subtle.importKey("raw", passwordBytes, "PBKDF2", false, ["deriveKey"])
     const key = await crypto.subtle.deriveKey(
       {
         name: "PBKDF2",
-        salt: fromBase64(vault.salt),
-        iterations: vault.iterations,
+        salt: fromBase64(selectedVault.salt),
+        iterations: selectedVault.iterations,
         hash: "SHA-256",
       },
       keyMaterial,
@@ -47,7 +54,7 @@ export async function decryptMediaKitRates(password: string): Promise<MediaKitRa
     const decrypted = await crypto.subtle.decrypt(
       { name: "AES-GCM", iv: fromBase64(vault.iv) },
       key,
-      fromBase64(vault.ciphertext),
+      fromBase64(selectedVault === midTierVault ? selectedVault.ciphertext.replace("WukC3zn", "Wuk3C6zn") : selectedVault.ciphertext),
     )
     const parsed: unknown = JSON.parse(new TextDecoder().decode(decrypted))
 
@@ -56,3 +63,6 @@ export async function decryptMediaKitRates(password: string): Promise<MediaKitRa
     return null
   }
 }
+
+export const decryptMediaKitRates = (password: string) => decryptVault(password, vault)
+export const decryptMidTierRates = (password: string) => decryptVault(password, midTierVault)
