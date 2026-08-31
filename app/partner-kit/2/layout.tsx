@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "CELLA | Private Mid-Tier Rates",
-  description: "Private mid-tier partnership rates for CELLA.",
+  title: "CELLA | Private Partner Kit",
+  description: "Private partnership information and rates for CELLA.",
   robots: { index: false, follow: false, noarchive: true, nosnippet: true, noimageindex: true },
 }
 
