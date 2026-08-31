@@ -52,7 +52,7 @@ async function decryptVault(password: string, selectedVault: typeof vault): Prom
       ["decrypt"],
     )
     const decrypted = await crypto.subtle.decrypt(
-      { name: "AES-GCM", iv: fromBase64(vault.iv) },
+      { name: "AES-GCM", iv: fromBase64(selectedVault.iv) },
       key,
       fromBase64(selectedVault === midTierVault ? selectedVault.ciphertext.replace("WukC3zn", "Wuk3C6zn") : selectedVault.ciphertext),
     )
