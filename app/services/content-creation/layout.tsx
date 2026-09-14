@@ -1,9 +1,9 @@
-import type { Metadata } from "next"
+import { createPageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Content Creation | CELLA",
   description: "Social-first video and visual storytelling shaped around your brand, audience and business goals.",
-  alternates: { canonical: "/services/content-creation" },
-}
+  path: "/services/content-creation",
+})
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) { return children }

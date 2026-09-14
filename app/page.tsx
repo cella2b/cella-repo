@@ -1,12 +1,20 @@
-"use client"
-
 import Link from "next/link"
-import { useState, useEffect } from "react"
-import { ArrowRight, Menu, X } from "lucide-react"
 import Image from "next/image"
+import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { Footer } from "@/components/footer"
+import { SiteHeader } from "@/components/site-header"
+import { CoverVideo } from "@/components/cover-video"
+import { EnquiryForm } from "@/components/enquiry-form"
+import { FeaturedWork, MoreWork, CampaignResults } from "@/components/featured-work"
+import { createPageMetadata } from "@/lib/seo"
 
-const brandLogos = [
+export const metadata = createPageMetadata({
+  title: "CELLA | Sydney Content Creator & Brand Partnerships",
+  description: "Food, travel and experiences, brought to life by Marcella. Sydney content creation and brand partnerships for hospitality, travel and lifestyle businesses.",
+  path: "/",
+})
+
+const brands = [
   { src: "/images/brands/merivale-logo.png", alt: "Merivale" },
   { src: "/images/brands/kitchenaid-logo.png", alt: "KitchenAid" },
   { src: "/images/brands/mirvac-logo.svg", alt: "Mirvac" },
@@ -16,376 +24,68 @@ const brandLogos = [
 ]
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -100px 0px",
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-fade-in-up")
-          observer.unobserve(entry.target)
-        }
-      })
-    }, observerOptions)
-
-    document.querySelectorAll(".scroll-fade").forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <main className="min-h-screen bg-background relative overflow-hidden">
-      <section className="relative h-screen w-full overflow-hidden">
-        {/* Video Background */}
-        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover">
-          <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/copy_609EA116-4303-4201-A986-82779EE24CCC-fSh9zYmlnaJhudebiyaAnN2AZzr5d0.mov" type="video/mp4" />
-        </video>
-
-        {/* Dark overlay for text contrast */}
-        <div className="absolute inset-0 bg-black/40" />
-
-        {/* Navigation - minimal, floating */}
-        <nav className="absolute top-0 left-0 right-0 z-50 p-6 md:p-8">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="text-white text-xl md:text-2xl font-bold tracking-wider">
-              CELLA
-            </Link>
-
-            <div className="hidden md:flex items-center gap-8">
-              <Link
-                href="#work"
-                className="text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
-              >
-                Work
-              </Link>
-              <Link
-                href="#services"
-                className="text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
-              >
-                Services
-              </Link>
-              <Link
-                href="/contact"
-                className="text-white/80 hover:text-white text-sm tracking-widest uppercase transition-colors"
-              >
-                Book a Call
-              </Link>
-            </div>
-
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-white"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="home-mobile-menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div id="home-mobile-menu" className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-lg p-6 space-y-4">
-              <Link href="#work" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
-                Work
-              </Link>
-              <Link href="#services" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
-                Services
-              </Link>
-              <Link href="/contact" className="block text-white/80 hover:text-white text-sm tracking-widest uppercase">
-                Book a Call
-              </Link>
-            </div>
-          )}
-        </nav>
-
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center px-4">
-          
-            <h1 className="text-white font-bold uppercase tracking-tight leading-tight">
-              <span className="block animate-phase-in text-[clamp(2.5rem,6vw,6rem)] sm:text-[clamp(3rem,5vw,7rem)] md:text-[clamp(4rem,4vw,8rem)] lg:text-[clamp(5rem,3vw,9rem)]">
-               CONTENT THAT BOOKS
-              </span>
-            </h1>
-            <p className="text-white/80 text-lg md:text-xl mt-6 max-w-3xl mx-auto font-light tracking-wide animate-phase-in-delay">
-              Social-first content and strategy for hospitality, travel and lifestyle brands.
-            </p>
-
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-3 mt-12 bg-white text-black px-8 py-3 text-sm tracking-[0.2em] uppercase hover:bg-white/90 transition-colors font-semibold"
-            >
-              Start a project
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section - minimal editorial style */}
-      <section id="services" className="py-20 md:py-32 bg-background relative z-10 scroll-fade opacity-0">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
-            <Link
-              href="/services/content-creation"
-              className="group bg-background p-8 md:p-12 hover:bg-card transition-colors"
-            >
-              <span className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-4 block">01</span>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 uppercase tracking-tight group-hover:text-white/80 transition-colors">
-                Content Creation
-              </h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
-                Scroll-stopping content that grows your audience and converts them into clients.
-              </p>
-              <span className="text-foreground text-sm tracking-widest uppercase group-hover:tracking-[0.4em] transition-all">
-                Let's create. →
-              </span>
-            </Link>
-
-            <Link
-              href="/services/social-strategy"
-              className="group bg-background p-8 md:p-12 hover:bg-card transition-colors"
-            >
-              <span className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-4 block">02</span>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 uppercase tracking-tight group-hover:text-white/80 transition-colors">
-                Social Strategy
-              </h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
-                Smart, trend-forward strategies that turn content into measurable growth.
-              </p>
-              <span className="text-foreground text-sm tracking-widest uppercase group-hover:tracking-[0.4em] transition-all">
-                Plan to win. →
-              </span>
-            </Link>
-
-            <Link href="/services/coaching" className="group bg-background p-8 md:p-12 hover:bg-card transition-colors">
-              <span className="text-xs tracking-[0.3em] text-muted-foreground uppercase mb-4 block">03</span>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 uppercase tracking-tight group-hover:text-white/80 transition-colors">
-                Coaching
-              </h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
-                Hands-on guidance to level up your content game.
-              </p>
-              <span className="text-foreground text-sm tracking-widest uppercase group-hover:tracking-[0.4em] transition-all">
-                Level up. →
-              </span>
-            </Link>
-
-          </div>
-        </div>
-      </section>
-
- {/* Trusted By Section */}
-<section className="py-16 md:py-20 bg-background relative z-10">
-  <div className="container mx-auto px-4 sm:px-6">
-    <p className="text-center text-sm tracking-[0.2em] text-muted-foreground uppercase mb-12">
-      Trusted By
-    </p>
-
-    <div className="overflow-hidden">
-      <div className="flex gap-16 md:gap-20 animate-scroll-left">
-        {/* Repeat logos 3 times to cover width and remove black gap */}
-        {[...Array(3)].map((_, batch) => (
-          <div key={batch} aria-hidden={batch > 0} className="flex items-center gap-16 md:gap-20 flex-shrink-0">
-            {brandLogos.map((logo) => (
-              <div key={logo.src} className="flex items-center justify-center h-12 md:h-14 w-40">
-                <Image
-                  src={logo.src}
-                  alt={batch === 0 ? logo.alt : ""}
-                  width={300}
-                  height={120}
-                  className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
-                />
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-
-
-      {/* Projects Section - editorial grid */}
-      <section id="work" className="py-20 md:py-32 bg-card relative z-10 scroll-fade opacity-0">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="mb-16 md:mb-24 overflow-hidden">
-            <div className="flex gap-12 animate-scroll-left">
-              <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase">PROJECTS</h2>
-              {[...Array(7)].map((_, i) => <span key={i} aria-hidden="true" className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase">PROJECTS</span>)}
+    <>
+      <SiteHeader />
+      <main id="main-content" tabIndex={-1} className="cella-home">
+        <section className="cella-cover-hero" aria-labelledby="hero-heading">
+          <CoverVideo />
+          <div className="cella-cover-shade" />
+          <div className="cella-cover-copy">
+            <p className="cella-eyebrow">Sydney creator. Food, travel & experiences.</p>
+            <h1 id="hero-heading">GOOD PLACES.<br />GREAT STORIES.</h1>
+            <p>Real experiences. Thoughtful storytelling.<br />Content made for the way people discover.</p>
+            <div className="cella-actions">
+              <Link href="#contact" className="cella-button">Let’s work together <ArrowUpRight size={19} /></Link>
+              <Link href="#work" className="cella-text-link">Explore the work <ArrowDown size={17} /></Link>
             </div>
           </div>
+          <div className="cella-cover-location">CELLA / MARCELLA BAVA <span>BASED IN SYDNEY · CREATING NEAR & FAR</span></div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <Link href="/projects/kings-cross" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
-              <Image
-                src="/images/projects/kings-cross-coca-cola.webp"
-                alt="Kings Cross Quarter"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <span className="text-white/60 text-xs tracking-[0.3em] uppercase mb-2 block">Content Creation</span>
-                <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">
-                  Kings Cross Precinct  
-                </h3>
-              </div>
-            </Link>
+        <section className="cella-brand-strip" aria-label="Selected brands CELLA has worked with">
+          <p className="cella-eyebrow">Selected collaborations</p>
+          <div>{brands.map(brand => <Image key={brand.alt} src={brand.src} alt={brand.alt} width={150} height={52} sizes="(max-width: 600px) 25vw, 150px" className="cella-brand-logo" />)}</div>
+        </section>
 
-            <Link
-              href="/projects/google-gemini-paddys"
-              className="group relative aspect-[4/5] overflow-hidden bg-secondary"
-            >
-              <Image
-                src="/images/projects/paddys-markets.jpg"
-                alt="Google Gemini x Paddy's"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <span className="text-white/60 text-xs tracking-[0.3em] uppercase mb-2 block">Brand Partnership</span>
-                <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">
-                  Google Gemini x Paddy's Market
-                </h3>
-              </div>
-            </Link>
+        <section id="work" className="cella-section" aria-labelledby="work-heading">
+          <div className="cella-section-heading"><div><p className="cella-eyebrow">A few stories I’ve helped tell</p><h2 id="work-heading">SELECTED WORK<span className="cella-accent">.</span></h2></div><Link href="/portfolio" className="cella-text-link">View the portfolio <ArrowUpRight size={18} /></Link></div>
+          <FeaturedWork />
+          <MoreWork />
+        </section>
 
-            <Link href="/projects/barangaroo" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
-              <Image
-                src="/images/projects/barangaroo-house.jpg"
-                alt="Barangaroo Precinct"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <span className="text-white/60 text-xs tracking-[0.3em] uppercase mb-2 block">Brand Campaign</span>
-                <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">
-                  Barangaroo Precinct
-                </h3>
-              </div>
-            </Link>
+        <CampaignResults />
 
-            <Link
-              href="/projects/doordash-opentable"
-              className="group relative aspect-[4/5] overflow-hidden bg-secondary"
-            >
-              <Image
-                src="/images/projects/doordash-delivery.avif"
-                alt="DoorDash x OpenTable"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <span className="text-white/60 text-xs tracking-[0.3em] uppercase mb-2 block">Content Creation</span>
-                <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">
-                  DoorDash x OpenTable
-                </h3>
-              </div>
-            </Link>
-
-            <Link href="/projects/prince-shiomi" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
-              <Image
-                src="/luxury-japanese-hotel-traditional-architecture-zen.jpg"
-                alt="Prince Shiomi Hotel in Tokyo"
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <span className="text-white/60 text-xs tracking-[0.3em] uppercase mb-2 block">Content Creation</span>
-                <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">
-                  Prince Shiomi Hotel
-                </h3>
-              </div>
-            </Link>
-
-            <Link href="/projects/milford-sound" className="group relative aspect-[4/5] overflow-hidden bg-secondary">
-              <Image
-                src="/images/projects/milford-sound.jpg"
-                alt="TranzAlpine & Pure Milford"
-                fill
-                className="scale-[1.35] object-cover transition-transform duration-700 group-hover:scale-[1.42]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <span className="text-white/60 text-xs tracking-[0.3em] uppercase mb-2 block">Brand Campaign</span>
-                <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">
-                  TranzAlpine & Pure Milford
-                </h3>
-              </div>
-            </Link>
+        <section id="services" className="cella-section cella-services" aria-labelledby="services-heading">
+          <div className="cella-section-heading"><div><p className="cella-eyebrow">Made for your business</p><h2 id="services-heading">YOUR STORY.<br />LET’S SHARE IT.</h2></div><p className="cella-section-description">Content created around your business, your audience and the experience you want to share.</p></div>
+          <div className="cella-service-list">
+            <Link href="/services/content-creation" className="cella-service"><span>01</span><div><h3>Content creation</h3><p>Videos and photos for your business to share on its own channels. Thoughtfully created, ready to post.</p></div><ArrowUpRight aria-hidden="true" /></Link>
+            <Link href="#contact" className="cella-service"><span>02</span><div><h3>Brand partnerships</h3><p>Bring your business to the @cella.channel community through food, travel and experience-led storytelling.</p></div><ArrowUpRight aria-hidden="true" /></Link>
+            <Link href="/services/social-strategy" className="cella-service"><span>03</span><div><h3>Social strategy & management</h3><p>A considered approach to your content and a consistent presence for your business.</p></div><ArrowUpRight aria-hidden="true" /></Link>
           </div>
+          <Link href="/services" className="cella-text-link cella-services-link">Explore all services <ArrowUpRight size={18} /></Link>
+        </section>
 
-          <div className="text-center mt-12 md:mt-16">
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-3 text-foreground text-sm tracking-[0.3em] uppercase hover:tracking-[0.4em] transition-all"
-            >
-              View All Work
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+        <section id="about" className="cella-section cella-about" aria-labelledby="about-heading">
+          <div><p className="cella-eyebrow">The person behind the lens</p><h2 id="about-heading">HEY, I’M<br /><span className="cella-accent">MARCELLA.</span></h2></div>
+          <div><p className="cella-about-lead">A Sydney creator with a curiosity for good food, memorable stays and places worth discovering.</p><p>I’m the person behind @cella.channel. I work with businesses to turn real experiences into considered, engaging social content — from a neighbourhood restaurant to an international travel experience.</p><p>Every business has its own story. I take the time to understand yours, then tailor the content to the people you want to reach.</p><a href="https://www.instagram.com/cella.channel/" target="_blank" rel="noopener noreferrer" className="cella-text-link">Meet me on Instagram <ArrowUpRight size={17} /></a></div>
+        </section>
+
+        <section className="cella-section cella-testimonials" aria-labelledby="testimonials-heading">
+          <p className="cella-eyebrow" id="testimonials-heading">Words from the people behind the brands</p>
+          <div className="cella-quote-grid">
+            <figure><blockquote>“Really enjoyed working with you… Videos are my favourite so far. Super authentic and warm.”</blockquote><figcaption>Justin <span>Kings Cross</span></figcaption></figure>
+            <figure><blockquote>“Thank you again for the amazing content… it was fantastic!”</blockquote><figcaption>Vanessa <span>City of Parramatta</span></figcaption></figure>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Testimonials - minimal */}
-      <section className="py-20 md:py-32 bg-background relative z-10 scroll-fade opacity-0">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="mb-16 md:mb-24 overflow-hidden">
-            <div className="flex gap-12 animate-scroll-left">
-              <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase">TESTIMONIALS</h2>
-              {[...Array(7)].map((_, i) => <span key={i} aria-hidden="true" className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground whitespace-nowrap tracking-tight uppercase">TESTIMONIALS</span>)}
-            </div>
-          </div>
+        <section id="contact" className="cella-section cella-landing-contact" aria-labelledby="contact-heading">
+          <div><p className="cella-eyebrow">Let’s work together</p><h2 id="contact-heading">HAVE SOMETHING<br />WORTH SHARING?</h2><p className="cella-section-description">Tell me about your business, your goals and what you have in mind. Let’s make content that feels like you.</p><a href="mailto:info@heycella.com" className="cella-text-link">info@heycella.com <ArrowUpRight size={18} /></a></div>
+          <EnquiryForm />
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
-            <div className="border-l border-border pl-6 md:pl-8">
-              <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 font-light">
-                "Really enjoyed working with you... Videos are my favourite so far. Super authentic and warm."
-              </p>
-              <p className="text-muted-foreground text-sm tracking-widest uppercase">Justin, Kings Cross</p>
-            </div>
-
-            <div className="border-l border-border pl-6 md:pl-8">
-              <p className="text-foreground text-lg md:text-xl leading-relaxed mb-6 font-light">
-                "Thank you again for the amazing content... it was fantastic! The support as part of the Eat Parramatta
-                campaign."
-              </p>
-              <p className="text-muted-foreground text-sm tracking-widest uppercase">Vanessa, City of Parramatta</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-foreground text-background relative z-10 scroll-fade opacity-0">
-        <div className="container mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight mb-6">
-            Let's Create
-          </h2>
-          <p className="text-background/60 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-            Ready to make content that actually books?
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-3 bg-background text-foreground px-8 py-4 text-sm tracking-[0.3em] uppercase hover:bg-background/90 transition-colors"
-          >
-            Book a Call
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </section>
-
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
