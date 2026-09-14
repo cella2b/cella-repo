@@ -789,8 +789,8 @@ html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 .cella-visual-caption { position: absolute; bottom: 28px; left: 28px; right: 28px; display: flex; align-items: end; justify-content: space-between; gap: 20px; font-size: 1.15rem; }
 .cella-visual-caption small { display: block; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; color: #ddd; }
 .cella-scroll { position: absolute; bottom: 22px; left: 4.5%; display: flex; align-items: center; gap: 13px; padding: 8px 0; font-size: .75rem; text-transform: uppercase; letter-spacing: .14em; color: #b4b1bd; }
-.cella-brand-strip { padding: 46px 4.5%; border-top: 1px solid #34323c; border-bottom: 1px solid #34323c; }
-.cella-brand-strip > p { color: #a6a2b1; text-align: center; margin-bottom: 32px; }
+.cella-brand-strip { background: #f3f0f5; padding: 46px 4.5%; border-top: 1px solid #34323c; border-bottom: 1px solid #34323c; }
+.cella-brand-strip > p { color: #62586c; text-align: center; margin-bottom: 32px; }
 .cella-brand-strip > div { display: grid; grid-template-columns: repeat(6,1fr); align-items: center; justify-items: center; gap: 35px; }
 .cella-brand-logo { width: 125px; height: 38px; object-fit: contain; filter: grayscale(1); opacity: .85; }
 .cella-section { padding: 100px 4.5%; max-width: 1700px; margin: 0 auto; }
