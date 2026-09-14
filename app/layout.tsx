@@ -1,31 +1,36 @@
 import type React from "react"
+import { Suspense } from "react"
 import type { Metadata } from "next"
 import { Oswald } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+import { SiteAnalytics } from "@/components/site-analytics"
+import { SiteStructuredData } from "@/components/site-structured-data"
+import { DEFAULT_SOCIAL_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
 import "./globals.css"
 
 const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.heycella.com"),
+  metadataBase: new URL(SITE_URL),
   title: "CELLA | Content That Books",
-  description:
-    "Social-first content and strategy for hospitality, travel, lifestyle and experience-led brands, created by Marcella in Sydney.",
-  keywords: ["content creator", "social media strategy", "hospitality content", "travel content", "Sydney", "CELLA"],
+  description: SITE_DESCRIPTION,
   openGraph: {
     type: "website",
     locale: "en_AU",
-    siteName: "CELLA",
+    siteName: SITE_NAME,
     title: "CELLA | Content That Books",
-    description: "Social-first content and strategy for hospitality, travel, lifestyle and experience-led brands.",
+    description: SITE_DESCRIPTION,
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "CELLA | Content That Books",
-    description: "Social-first content and strategy for hospitality, travel, lifestyle and experience-led brands.",
+    description: SITE_DESCRIPTION,
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
   icons: {
     icon: [
@@ -50,10 +55,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={oswald.className}>
+    <html lang="en-AU">
+      <body className={oswald.variable}>
+        <SiteStructuredData />
         {children}
-        <Analytics />
+        <Suspense fallback={null}>
+          <SiteAnalytics />
+        </Suspense>
       </body>
     </html>
   )

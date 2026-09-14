@@ -23,7 +23,7 @@ export function ServiceDetailPage({
   cta,
 }: ServiceDetailPageProps) {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
       <section className="border-b border-border px-6 pb-20 pt-36 md:pb-28 md:pt-44">

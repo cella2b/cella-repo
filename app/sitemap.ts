@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next"
+import { SITE_URL } from "@/lib/seo"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.heycella.com"
+  // Explicit public-route allowlist: never include private kits or redirects.
   const routes = [
     "",
     "/services",
@@ -19,8 +20,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
-    changeFrequency: route === "" ? "monthly" : "yearly",
-    priority: route === "" ? 1 : route === "/contact" ? 0.9 : 0.7,
+    url: `${SITE_URL}${route}`,
   }))
 }

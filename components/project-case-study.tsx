@@ -1,15 +1,16 @@
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Check } from "lucide-react"
+import { SocialPost } from "@/components/social-post"
 import { Footer } from "@/components/footer"
 
 const projects = [
   { href: "/projects/kings-cross", label: "Kings Cross" },
   { href: "/projects/google-gemini-paddys", label: "Google x Paddy's" },
   { href: "/projects/barangaroo", label: "Barangaroo" },
-  { href: "/projects/doordash-opentable", label: "DoorDash x OpenTable" },
-  { href: "/projects/prince-shiomi", label: "Prince Shiomi" },
-  { href: "/projects/milford-sound", label: "TranzAlpine & Pure Milford" },
+  { href: "/projects/doordash-opentable", label: "DoorDash Reservations" },
+  { href: "/projects/prince-shiomi", label: "Japan travel" },
+  { href: "/projects/milford-sound", label: "Pure Milford & travel" },
 ]
 
 type ProjectSection = {
@@ -47,7 +48,7 @@ export function ProjectCaseStudy({
   impact,
 }: ProjectCaseStudyProps) {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-background text-foreground">
       <nav className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 p-6 backdrop-blur-lg md:p-8">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <Link href="/" className="text-xl font-bold tracking-[0.2em] text-foreground md:text-2xl" aria-label="CELLA home">
@@ -136,6 +137,7 @@ export function ProjectCaseStudy({
             </section>
           ))}
 
+          {deliverables.length > 0 ? (
           <section className="mb-16 border-b border-border/30 pb-16">
             <div className="grid gap-8 md:grid-cols-[0.55fr_1.45fr]">
               <h2 className="text-2xl font-bold uppercase tracking-wide text-foreground md:text-3xl">What We Delivered</h2>
@@ -149,6 +151,7 @@ export function ProjectCaseStudy({
               </ul>
             </div>
           </section>
+          ) : null}
 
           {videos.length > 0 ? (
             <section className="mb-16 border-b border-border/30 pb-16">
@@ -156,16 +159,7 @@ export function ProjectCaseStudy({
                 <h2 className="text-2xl font-bold uppercase tracking-wide text-foreground md:text-3xl">Selected Work</h2>
                 <div className={`grid gap-6 ${videos.length > 1 ? "sm:grid-cols-2 xl:grid-cols-3" : "max-w-sm"}`}>
                   {videos.map((video) => (
-                    <div key={video.src} className="overflow-hidden border border-border bg-black">
-                      <iframe
-                        src={video.src}
-                        title={video.title}
-                        loading="lazy"
-                        className="aspect-[9/16] w-full"
-                        scrolling="no"
-                        allow="encrypted-media"
-                      />
-                    </div>
+                    <SocialPost key={video.src} src={video.src} title={video.title} />
                   ))}
                 </div>
               </div>

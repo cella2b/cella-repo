@@ -1,60 +1,42 @@
+import { createPageMetadata } from "@/lib/seo"
 import { ProjectCaseStudy } from "@/components/project-case-study"
 
-export const metadata = {
-  title: "Prince Shiomi Hotel | CELLA",
-  description: "Showcasing a 5-star Tokyo property just outside the city centre for couples and families.",
-  alternates: { canonical: "/projects/prince-shiomi" },
-}
+export const metadata = createPageMetadata({
+  title: "Japan Travel Storytelling | CELLA",
+  description: "CELLA's approach to Japan travel, hotel and experience storytelling for visitors and hospitality businesses.",
+  path: "/projects/prince-shiomi",
+  image: "/images/projects/travel-media-kit.png",
+  imageAlt: "Travel portfolio from the CELLA media kit",
+})
 
 export default function PrinceShiomiPage() {
   return (
     <ProjectCaseStudy
-      title="Prince Shiomi Hotel"
-      heroImage="/luxury-japanese-hotel-traditional-architecture-zen.jpg"
-      heroAlt="Prince Shiomi Hotel"
+      title="Japan Travel Storytelling"
+      heroImage="/images/projects/travel-media-kit.png"
+      heroAlt="Travel portfolio from the CELLA media kit"
       activePath="/projects/prince-shiomi"
       metadata={[
-        { label: "Client", value: "Prince Shiomi" },
-        { label: "Project", value: "Hotel storytelling" },
-        { label: "Focus", value: "Tokyo travel" },
-        { label: "Service", value: "Content Creation" },
+        { label: "Portfolio", value: "Travel & experiences" },
+        { label: "Focus", value: "Japan" },
+        { label: "Format", value: "Travel storytelling" },
+        { label: "Enquiries", value: "Hotels & destinations" },
       ]}
       sections={[
         {
-          title: "The Project",
+          title: "A Traveller's Perspective",
           paragraphs: [
-            "Visual content showcasing Prince Shiomi as a 5-star destination outside central Tokyo, positioned for couples and families seeking larger rooms, premium facilities and an authentic experience away from the typical tourist centres.",
+            "My travel content looks at places through the details that shape a visit: where to stay, what to eat and how a place feels. Japan is part of that wider food, travel and experience portfolio.",
           ],
         },
         {
-          title: "The Brief",
+          title: "For Hotels & Destinations",
           paragraphs: [
-            "Appeal to international travellers looking for luxury and space without sacrificing access to Tokyo. Position the property as a destination worth choosing deliberately, not simply an alternative to the city centre.",
-          ],
-        },
-        {
-          title: "The Approach",
-          paragraphs: [
-            "Photography and video emphasised room sizes, premium facilities, access to Tokyo and experiences that feel distinctly Japanese.",
-            "The content balanced luxury with authentic cultural details, presenting space and comfort with the visual sophistication expected from Japanese hospitality.",
-          ],
-        },
-        {
-          title: "Target Audience",
-          paragraphs: [
-            "Couples seeking romantic experiences, families needing space and facilities, travellers wanting authentic Japanese hospitality without sacrificing luxury, and visitors who prefer to stay outside the tourist rush while remaining connected.",
+            "For a hotel or destination story, I start with the experience you want to share and the people you want to reach. We can discuss content for your own channels, or a creator partnership shared with my audience.",
           ],
         },
       ]}
-      deliverables={[
-        "Property photography covering rooms, facilities and public spaces",
-        "Experiential content for family and couple stays",
-        "Neighbourhood context showing location advantages",
-        "Seasonal content and local area highlights",
-        "Comparison positioning against central Tokyo properties",
-        "Virtual tour content for international audiences",
-      ]}
-      impact="A visual narrative that positioned Prince Shiomi as a deliberate choice, not a compromise. The work presented the property's space, facilities, location and authenticity around the needs of couples and families."
+      deliverables={[]}
     />
   )
 }

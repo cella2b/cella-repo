@@ -1,10 +1,13 @@
+import { createPageMetadata } from "@/lib/seo"
 import { ProjectCaseStudy } from "@/components/project-case-study"
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: "Kings Cross Quarter | CELLA",
-  description: "A 7-part series spotlighting the streets, venues and hidden finds that make Kings Cross worth discovering.",
-  alternates: { canonical: "/projects/kings-cross" },
-}
+  description: "A seven-video series for Kings Cross Quarter, exploring the precinct's food, drinks and neighbourhood venues.",
+  path: "/projects/kings-cross",
+  image: "/images/projects/kings-cross-coca-cola.webp",
+  imageAlt: "Kings Cross Quarter",
+})
 
 export default function KingsCrossPage() {
   return (
@@ -14,26 +17,25 @@ export default function KingsCrossPage() {
       heroAlt="Kings Cross Quarter"
       activePath="/projects/kings-cross"
       metadata={[
-        { label: "Client", value: "Kings Cross Precinct" },
-        { label: "Project", value: "Light Up the Cross" },
+        { label: "Client", value: "Kings Cross Quarter" },
+        { label: "Project", value: "Seven-video precinct series" },
         { label: "Year", value: "2025" },
-        { label: "Service", value: "Content Creation" },
+        { label: "Service", value: "Brand partnership" },
       ]}
       sections={[
         {
-          title: "The Brief",
+          title: "The Series",
           paragraphs: [
-            "Create a 7-part content series called Light Up the Cross that repositions Kings Cross as a destination beyond nightlife. Showcase the neighbourhood's food scene, creative spaces, street culture and venues worth discovering. Each piece needed to feel distinct while contributing to an overall narrative about the area's diversity and energy.",
+            "A commissioned seven-video series exploring the food, drinks and neighbourhood venues of Kings Cross Quarter. The work followed different streets and occasions, from brunch on Roslyn Street to evenings on Kellett Street and Llankelly Place.",
+            "Filming, voiceover and editing brought a personal perspective to each visit. Content and captions were developed with the precinct team, with seven videos delivered across the series in 2025.",
           ],
         },
       ]}
       deliverables={[
-        "7 distinct video pieces optimised for social media",
-        "Location photography highlighting key venues",
-        "Street photography capturing neighbourhood character",
-        "Social cutdowns for Instagram, TikTok and Facebook",
-        "Behind-the-scenes content from production",
-        "Sustained engagement strategy across 7 weeks",
+        "Seven short-form videos delivered for the precinct series",
+        "On-location food, drinks and venue filming",
+        "Voiceover, editing and captions",
+        "Creator posting coordinated with @kingscrossquarter",
       ]}
     />
   )

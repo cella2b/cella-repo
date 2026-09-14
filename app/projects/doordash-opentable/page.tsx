@@ -1,54 +1,47 @@
+import { createPageMetadata } from "@/lib/seo"
 import { ProjectCaseStudy } from "@/components/project-case-study"
 
-export const metadata = {
-  title: "DoorDash x OpenTable | CELLA",
-  description: "Content positioning DoorDash as the place to book dine-in experiences, not just delivery.",
-  alternates: { canonical: "/projects/doordash-opentable" },
-}
+export const metadata = createPageMetadata({
+  title: "DoorDash Reservations | CELLA",
+  description: "A DoorDash Reservations creator partnership following the in-app booking experience and dining at Epicurean.",
+  path: "/projects/doordash-opentable",
+  image: "/images/projects/doordash-delivery.avif",
+  imageAlt: "DoorDash",
+})
 
 export default function DoorDashOpenTablePage() {
   return (
     <ProjectCaseStudy
-      title="DoorDash x OpenTable"
+      title="DoorDash Reservations"
       heroImage="/images/projects/doordash-delivery.avif"
-      heroAlt="DoorDash x OpenTable"
+      heroAlt="DoorDash"
       activePath="/projects/doordash-opentable"
       metadata={[
-        { label: "Client", value: "DoorDash x OpenTable" },
+        { label: "Brand", value: "DoorDash" },
         { label: "Project", value: "Epicurean dining" },
-        { label: "Focus", value: "App bookings" },
-        { label: "Service", value: "Content Creation" },
+        { label: "Format", value: "Contra creator partnership" },
+        { label: "Year", value: "2025" },
       ]}
       sections={[
         {
           title: "The Project",
           paragraphs: [
-            "DoorDash's integration with OpenTable changed how people book premium dining experiences. This project used Epicurean restaurant to demonstrate how the booking process works and why it matters for diners and restaurants.",
+            "A creator partnership for DoorDash's restaurant reservations campaign, combining a demonstration of booking in the app with a dining visit to Epicurean. The collaboration covered an Instagram Reel, TikTok video and three Instagram Story frames.",
           ],
         },
         {
-          title: "The Brief",
+          title: "The Story",
           paragraphs: [
-            "Change the perception of DoorDash from a delivery app to a broader dining platform. The content needed to show that booking a table could feel just as convenient as ordering delivery.",
-          ],
-        },
-        {
-          title: "The Approach",
-          paragraphs: [
-            "Document the complete experience from discovery to dining, including browsing restaurants, booking a table, arriving at the venue and the meal itself.",
-            "The work featured premium dining experiences not typically associated with DoorDash, expanding the brand's relevance while retaining the ease and convenience people already understood.",
+            "The agreed brief included showing the in-app booking process alongside the restaurant experience. Content was reviewed and approved before creator posting with @doordash_aus.",
           ],
         },
       ]}
       deliverables={[
-        "App interface demonstrations showing the booking flow",
-        "Restaurant experience content with a premium feel",
-        "Comparison content showing booking convenience",
-        "Influencer partnerships demonstrating real usage",
-        "Before-and-after restaurant discovery scenarios",
-        "Social assets optimised for discovery and planning",
+        "One Instagram Reel",
+        "One TikTok video",
+        "Three Instagram Story frames",
+        "In-app reservation demonstration and Epicurean dining footage",
       ]}
-      impact="The content expanded DoorDash's positioning beyond delivery without losing the familiarity of the existing brand. It showed the app as relevant for date nights, celebrations and occasions when convenience still matters."
     />
   )
 }
