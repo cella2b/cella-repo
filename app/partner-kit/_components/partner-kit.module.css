@@ -49,6 +49,7 @@
 .heroVisual{position:relative;min-width:0}
 .heroImage{height:clamp(370px,43vw,660px);position:relative;overflow:hidden;background:#241c2e}
 .coverImage{object-fit:cover}
+.framedSource{transform:scale(1.34)}
 .heroImage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#150b2799)}
 .visualTag{position:absolute;bottom:25px;left:25px;right:25px;display:flex;justify-content:space-between;align-items:end;color:#fff}
 .visualTag span{font:12px Arial,Helvetica,sans-serif;letter-spacing:.11em;text-transform:uppercase;max-width:140px;line-height:1.7}

@@ -53,7 +53,7 @@ export function CoverVideo() {
   return (
     <>
       <div className="cella-cover-media" aria-hidden="true">
-        <Image src="/images/projects/milford-sound.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image src="/images/projects/milford-sound.jpg" alt="" fill priority sizes="100vw" className="object-cover scale-[1.34]" />
         <video ref={video} src={loadVideo ? "/video/cella-cover.mp4" : undefined} muted loop playsInline preload="none" onCanPlay={(event) => { if (event.currentTarget.videoWidth > 0) setReady(true); else { event.currentTarget.pause(); setError(true); setPlaying(false) } }} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => { setError(true); setPlaying(false) }} className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${ready && !error ? "opacity-100" : "opacity-0"}`} />
       </div>
       {!error && <button type="button" className="cella-cover-toggle" onClick={toggle} aria-label={playing ? "Pause cover video" : "Play cover video"}>{playing ? <Pause size={15} aria-hidden="true" /> : <Play size={15} aria-hidden="true" />}<span>{playing ? "Pause film" : "Play film"}</span></button>}

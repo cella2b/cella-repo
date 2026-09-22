@@ -10,7 +10,7 @@ const work = [
   { src: "/images/projects/kings-cross-coca-cola.webp", alt: "Kings Cross precinct in Sydney", label: "City stories" },
   { src: "/images/projects/paddys-markets.jpg", alt: "Food and produce at Paddy's Markets", label: "Good food" },
   { src: "/images/projects/barangaroo-house.jpg", alt: "Barangaroo House hospitality content", label: "Local discoveries" },
-  { src: "/images/projects/milford-sound.jpg", alt: "Milford Sound in New Zealand", label: "Far-away places" },
+  { src: "/images/projects/milford-sound.jpg", alt: "Milford Sound in New Zealand", label: "Far-away places", framedSource: true },
 ]
 
 const stats = [
@@ -153,7 +153,7 @@ export default function PartnerKit({ kitId }: { kitId: string }) {
 
     <section className={styles.work} aria-labelledby="work-heading">
       <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>A little of the work</p><h2 id="work-heading">From a good plate<br />to a <em>great place.</em></h2></div><p>A feel for the content.<br />A point of view of its own.</p></div>
-      <div className={styles.workGrid}>{work.map((item, index) => <figure key={item.src} className={index % 2 ? styles.offsetImage : undefined}><div><Image src={item.src} alt={item.alt} fill sizes="(max-width: 760px) 44vw, 23vw" className={styles.coverImage} /></div><figcaption><span>{item.label}</span><span>0{index + 1}</span></figcaption></figure>)}</div>
+      <div className={styles.workGrid}>{work.map((item, index) => <figure key={item.src} className={index % 2 ? styles.offsetImage : undefined}><div><Image src={item.src} alt={item.alt} fill sizes="(max-width: 760px) 44vw, 23vw" className={`${styles.coverImage} ${item.framedSource ? styles.framedSource : ""}`} /></div><figcaption><span>{item.label}</span><span>0{index + 1}</span></figcaption></figure>)}</div>
     </section>
 
     <section id="kit-rates" className={styles.rates} aria-labelledby="rates-heading">
