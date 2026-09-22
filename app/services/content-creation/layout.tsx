@@ -1,8 +1,8 @@
 import { createPageMetadata } from "@/lib/seo"
 
 export const metadata = createPageMetadata({
-  title: "Content Creation | CELLA",
-  description: "Social-first video and visual storytelling shaped around your brand, audience and business goals.",
+  title: "Sydney Content Creation & Brand Partnerships | CELLA",
+  description: "Short-form video and photography for food, travel and hospitality businesses. Content for your channels or creator partnerships with @cella.channel.",
   path: "/services/content-creation",
 })
 

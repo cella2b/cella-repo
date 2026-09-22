@@ -2,6 +2,24 @@ import "server-only"
 
 // Independently encrypted media-kit records. Never place plaintext pricing or passwords here.
 export const encryptedKits = {
+  "1": {
+  "salt": "ydXMLOBhDOQG+hLWkZ+6Gg==",
+  "iv": "KovqFpaeAgUB905L",
+  "iterations": 310000,
+  "ciphertext": "botAhri85TqOFuz3zeIcAxXHUrZFj9RZY2ulq2AVf1e4jQ+W3gixo2dFRsV7bKZU5MMXPuVALoZNQTzK1aH3aVP9fyg7vOzDYG/kWZTRE5ls1NsZrDNiy2Ds2xYW0aaJ4qYhDB8VK074shEeHF7zZXBVe+9N681L2EVUA05JD5qBxnddKQlFLznxXO2ot4zKzWurfvHWDqOBuaKeqaHZnTNG7yAUJKvf6Az1CZCZeE5cVAuOaXqP5nWmmeDi/ZaOFNniBIMNvwEG7Oc+yYIa4Og2AoHEozzbByNDcxzaWcculyeoDZIAz288UmxiAvWjz9nKkmXHqEn0J30fqhtQ91G7z0pGC37srnYS7esj7FrrbLtB/Zh7ppCDtUbMD83f6NEX1jBf9/CmLWo16udvKgk/uBoRJSopo+Rh6pxPI6ttZ6FuTRRRsv5Atu/HSfhDCZ+ki9qIpAA2Kg9RoGJTa/x9HxRbA6Wh92IYTsfFRR/w+odABY/4/hjoOzESyd0+CBW1+Ep95vwJv3l/nFleg0RaP3yGkGnJxxVy5YopQMxZxYszEl+EmVhD53XtpEiTjChfkQXDPGYlUFdFgAb1pjWVC4bWD0uHIX2ngdG96GyLvS5nP0YHJQmAAvmEqORRbnbOEskoE0QtFJPsCieW1W2lY/E="
+},
+  "3": {
+  "salt": "r7rUDbg+z04SWigbZ5WMTA==",
+  "iv": "RniudVG+Fhm/Q781",
+  "iterations": 310000,
+  "ciphertext": "Ocm4kK5Yq8Q8ZAalfyORFvr75ftSQA7+d15SCIijVQMqZEHObbMvdNQUa0EQnoD2BlRVtltH7cgFG8FUzHY0mTTIW+UuRF1HoSpOndPdTWQt4pzr7djJA+dhNM07SmQZakDocy6Ad8StTxewpWztT/njEXch+ecBbNcjIYNtD1eWvPZrd6UXIzAw2XHx0F0bi3OpfCHfZPBeuuQH9eyod+mrVAEtjm0N47nWeisfEBrtyD2K8g6YxS3wfL325XyaU+WthwYE3UCAMaeSacNnHoYO/nAlUzgib4Vguwc9btUiQs886HzirI2f7Jw8+unfx3Cg3n8bEDkwmQ8QgeGQbyKaDyUlxrgTwe7YaKQ6O5zvvpXsioFZg+4h0UGHUY3+sjiQsXBPc60JQQ3sRkplX3Hjgm5/OOWp/H5Ll7T/5sE2OUn9fs/D2kemtS2AmyKxWClD/48RHRxY7fX+8RhAoOZIaUqlDFby7GEJiNBg2+2XXO212IRyuJTiGwmVAEhtEC7XPqBxe44CsblrMvCeBg5ZQP6X3lejp9H+58xGiGaNJODQwWYk7D3EREvKUinssUjXUZphDew89ca2ygwG9i44J/7VgOU2XhbUOqs9NAuKDQbrG2yvRTgbSeHJv6Wl/9x7PHro0fqGUTEyl6lrG+hDLnKNTvtp1ix03WJjOvqa9V8i"
+},
+  "content": {
+  "salt": "gSqo5LOI/OAF31u98gQZrQ==",
+  "iv": "F1qj55IE9ZsnSh/h",
+  "iterations": 310000,
+  "ciphertext": "25vhuWh0Iu/iclseY6UQnmiJUrrJ8rwgnpCFvmumCuyJAFdNCbHsK9dvfTd+lToVfnmZWSL8QMpb+mMVN6grueb6sIRTpH2F6AiPb+MEUy/TCFM8UiUTP9awiZ43GKQlWKXJjFAivbhY9/x1EFr1HyQ10fXUsvVCMeG3IWb2Q5GgfdgviebKAq8WN/00luoHOBGaE/Z+Sucek9dqxWztJU1XwLwTEaWvUvihWhr88XykbVjOPCj7Yoq8isruPLqv+qQWrFuQKf4EFrHc+7lEUZabwhqq3/xR7M98n/iauvdvWFqJ96Lxsq8tSBM6245JYILLXUoAGNIbfM009xiCvBQ3n5dAIodwIvds5+NvG75CQQ4tG9/Oy2dVLEdPvpEGoMn6U8LIobM9RQu9li/HiKv4Hf/6ZfJDxawd3EFPZ7kemLReuNekKrTYtq2pFSR92Nu8X+hU6zDAX/K+RaN6K81EXUzBV2VMk60ddDw6KUZQBFYx6kvRhNRT5snmTueqyGFjA0NK02Il2M6g1gt2YT3pitVlxae6lizjwLidX3zsLM2Nd+RhFPAzud5Y2b20bS9hL3cZtS8u2ikf4y99boa0YUCs+yuhjU/liA3My57CeQeGcAksFRAXJtV/dlHw4OgiQMM7LiqRiEBctSBhjdUzpARxiCikRMNuv+lsZx/LN3PEJpKOVnrh282jwIiY3JOv39wqIH78RnoGQWQqMQsKDQNpz3BXpS3w2eGUXMjJNTZV+w8Dh+AfcmPDkP48Xw+fe4GyCe6zoI50+ouwBt1yTWoyI5ONsRwR0n+Zgf0VcRW4pG71hAc+H88lIBwI5Q=="
+},
   "2": {
     "salt": "+uFLrjJlLequBnv87nEv+g==",
     "iv": "6VM2FiGfSMDkcLQD",

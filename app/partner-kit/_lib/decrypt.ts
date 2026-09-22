@@ -16,7 +16,8 @@ function isKitContent(value: unknown): value is KitContent {
   const kit = value as Partial<KitContent>
   return (kit.kind === "partnership" || kit.kind === "content") &&
     Array.isArray(kit.sections) && kit.sections.length > 0 &&
-    kit.sections.every(section => typeof section.title === "string" &&
+    kit.sections.every(section => section && typeof section.title === "string" &&
+      (section.notes === undefined || (Array.isArray(section.notes) && section.notes.every(note => typeof note === "string"))) &&
       Array.isArray(section.items) && section.items.every(item =>
         Array.isArray(item) && item.length >= 2 && item.length <= 3 &&
         item.every(part => typeof part === "string")))

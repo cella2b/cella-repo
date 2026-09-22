@@ -1,7 +1,7 @@
 import { createPageMetadata } from "@/lib/seo"
 
 export const metadata = createPageMetadata({
-  title: "Contact | CELLA",
+  title: "Start a Content Project with Marcella | CELLA Sydney",
   description: "Start a content creation, social strategy, coaching or brand partnership project with CELLA in Sydney.",
   path: "/contact",
 })

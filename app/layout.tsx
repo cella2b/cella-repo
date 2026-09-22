@@ -1,7 +1,7 @@
 import type React from "react"
 import { Suspense } from "react"
-import type { Metadata } from "next"
-import { Oswald } from "next/font/google"
+import type { Metadata, Viewport } from "next"
+import { Oswald, Montserrat } from "next/font/google"
 import { SiteAnalytics } from "@/components/site-analytics"
 import { SiteStructuredData } from "@/components/site-structured-data"
 import { DEFAULT_SOCIAL_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
@@ -14,21 +14,25 @@ const oswald = Oswald({
   display: "swap",
 })
 
+const montserrat = Montserrat({ variable: "--font-body", subsets: ["latin"], weight: ["400", "500", "600"], display: "swap" })
+
+export const viewport: Viewport = { themeColor: "#0a0a0f", colorScheme: "dark" }
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "CELLA | Content That Books",
+  title: "CELLA | Sydney Content Creator",
   description: SITE_DESCRIPTION,
   openGraph: {
     type: "website",
     locale: "en_AU",
     siteName: SITE_NAME,
-    title: "CELLA | Content That Books",
+    title: "CELLA | Sydney Content Creator",
     description: SITE_DESCRIPTION,
     images: [DEFAULT_SOCIAL_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CELLA | Content That Books",
+    title: "CELLA | Sydney Content Creator",
     description: SITE_DESCRIPTION,
     images: [DEFAULT_SOCIAL_IMAGE],
   },
@@ -56,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-AU">
-      <body className={oswald.variable}>
+      <body className={`${oswald.variable} ${montserrat.variable}`}>
         <SiteStructuredData />
         {children}
         <Suspense fallback={null}>

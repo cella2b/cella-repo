@@ -7,6 +7,8 @@ import { CoverVideo } from "@/components/cover-video"
 import { EnquiryForm } from "@/components/enquiry-form"
 import { FeaturedWork, MoreWork, CampaignResults } from "@/components/featured-work"
 import { createPageMetadata } from "@/lib/seo"
+import { services } from "@/lib/services"
+import { WorkingTogether } from "@/components/working-together"
 
 export const metadata = createPageMetadata({
   title: "CELLA | Sydney Content Creator & Brand Partnerships",
@@ -32,9 +34,9 @@ export default function Home() {
           <CoverVideo />
           <div className="cella-cover-shade" />
           <div className="cella-cover-copy">
-            <p className="cella-eyebrow">Sydney creator. Food, travel & experiences.</p>
-            <h1 id="hero-heading">GOOD PLACES.<br />GREAT STORIES.</h1>
-            <p>Real experiences. Thoughtful storytelling.<br />Content made for the way people discover.</p>
+            <p className="cella-eyebrow"><span className="cella-status-dot" aria-hidden="true" /> Sydney content creator · Food / Travel / Experiences</p>
+            <h1 id="hero-heading">GOOD PLACES.<br /><span>GREAT STORIES.</span></h1>
+            <p>Social-first content with a sense of place.<br />For businesses with something worth sharing.</p>
             <div className="cella-actions">
               <Link href="#contact" className="cella-button">Let’s work together <ArrowUpRight size={19} /></Link>
               <Link href="#work" className="cella-text-link">Explore the work <ArrowDown size={17} /></Link>
@@ -59,17 +61,18 @@ export default function Home() {
         <section id="services" className="cella-section cella-services" aria-labelledby="services-heading">
           <div className="cella-section-heading"><div><p className="cella-eyebrow">Made for your business</p><h2 id="services-heading">YOUR STORY.<br />LET’S SHARE IT.</h2></div><p className="cella-section-description">Content created around your business, your audience and the experience you want to share.</p></div>
           <div className="cella-service-list">
-            <Link href="/services/content-creation" className="cella-service"><span>01</span><div><h3>Content creation</h3><p>Videos and photos for your business to share on its own channels. Thoughtfully created, ready to post.</p></div><ArrowUpRight aria-hidden="true" /></Link>
-            <Link href="#contact" className="cella-service"><span>02</span><div><h3>Brand partnerships</h3><p>Bring your business to the @cella.channel community through food, travel and experience-led storytelling.</p></div><ArrowUpRight aria-hidden="true" /></Link>
-            <Link href="/services/social-strategy" className="cella-service"><span>03</span><div><h3>Social strategy & management</h3><p>A considered approach to your content and a consistent presence for your business.</p></div><ArrowUpRight aria-hidden="true" /></Link>
+            {services.map(service => <Link key={service.href} href={service.href} className="cella-service"><span>{service.number}</span><div><h3>{service.title}</h3><p>{service.description}</p></div><ArrowUpRight aria-hidden="true" /></Link>)}
           </div>
+          <div className="cella-partnership-note"><p>Want to reach the <strong>@cella.channel</strong> community?</p><Link href="/services/content-creation#partnerships" className="cella-text-link">Explore creator partnerships <ArrowUpRight size={18} aria-hidden="true" /></Link></div>
           <Link href="/services" className="cella-text-link cella-services-link">Explore all services <ArrowUpRight size={18} /></Link>
         </section>
 
         <section id="about" className="cella-section cella-about" aria-labelledby="about-heading">
           <div><p className="cella-eyebrow">The person behind the lens</p><h2 id="about-heading">HEY, I’M<br /><span className="cella-accent">MARCELLA.</span></h2></div>
-          <div><p className="cella-about-lead">A Sydney creator with a curiosity for good food, memorable stays and places worth discovering.</p><p>I’m the person behind @cella.channel. I work with businesses to turn real experiences into considered, engaging social content — from a neighbourhood restaurant to an international travel experience.</p><p>Every business has its own story. I take the time to understand yours, then tailor the content to the people you want to reach.</p><a href="https://www.instagram.com/cella.channel/" target="_blank" rel="noopener noreferrer" className="cella-text-link">Meet me on Instagram <ArrowUpRight size={17} /></a></div>
+          <div><p className="cella-about-lead">A Sydney creator with a curiosity for good food, memorable stays and places worth discovering.</p><p>I’m the person behind @cella.channel. I work with businesses to turn real experiences into considered, engaging social content, from a neighbourhood restaurant to an international travel experience.</p><p>Every business has its own story. I take the time to understand yours, then tailor the content to the people you want to reach.</p><a href="https://www.instagram.com/cella.channel/" target="_blank" rel="noopener noreferrer" className="cella-text-link">Meet me on Instagram <ArrowUpRight size={17} aria-hidden="true" /></a></div>
         </section>
+
+        <WorkingTogether />
 
         <section className="cella-section cella-testimonials" aria-labelledby="testimonials-heading">
           <p className="cella-eyebrow" id="testimonials-heading">Words from the people behind the brands</p>

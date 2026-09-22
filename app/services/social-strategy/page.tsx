@@ -4,8 +4,8 @@ export default function SocialStrategyPage() {
   return (
     <ServiceDetailPage
       number="02"
-      title="Social Strategy"
-      intro="A clear social direction for brands that want to be recognised, remembered and chosen."
+      title="Social Strategy & Management"
+      intro="A clear plan for what to say, where to say it and how to keep showing up. Strategy and ongoing social support for your business."
       deliverables={[
         {
           title: "Brand positioning",
@@ -26,6 +26,10 @@ export default function SocialStrategyPage() {
         {
           title: "Actionable roadmap",
           description: "A practical plan for campaigns, publishing and measurement, ordered by what will make the biggest difference first.",
+        },
+        {
+          title: "Ongoing social management",
+          description: "Content and posting across two agreed social platforms, with package options tailored to your publishing needs. Scope, schedule and reporting are confirmed in your quote.",
         },
       ]}
       approach="The goal is not simply to post more. It is to create a clearer perception of the brand, then turn that positioning into repeatable content decisions."

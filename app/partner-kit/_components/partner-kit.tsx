@@ -95,6 +95,7 @@ export default function PartnerKit({ kitId }: { kitId: string }) {
         <div className={styles.gateTop}><span className={styles.eyebrow}>An invitation to create</span><LockKeyhole size={18} aria-hidden="true" /></div>
         <h1 id="kit-access-heading">Good things<br />start <em>here.</em></h1>
         <p>Welcome to your private CELLA partner kit. Enter the password from Marcella to explore the possibilities.</p>
+        <noscript><p>JavaScript is needed to open this kit. You can also request a copy by emailing info@heycella.com.</p></noscript>
         <form method="post" onSubmit={handleUnlock} className={styles.passwordForm} aria-busy={busy}>
           <label htmlFor="kit-password">Your access password</label>
           <input ref={passwordInput} id="kit-password" name="password" type="password" required maxLength={512} autoComplete="current-password" autoCapitalize="none" spellCheck={false} aria-invalid={Boolean(error)} aria-describedby={error ? "kit-error" : undefined} disabled={busy} />
@@ -160,8 +161,10 @@ export default function PartnerKit({ kitId }: { kitId: string }) {
       {contentOnly ? <>
         <div className={styles.contentCards}>{kit.sections[0].items.map((item, index) => <article key={item[0]} className={styles.contentCard}><span className={styles.cardNumber}>0{index + 1}</span><h3>{item[0]}</h3><strong>{item[1]}</strong><a href={`mailto:info@heycella.com?subject=${encodeURIComponent(`Content creation enquiry: ${item[0]}`)}`}>Enquire about this package<ArrowUpRight size={16} aria-hidden="true" /></a></article>)}</div>
         <div className={styles.inclusions}><h3>One shoot.<br />Plenty to share.</h3><ul><li><Check size={17} aria-hidden="true" />Content created in one shoot of one to three hours.</li><li><Check size={17} aria-hidden="true" />Finished videos delivered via Google Drive.</li><li><Check size={17} aria-hidden="true" />Created for your business to post on its own social channels.</li><li><Check size={17} aria-hidden="true" />Posting on @cella.channel is not included in these packages.</li></ul></div>
+        {kit.sections.slice(1).map(section => <article className={`${styles.rateCard} ${styles.management}`} key={section.title}><div><p className={styles.eyebrow}>Ongoing support for your business</p><h3>{section.title}</h3><ul>{section.items.map(item => <RateRow key={item[0]} item={item} />)}</ul></div><div><h4>Good to know</h4><ul className={styles.terms}>{section.notes?.map(note => <li key={note}>{note}</li>)}</ul></div></article>)}
       </> : <div className={styles.rateGrid}>{kit.sections.map((section, index) => <article className={styles.rateCard} key={section.title}><div className={styles.rateCardTitle}><h3>{section.title}</h3><span>0{index + 1}</span></div><ul>{section.items.map(item => <RateRow key={item[0]} item={item} />)}</ul></article>)}</div>}
-      <p className={styles.sourceNote}>From CELLA’s 2026 media kit. Custom packages welcome.</p>
+      <p className={styles.sourceNote}>Rates from CELLA’s 2026 media kit. Currency, GST, usage and any travel costs are confirmed in your quote. Custom packages welcome.</p>
+      {!contentOnly && <p className={styles.sourceNote}>Boosting arrangements and the basis of any percentage charge are agreed before booking.</p>}
     </section>
 
     <section className={styles.cta} aria-labelledby="contact-heading"><div><p className={styles.eyebrow}>Your next story starts here</p><h2 id="contact-heading">Got something<br /><em>in mind?</em></h2></div><div><p>Tell me about your business and what you’d like to create. Let’s find the right fit.</p><a href={email} className={styles.primaryButton}>Start a conversation<ArrowUpRight size={18} aria-hidden="true" /></a><a href="mailto:info@heycella.com" className={styles.contactEmail}>info@heycella.com</a></div></section>
