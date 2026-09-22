@@ -3,15 +3,8 @@ import Link from "next/link"
 import { ArrowLeft, ArrowRight, Check } from "lucide-react"
 import { SocialPost } from "@/components/social-post"
 import { Footer } from "@/components/footer"
-
-const projects = [
-  { href: "/projects/kings-cross", label: "Kings Cross" },
-  { href: "/projects/google-gemini-paddys", label: "Google x Paddy's" },
-  { href: "/projects/barangaroo", label: "Barangaroo" },
-  { href: "/projects/doordash-opentable", label: "DoorDash Reservations" },
-  { href: "/projects/prince-shiomi", label: "Japan travel" },
-  { href: "/projects/milford-sound", label: "Pure Milford & travel" },
-]
+import { projectLinks as projects } from "@/lib/projects"
+import { BreadcrumbData } from "@/components/page-structured-data"
 
 type ProjectSection = {
   title: string
@@ -49,13 +42,15 @@ export function ProjectCaseStudy({
 }: ProjectCaseStudyProps) {
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen bg-background text-foreground">
-      <nav className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 p-6 backdrop-blur-lg md:p-8">
+      <BreadcrumbData items={[{ name: "Work", path: "/portfolio" }, { name: title, path: activePath }]} />
+      <a className="cella-skip-link" href="#project-story">Skip to project</a>
+      <nav aria-label="Project navigation" className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 p-6 backdrop-blur-lg md:p-8">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <Link href="/" className="text-xl font-bold tracking-[0.2em] text-foreground md:text-2xl" aria-label="CELLA home">
+          <Link href="/" className="cella-wordmark text-xl font-bold tracking-[0.2em] text-foreground md:text-2xl" aria-label="CELLA home">
             CELLA
           </Link>
           <Link
-            href="/#work"
+            href="/portfolio"
             className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -64,7 +59,7 @@ export function ProjectCaseStudy({
         </div>
       </nav>
 
-      <div className="fixed inset-x-0 top-20 z-40 border-b border-border/30 bg-background/70 backdrop-blur-lg md:top-24">
+      <nav aria-label="Browse case studies" className="fixed inset-x-0 top-20 z-40 border-b border-border/30 bg-background/70 backdrop-blur-lg md:top-24">
         <div className="overflow-x-auto px-3 py-3 sm:px-6 md:px-8">
           <div className="mx-auto flex min-w-max max-w-7xl items-center gap-1">
             {projects.map((project, index) => (
@@ -73,7 +68,7 @@ export function ProjectCaseStudy({
                 <Link
                   href={project.href}
                   aria-current={project.href === activePath ? "page" : undefined}
-                  className={`whitespace-nowrap px-3 py-1.5 text-xs uppercase tracking-wide transition-colors ${
+                  className={`inline-flex min-h-11 items-center whitespace-nowrap px-3 py-1.5 text-xs uppercase tracking-wide transition-colors ${
                     project.href === activePath
                       ? "font-medium text-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -85,7 +80,7 @@ export function ProjectCaseStudy({
             ))}
           </div>
         </div>
-      </div>
+      </nav>
 
       <div className="relative mt-32 h-[60vh] min-h-[440px] w-full md:mt-36">
         <Image src={heroImage} alt={heroAlt} fill className="object-cover" priority sizes="100vw" />
@@ -99,7 +94,7 @@ export function ProjectCaseStudy({
         </div>
       </div>
 
-      <div className="px-6 py-16 md:px-8 md:py-24">
+      <div id="project-story" tabIndex={-1} className="scroll-mt-44 px-6 py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-6xl">
           <div className="mb-16 grid grid-cols-2 gap-8 border-b border-border/30 pb-16 md:grid-cols-4">
             {metadata.map((item) => (
@@ -176,12 +171,13 @@ export function ProjectCaseStudy({
           ) : null}
 
           <Link
-            href="/#work"
+            href="/portfolio"
             className="group inline-flex items-center gap-3 border border-foreground px-6 py-4 text-xs uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-foreground hover:text-background"
           >
             View All Projects
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
+          <Link href="/contact?service=Brand%20Partnership" className="cella-button ml-0 mt-5 sm:ml-5">Create your next story <ArrowRight size={17} aria-hidden="true" /></Link>
         </div>
       </div>
 

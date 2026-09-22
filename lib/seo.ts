@@ -6,8 +6,10 @@ export const SITE_DESCRIPTION =
   "Social-first content and strategy for hospitality, travel, lifestyle and experience-led brands, created by Marcella in Sydney."
 
 export const DEFAULT_SOCIAL_IMAGE = {
-  url: "/images/projects/barangaroo-house.jpg",
-  alt: "CELLA destination content at Barangaroo, Sydney",
+  url: "/share-image",
+  alt: "CELLA. Good places. Great stories. Sydney content creation and creator partnerships.",
+  width: 1200,
+  height: 630,
 }
 
 type PageMetadata = {

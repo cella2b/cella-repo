@@ -5,7 +5,7 @@ export default function ContentCreationPage() {
     <ServiceDetailPage
       number="01"
       title="Content Creation"
-      intro="Content built to earn attention, tell a clear story and make your brand worth remembering."
+      intro="Short-form videos and photography for hospitality, travel and lifestyle businesses. Created in Sydney and on location, ready for your own channels."
       deliverables={[
         {
           title: "Social-first video",

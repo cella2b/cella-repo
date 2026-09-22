@@ -1,36 +1,12 @@
-import { Instagram, Mail } from "lucide-react"
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 
 export function Footer() {
-  return (
-    <footer className="py-12 bg-background border-t border-border">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <span className="text-foreground text-xl font-bold tracking-wider">CELLA</span>
-
-          <div className="flex items-center gap-6">
-            <a
-              href="https://www.instagram.com/cella.channel/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="CELLA on Instagram"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a
-              href="mailto:info@heycella.com"
-              aria-label="Email CELLA"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Mail className="w-5 h-5" />
-            </a>
-          </div>
-
-          <p className="text-muted-foreground text-xs tracking-widest uppercase">
-            © {new Date().getFullYear()} CELLA, Sydney
-          </p>
-        </div>
-      </div>
-    </footer>
-  )
+  return <footer className="cella-footer"><div className="cella-footer-inner">
+    <div className="cella-footer-top">
+      <div><span className="cella-wordmark cella-footer-brand">CELLA.</span><p className="mt-4">Good food. Great places. Stories worth sharing.</p></div>
+      <nav aria-label="Footer navigation"><Link href="/portfolio">Work</Link><Link href="/services">Services</Link><Link href="/#about">About</Link><Link href="/contact">Let’s talk</Link></nav>
+    </div>
+    <div className="cella-footer-bottom"><p>© {new Date().getFullYear()} CELLA · Sydney, Australia</p><div className="flex flex-wrap gap-x-7"><a href="mailto:info@heycella.com">info@heycella.com</a><a href="https://www.instagram.com/cella.channel/" target="_blank" rel="noopener noreferrer">Instagram <ArrowUpRight size={14} className="ml-2" aria-hidden="true" /></a></div></div>
+  </div></footer>
 }

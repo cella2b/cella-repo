@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from "react"
 import { ArrowUpRight, Check, Copy } from "lucide-react"
 import { track } from "@vercel/analytics"
-
-const services = ["Content Creation", "Brand Partnership", "Social Strategy", "Coaching & Mentoring"]
+import { enquiryServices as services } from "@/lib/services"
 
 export function EnquiryForm() {
   const [selected, setSelected] = useState("")
@@ -15,7 +14,8 @@ export function EnquiryForm() {
   const draftRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
-    const requested = new URLSearchParams(window.location.search).get("service")
+    const query = new URLSearchParams(window.location.search).get("service")
+    const requested = query === "Social Strategy" ? "Social Strategy & Management" : query
     if (requested && services.includes(requested)) setSelected(requested)
   }, [])
 
@@ -27,7 +27,7 @@ export function EnquiryForm() {
       setError("Please add your name, business, email and a little about your project.")
       return
     }
-    const subject = `CELLA enquiry — ${field("brand")}`
+    const subject = `CELLA enquiry: ${field("brand")}`
     const body = [
       `Name: ${field("name")}`, `Business: ${field("brand")}`, `Email: ${field("email")}`,
       `Service: ${field("service") || "Let's discuss"}`, `Location: ${field("location") || "To discuss"}`,

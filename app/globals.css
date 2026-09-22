@@ -5,9 +5,9 @@
 
 :root {
   /* Dark, cinematic theme to match video mood */
-  --background: oklch(0.08 0 0);
+  --background: #0a0a0f;
   --foreground: oklch(0.98 0 0);
-  --card: oklch(0.12 0 0);
+  --card: #15121c;
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.1 0 0);
   --popover-foreground: oklch(0.98 0 0);
@@ -18,7 +18,7 @@
   --accent: oklch(0.15 0 0);
   --accent-foreground: oklch(0.98 0 0);
   --muted: oklch(0.2 0 0);
-  --muted-foreground: oklch(0.65 0 0);
+  --muted-foreground: #b9b3c4;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.25 0 0);
@@ -77,7 +77,7 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-oswald), "Oswald", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: var(--font-body), Arial, Helvetica, sans-serif;
   --font-mono: "Geist Mono", monospace;
 
   --color-background: var(--background);
@@ -759,14 +759,13 @@
 }
 
 /* Shared editorial system: readable body copy, expressive display type. */
-@theme inline { --font-sans: Arial, Helvetica, sans-serif; }
-body { font-family: Arial, Helvetica, sans-serif; }
+body { font-family: var(--font-body), Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, .cella-wordmark { font-family: var(--font-oswald), "Arial Narrow", sans-serif; }
 html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 :focus-visible { outline: 2px solid #c4a1ff; outline-offset: 5px; }
 .cella-skip-link { position: fixed; left: 18px; top: 12px; z-index: 100; padding: 12px 20px; background: #fff; color: #101015; transform: translateY(-180%); }
 .cella-skip-link:focus { transform: translateY(0); }
-.cella-home { --cella-purple: #b98bff; background: #101014; color: #f6f5f8; }
+.cella-home { --cella-purple: #c2a7f9; background: var(--background); color: #f6f5f8; }
 .cella-eyebrow { font-size: .75rem; line-height: 1.7; text-transform: uppercase; letter-spacing: .19em; font-weight: 500; }
 .cella-hero { position: relative; display: grid; grid-template-columns: 1.08fr 1fr; min-height: 850px; min-height: min(950px,100svh); padding: 125px 4.5% 76px; column-gap: 3.5%; }
 .cella-hero-copy { align-self: center; position: relative; z-index: 1; padding: 20px 0; }
@@ -851,3 +850,54 @@ html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 @media(max-width:650px){.cella-more-work,.cella-results-intro{grid-template-columns:1fr;gap:30px}.cella-metrics{gap:16px;grid-template-columns:1fr 1fr}.cella-metrics>div:first-child{grid-column:1/-1}.cella-metrics dd{font-size:3.7rem}.cella-cover-location{font-size:.75rem;letter-spacing:.03em}}
 
 .cella-artwork-logo{position:absolute;left:15%;right:15%;top:30%;display:flex;align-items:center;justify-content:center}.cella-artwork-logo img{width:100%;height:auto;filter:brightness(0)}
+
+/* CELLA editorial refinements: shared across the public pages. */
+::selection { background: #c2a7f9; color: #0a0a0f; }
+.cella-page-hero { position: relative; isolation: isolate; background-image: radial-gradient(ellipse at 90% 0%, #7336f229, transparent 58%); }
+.cella-cover-copy { text-align: left; width: 100%; max-width: 1440px; }
+.cella-cover-copy h1 { font-size: clamp(4.5rem, 9.7vw, 10rem); max-width: 1050px; line-height: .98; }
+.cella-cover-copy h1 span { color: #c2a7f9; }
+.cella-cover-copy > p:not(.cella-eyebrow) { margin: 30px 0 0; max-width: 540px; }
+.cella-cover-copy .cella-actions { justify-content: flex-start; }
+.cella-cover-copy .cella-button { background: #c2a7f9; }
+.cella-cover-shade { background: linear-gradient(90deg,#09070fd9 0%,#09070f9c 52%,#09070f4d 100%),linear-gradient(0deg,#0a0a0f,transparent 40%); }
+.cella-status-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; background: #c2a7f9; border-radius: 50%; vertical-align: middle; }
+.cella-section-heading h2, .cella-page-hero h1 { text-wrap: balance; }
+.cella-section-description { max-width: 440px; }
+.cella-service { padding-block: 38px; }
+.cella-service > svg { transition: transform .2s; }
+.cella-service:hover > svg { transform: translate(3px,-3px); }
+.cella-partnership-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-top: 32px; padding-bottom: 32px; }
+.cella-partnership-note > p { color: #c6bfce; font-size: .9rem; }
+.cella-partnership-note strong { color: #f4edfc; font-weight: 500; }
+.cella-process { border-bottom: 1px solid #34323c; }
+.cella-process-grid { list-style: none; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 36px; padding: 0; }
+.cella-process-grid li { border-top: 1px solid #5a456f; padding-top: 28px; }
+.cella-process-grid h3 { font-size: 2rem; margin: 20px 0 16px; }
+.cella-process-grid p { color: #b9b3c4; font-size: .9rem; line-height: 1.9; max-width: 390px; }
+.cella-faq { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; }
+.cella-faq details { border-bottom: 1px solid #34323c; }
+.cella-faq details:first-child { border-top: 1px solid #34323c; }
+.cella-faq summary { cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 26px 0; font-size: 1rem; line-height: 1.7; list-style: none; }
+.cella-faq summary::-webkit-details-marker { display: none; }
+.cella-faq summary span { color: #c2a7f9; font-size: 1.5rem; flex-shrink: 0; transition: transform .2s; }
+.cella-faq details[open] summary span { transform: rotate(45deg); }
+.cella-faq details p { color: #b9b3c4; font-size: .9rem; line-height: 1.9; padding: 0 28px 28px 0; }
+.cella-footer { padding: 55px 5% 28px; border-top: 1px solid #34323c; background: var(--background); }
+.cella-footer-inner { max-width: 1440px; margin: auto; }
+.cella-footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 35px; flex-wrap: wrap; }
+.cella-footer-brand { font-size: 3.4rem; letter-spacing: -.04em; line-height: 1; }
+.cella-footer p { color: #b9b3c4; font-size: .8rem; line-height: 1.9; }
+.cella-footer nav { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.cella-footer a { min-height: 44px; display: inline-flex; align-items: center; font-size: .8rem; }
+.cella-footer a:hover { color: #c2a7f9; }
+.cella-footer-bottom { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 42px; border-top: 1px solid #34323c; padding-top: 25px; }
+@media(max-width:800px) {
+  .cella-cover-copy h1 { font-size: clamp(3.65rem,12.6vw,6.5rem); }
+  .cella-cover-copy > .cella-eyebrow { max-width: 300px; font-size: .65rem; line-height: 1.9; }
+  .cella-process-grid { grid-template-columns: 1fr; gap: 28px; }
+  .cella-process-grid li { display: grid; grid-template-columns: 35px 1fr; gap: 12px 20px; }
+  .cella-process-grid h3 { margin: 0; }
+  .cella-process-grid p { grid-column: 2; max-width: none; }
+  .cella-faq { grid-template-columns: 1fr; gap: 35px; }
+}

@@ -4,7 +4,7 @@ export default function CoachingPage() {
   return (
     <ServiceDetailPage
       number="03"
-      title="Coaching and Mentoring"
+      title="Coaching & Mentoring"
       intro="Practical one-to-one guidance for creators and founders building a stronger brand and content business."
       deliverables={[
         {

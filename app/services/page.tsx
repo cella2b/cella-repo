@@ -2,37 +2,17 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { SiteHeader } from "@/components/site-header"
-
-const services = [
-  {
-    number: "01",
-    title: "Content Creation",
-    description: "Social-first video, photography and storytelling built to make your brand worth remembering.",
-    href: "/services/content-creation",
-    cta: "Explore content",
-  },
-  {
-    number: "02",
-    title: "Social Strategy",
-    description: "Clear positioning, content direction and a practical roadmap for showing up with purpose.",
-    href: "/services/social-strategy",
-    cta: "Explore strategy",
-  },
-  {
-    number: "03",
-    title: "Coaching and Mentoring",
-    description: "Direct, practical guidance for creators and founders building a stronger brand and business.",
-    href: "/services/coaching",
-    cta: "Explore coaching",
-  },
-]
+import { services } from "@/lib/services"
+import { ServiceQuestions, WorkingTogether } from "@/components/working-together"
+import { BreadcrumbData } from "@/components/page-structured-data"
 
 export default function ServicesPage() {
   return (
-    <main id="main-content" tabIndex={-1} className="min-h-screen bg-background text-foreground">
+    <main id="main-content" tabIndex={-1} className="cella-home min-h-screen">
+      <BreadcrumbData items={[{ name: "Services", path: "/services" }]} />
       <SiteHeader />
 
-      <section className="border-b border-border px-6 pb-20 pt-36 md:pb-28 md:pt-44">
+      <section className="cella-page-hero border-b border-border px-6 pb-20 pt-36 md:pb-28 md:pt-44">
         <div className="mx-auto max-w-7xl">
           <p className="mb-6 text-xs uppercase tracking-[0.3em] text-purple-300">How we can work together</p>
           <div className="grid gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
@@ -40,8 +20,8 @@ export default function ServicesPage() {
               Services
             </h1>
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              Social-first content, strategy and practical guidance for hospitality, travel and lifestyle brands that
-              want to be recognised, remembered and chosen.
+              Content for your channels. Stories for your audience. Practical support for your next chapter.
+              Made in Sydney, for hospitality, travel and lifestyle businesses near and far.
             </p>
           </div>
         </div>
@@ -68,6 +48,14 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
+      <section className="cella-section cella-partnership-note" aria-label="Creator partnerships">
+        <div><p className="cella-eyebrow">Your brand, through the CELLA lens</p><h2>CREATOR PARTNERSHIPS.</h2><p className="cella-section-description mt-6">For campaigns published through @cella.channel, explore food, travel and experience-led collaborations.</p></div>
+        <Link href="/services/content-creation#partnerships" className="cella-button">Explore partnerships <ArrowRight size={18} aria-hidden="true" /></Link>
+      </section>
+
+      <WorkingTogether />
+      <ServiceQuestions />
 
       <section className="border-y border-border bg-card px-6 py-20 md:py-28">
         <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-2 md:items-end">

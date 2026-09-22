@@ -8,7 +8,7 @@
 .kit h1,.kit h2,.kit h3,.kit p,.kit figure{margin:0}
 .kit h1,.kit h2{font-weight:500;letter-spacing:-.05em;text-transform:uppercase;line-height:.99}
 .kit h1 em,.kit h2 em{font-style:normal;color:var(--accent)}
-.kit p,.kit li,.kit input,.kit label,.kit a,.kit button{font-family:Arial,Helvetica,sans-serif}
+.kit p,.kit li,.kit input,.kit label,.kit a,.kit button{font-family:var(--font-body),Arial,Helvetica,sans-serif}
 .kit h1:focus{outline:none}
 .kit ul{padding:0;list-style:none;margin:0}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
@@ -49,6 +49,7 @@
 .heroVisual{position:relative;min-width:0}
 .heroImage{height:clamp(370px,43vw,660px);position:relative;overflow:hidden;background:#241c2e}
 .coverImage{object-fit:cover}
+.framedSource{transform:scale(1.34)}
 .heroImage:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#150b2799)}
 .visualTag{position:absolute;bottom:25px;left:25px;right:25px;display:flex;justify-content:space-between;align-items:end;color:#fff}
 .visualTag span{font:12px Arial,Helvetica,sans-serif;letter-spacing:.11em;text-transform:uppercase;max-width:140px;line-height:1.7}
@@ -89,6 +90,11 @@
 .contentCard h3{font-size:28px;line-height:1.2;font-weight:400;margin:30px 0 20px}
 .contentCard>strong{font-size:42px;font-weight:400;color:var(--accent);margin-top:auto}
 .contentCard>a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;width:100%;margin-top:22px;font-size:14px;border-top:1px solid var(--line);padding-top:12px}
+.management{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:50px;padding:38px}
+.management h3{font-size:36px;margin:18px 0 28px}
+.management h4{font-size:16px;margin:0 0 20px;color:var(--accent)}
+.management .terms{display:grid;gap:15px;padding-left:18px;list-style:disc;color:var(--muted);font-size:14px;line-height:1.8}
+@media(max-width:760px){.management{grid-template-columns:1fr;gap:25px;padding:25px}}
 .inclusions{display:grid;grid-template-columns:1fr 2fr;gap:35px;padding:40px;margin-top:25px;border:1px solid var(--line)}
 .inclusions h3{font-size:31px;line-height:1.1;font-weight:400;text-transform:uppercase}
 .inclusions ul{display:grid;gap:15px}
@@ -173,4 +179,3 @@
 
 @media(prefers-reduced-motion:reduce){.kit *{scroll-behavior:auto!important;transition:none!important}
 }
-
