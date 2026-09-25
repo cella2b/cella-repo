@@ -3,10 +3,10 @@ import "server-only"
 // Independently encrypted media-kit records. Never place plaintext pricing or passwords here.
 export const encryptedKits = {
   "1": {
-  "salt": "ydXMLOBhDOQG+hLWkZ+6Gg==",
-  "iv": "KovqFpaeAgUB905L",
+  "salt": "lFqHKeFfCiZG0gwrDO1sbA==",
+  "iv": "FaPgPiYA5D438+Nk",
   "iterations": 310000,
-  "ciphertext": "botAhri85TqOFuz3zeIcAxXHUrZFj9RZY2ulq2AVf1e4jQ+W3gixo2dFRsV7bKZU5MMXPuVALoZNQTzK1aH3aVP9fyg7vOzDYG/kWZTRE5ls1NsZrDNiy2Ds2xYW0aaJ4qYhDB8VK074shEeHF7zZXBVe+9N681L2EVUA05JD5qBxnddKQlFLznxXO2ot4zKzWurfvHWDqOBuaKeqaHZnTNG7yAUJKvf6Az1CZCZeE5cVAuOaXqP5nWmmeDi/ZaOFNniBIMNvwEG7Oc+yYIa4Og2AoHEozzbByNDcxzaWcculyeoDZIAz288UmxiAvWjz9nKkmXHqEn0J30fqhtQ91G7z0pGC37srnYS7esj7FrrbLtB/Zh7ppCDtUbMD83f6NEX1jBf9/CmLWo16udvKgk/uBoRJSopo+Rh6pxPI6ttZ6FuTRRRsv5Atu/HSfhDCZ+ki9qIpAA2Kg9RoGJTa/x9HxRbA6Wh92IYTsfFRR/w+odABY/4/hjoOzESyd0+CBW1+Ep95vwJv3l/nFleg0RaP3yGkGnJxxVy5YopQMxZxYszEl+EmVhD53XtpEiTjChfkQXDPGYlUFdFgAb1pjWVC4bWD0uHIX2ngdG96GyLvS5nP0YHJQmAAvmEqORRbnbOEskoE0QtFJPsCieW1W2lY/E="
+  "ciphertext": "wrSlgEVnHYtPReapCmkjVKTNfGhrDdW/vErieEdq5AKbdfa3WoIRXNUN3OhnBRH6kaGZXM816rRg+lDkiUXR1W8O94pZg2ksERPdxMPyW4zGmhFQHEPpMbdOAUd2/h2ESk+MVTyF0TD//5Xj9ByTgTfj6crtyVohkbL6m9VEimbfZFUCDjmA+FefoXauP86U/ira2OcH8tlFNiTM6x9HtHItl1R0xbtamcAf8ARPO2qEYfQcoRVbxll3deOdnG1RfoIZAMcqnfuNVq8ebmlECJi3CZoIAxEI3ccVnYLD1LPNljPzla4+cecsUEN6ljnAyms2HH+BwVAprjSp4Wc9uH3bYdTCgalDiWuOouzhwOvVQzvEIHRqWUrxGI5dBM6g/AKcp9oPqycPQ8QKjYbx8DrzqPJ4PvgXXMEXAimgZK5SV1BtOWpbJpKGRg7svaNg4krJoaAGpKo0RndOlA9NnQdUnyixklkGHJH11o6mAJ5IrCu0m/EkAFQpMmuyGltEEQA8gOMW49eN0TTHkXaieMu2z7PxOZEittW7jSCghtzxwgwkej1aA0trXRRNYE5r2TEg9bxsCL6TiRQjCo+uAIGavlNvJFjH9CmNrv9XxQ6jpYpljtlEq4uCdbRylpg2nqx8Qfc1CHu+zDokNVtPXjuvhvM="
 },
   "3": {
   "salt": "r7rUDbg+z04SWigbZ5WMTA==",
