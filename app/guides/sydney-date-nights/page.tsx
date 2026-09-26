@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUpRight, BookOpen, MapPin, Sparkles } from "lucide-reac
 import { SiteHeader } from "@/components/site-header"
 import { Footer } from "@/components/footer"
 import { createPageMetadata } from "@/lib/seo"
+import { getSydneyGuideCheckoutUrl } from "@/lib/sydney-guide-checkout.mjs"
 import styles from "./page.module.css"
 
 export const metadata = {
@@ -34,10 +35,10 @@ const faqs = [
   ["Can I use it on my phone?", "Yes. Save the PDF to your phone or open the included HTML companion in a browser. The companion filters by area, mood search and planning budget. Downloaded written content works offline; live links need a connection."],
   ["Are meals or bookings included in A$29?", "A$29 is the price of the digital guide. Meals, drinks, reservations, transport and any venue fees are separate. Dinner budgets are planning estimates for two people, not venue quotes or fixed-price packages."],
   ["When were the details checked?", "This first edition was checked on 26 September 2026. Restaurant opinions and photos come from Cella’s earlier visits. Menus, hours, prices and booking conditions can change, so each plan links back to the venue."],
-  ["Were any visits collaborations?", "Cella’s RIVA visit was a collaboration, disclosed in the guide. The food picks reflect her published experience; the walks, timings and budgets are planning suggestions."],
 ]
 
 export default function SydneyDateNights() {
+  const checkoutUrl = getSydneyGuideCheckoutUrl()
   return <>
     <SiteHeader />
     <main id="main-content" tabIndex={-1} className={styles.page}>
@@ -47,8 +48,9 @@ export default function SydneyDateNights() {
           <h1 id="guide-title">SYDNEY<br />DATE NIGHTS,<br /><span>SORTED.</span></h1>
           <p className={styles.lead}>For when “let’s go for dinner”<br className={styles.desktopBreak} /> needs an actual plan.</p>
           <p className={styles.intro}>Eight evenings built around restaurants I’d send my friends to. What I’d order, where to start and the practical bits that make the night easier.</p>
-          <div className={styles.priceRow}><strong>A$29</strong><span>One-off digital purchase<br />First edition · Coming soon</span></div>
-          <a href={sample} className={styles.primary} target="_blank" rel="noopener noreferrer">Read the free sample <ArrowUpRight size={18} aria-hidden="true" /></a>
+          <div className={styles.priceRow}><strong>A$29</strong><span>One-off digital purchase<br />First edition{checkoutUrl ? "" : " · Coming soon"}</span></div>
+          <a href={checkoutUrl || sample} className={styles.primary} target="_blank" rel="noopener noreferrer">{checkoutUrl ? "Get the guide · A$29" : "Read the free sample"} <ArrowUpRight size={18} aria-hidden="true" /></a>
+          {checkoutUrl && <p className={styles.heroNote}>Secure checkout via Payhip.<br />Your download link arrives after payment.</p>}
           <p className={styles.heroNote}>22-page PDF + searchable companion<br />No app or subscription required.</p>
         </div>
         <div className={styles.heroVisual}>
@@ -82,12 +84,12 @@ export default function SydneyDateNights() {
 
       <section className={`${styles.section} ${styles.creator}`} aria-labelledby="creator-title">
         <Image src="/images/guides/sydney-date-nights/cella.jpg" alt="Marcella enjoying an evening out" width={400} height={500} sizes="(max-width: 700px) 120px, 180px" />
-        <div><p className={styles.eyebrow}>From @cella.channel</p><h2 id="creator-title">THE PLACES I’D<br />SEND MY FRIENDS TO.</h2><p>I’m Marcella. This brings my restaurant favourites together with an actual plan for the evening. A few dish picks, a little time to wander and fewer “where should we go?” messages.</p><p className={styles.small}>RIVA visit: collaboration. Disclosed in the guide.</p></div>
+        <div><p className={styles.eyebrow}>From @cella.channel</p><h2 id="creator-title">THE PLACES I’D<br />SEND MY FRIENDS TO.</h2><p>I’m Marcella. This brings my restaurant favourites together with an actual plan for the evening. A few dish picks, a little time to wander and fewer “where should we go?” messages.</p></div>
       </section>
 
       <section className={`${styles.section} ${styles.faq}`} aria-labelledby="faq-title"><div><p className={styles.eyebrow}>Before your next night out</p><h2 id="faq-title">A FEW DETAILS.</h2></div><div>{faqs.map(([question,answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></section>
 
-      <section className={styles.lastCall}><p className={styles.eyebrow}>Sydney Date Nights, Sorted</p><h2>YOUR NEXT<br /><span>“LET’S GO OUT.”</span></h2><p>A$29 · PDF + searchable companion · Coming soon</p><a href={sample} className={styles.primary} target="_blank" rel="noopener noreferrer">Take a look inside <ArrowUpRight size={18} aria-hidden="true" /></a></section>
+      <section className={styles.lastCall}><p className={styles.eyebrow}>Sydney Date Nights, Sorted</p><h2>YOUR NEXT<br /><span>“LET’S GO OUT.”</span></h2><p>A$29 · PDF + searchable companion{checkoutUrl ? "" : " · Coming soon"}</p><a href={checkoutUrl || sample} className={styles.primary} target="_blank" rel="noopener noreferrer">{checkoutUrl ? "Get the guide · A$29" : "Take a look inside"} <ArrowUpRight size={18} aria-hidden="true" /></a></section>
     </main>
     <Footer />
   </>

@@ -1,16 +1,32 @@
 # Sydney Date Nights, Sorted
 
-Review edition: `/guides/sydney-date-nights`.
+Review route: `/guides/sydney-date-nights`. Price: A$29 once.
 
-The page advertises a one-off A$29 digital guide and offers a working four-page free sample. It is deliberately `noindex`, unlinked from the main navigation and sitemap, and has no purchase button while Marcella reviews the finished product.
+## Checkout selected
 
-The paid 22-page PDF and HTML companion are delivered privately for review. **Never add the full paid files to this public repository or its public assets.** Only the approved sample, cover and promotional photographs belong here.
+Payhip Free Forever with Stripe Australia. Payhip delivers the purchased files and emails the buyer a download link. Its free plan charges 5% per sale plus Stripe processing. The sales page stays on heycella.com and links to Payhip's hosted checkout. No monthly subscription is needed at launch.
 
-To launch after review:
+Purchase buttons are prepared but disabled. Without both the actual product key and readiness flag, visitors see the free sample and Coming soon. The review page remains noindex and outside the public navigation and sitemap.
 
-1. Confirm the product and A$29 price with Marcella, and choose the checkout/digital-delivery provider already used by the business or set one up with her.
-2. Upload the paid files to private digital delivery. Verify a purchase can retrieve them and a failed or cancelled payment cannot. Confirm the displayed total, tax treatment and customer support/refund terms.
-3. Replace the coming-soon state with the verified purchase URL. Keep the free sample available. Do not publish a payment-only link without working file delivery.
-4. Remove the review `robots` override, add the guide to the public sitemap and navigation, and recheck mobile layout and the production purchase flow.
+Never add the full paid PDF, companion or private authoring master to this public repository. Only the cover, promotional assets and free sample belong here.
 
-This feature branch does not modify existing routes, partner kits, site navigation, checkout, or production settings.
+## Finish setup
+
+1. Marcella creates the free Payhip account and connects Stripe through Account > Settings > Payment Details. She completes identity, business, tax and payout-bank details in the providers' secure forms.
+2. Set selling currency to AUD. Add a digital product titled Sydney Date Nights, Sorted, fixed price 29. Use Invisible visibility while preparing it. Upload the paid PDF and customer ZIP. Use the free sample as the preview and cover as product media. The private master is not a customer file.
+3. Use the prepared checkout copy. Check the displayed total, applicable tax settings and customer support/refund terms against her actual business settings. Do not assume GST registration or tax exemption.
+4. Verify a successful checkout delivers the correct files and receipt email. Verify cancelled/failed payments cannot retrieve paid files. Check mobile downloading and the companion controls. Current companion code/data checks do not replace browser acceptance testing.
+5. Copy the real Payhip product key and set PAYHIP_SYDNEY_GUIDE_PRODUCT_KEY. Only after delivery passes, set SYDNEY_GUIDE_CHECKOUT_READY=true and redeploy. This page is built with deployment environment values. No payment secret keys belong in the repository.
+6. Use Unlisted visibility for sales from the website. Confirm A$29 AUD at checkout. At launch remove this route's noindex override, add it to navigation and sitemap, and verify the production flow.
+
+Pocket Pizza and Dry Dock photographs are still pending. A Dry Dock source video was located, but it exceeded the transfer limit; no still was extracted. The review retains typographic artwork for both venues.
+
+The branch remains a review draft. Another website redesign branch exists, so reconcile it before merging.
+
+## Provider sources checked 26 September 2026
+
+- https://payhip.com/pricing
+- https://help.payhip.com/article/65-connecting-your-stripe-account
+- https://help.payhip.com/article/59-adding-a-digital-product
+- https://help.payhip.com/article/126-direct-checkout-link
+- https://help.payhip.com/article/132-how-payhip-works
