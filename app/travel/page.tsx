@@ -1,0 +1,8 @@
+import Link from 'next/link'
+import { ChannelShell, ChannelCard } from '@/components/cella-channel-shell'
+export const metadata = { title: 'Travel stories & practical trip notes | Cella', robots: { index: false, follow: false } }
+export default function TravelPage() {
+  return <ChannelShell><section className="max-w-3xl py-12"><p className="tracking-widest text-purple-300">THE TRAVEL EDIT</p><h1 className="mt-4 text-5xl sm:text-7xl">The trip behind<br/>the recommendation.</h1><p className="mt-6 text-xl text-white/75">Actual travel work first. Booking options second. No destination is presented as personally visited just because it appeared in a campaign brief.</p></section>
+    <div className="grid gap-6 sm:grid-cols-2"><ChannelCard title="New Zealand"><p>My travel work with Pure Milford and KiwiRail is a starting point for planning a South Island trip.</p><Link href="/travel/new-zealand" className="inline-block py-3 text-purple-200 underline">Read the trip notes →</Link></ChannelCard><ChannelCard title="Before you buy an eSIM"><p>Check device compatibility, the destination plan, installation versus activation timing, hotspot limits and support instructions. Download the instructions while you still have reliable internet.</p><p>My own Holafly trip preparation included difficulty accessing its app and site on arrival in the UAE. I am not promising uninterrupted service everywhere.</p><p>My profile has an existing Holafly affiliate link and the code CELLAHOLAFLY. Current discount and commission terms are not confirmed here. This page does not activate a new affiliate placement.</p><Link href="/travel/disclosure" className="inline-block py-3 text-purple-200 underline">Read the disclosure →</Link></ChannelCard></div>
+  </ChannelShell>
+}
