@@ -19,7 +19,7 @@ Never add the full paid PDF, companion or private authoring master to this publi
 5. Copy the real Payhip product key and set PAYHIP_SYDNEY_GUIDE_PRODUCT_KEY. Only after delivery passes, set SYDNEY_GUIDE_CHECKOUT_READY=true and redeploy. This page is built with deployment environment values. No payment secret keys belong in the repository.
 6. Use Unlisted visibility for sales from the website. Confirm A$29 AUD at checkout. At launch remove this route's noindex override, add it to navigation and sitemap, and verify the production flow.
 
-Pocket Pizza and Dry Dock photographs are still pending. A Dry Dock source video was located, but it exceeded the transfer limit; no still was extracted. The review retains typographic artwork for both venues.
+Pocket Pizza and Dry Dock photographs have been added to the guide and companion using stills from Marcella’s own visit videos. The original source record is retained in the private master.
 
 The branch remains a review draft. Another website redesign branch exists, so reconcile it before merging.
 
