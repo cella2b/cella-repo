@@ -50,7 +50,7 @@ export default function SydneyDateNights() {
           <p className={styles.intro}>Eight evenings built around restaurants I’d send my friends to. What I’d order, where to start and the practical bits that make the night easier.</p>
           <div className={styles.priceRow}><strong>A$29</strong><span>One-off digital purchase<br />First edition{checkoutUrl ? "" : " · Coming soon"}</span></div>
           <a href={checkoutUrl || sample} className={styles.primary} target="_blank" rel="noopener noreferrer">{checkoutUrl ? "Get the guide · A$29" : "Read the free sample"} <ArrowUpRight size={18} aria-hidden="true" /></a>
-          {checkoutUrl && <p className={styles.heroNote}>Secure checkout via Payhip.<br />Your download link arrives after payment.</p>}
+          {checkoutUrl && <p className={styles.heroNote}>Secure checkout with Stripe.<br />Download your guide after payment.</p>}
           <p className={styles.heroNote}>22-page PDF + searchable companion<br />No app or subscription required.</p>
         </div>
         <div className={styles.heroVisual}>
