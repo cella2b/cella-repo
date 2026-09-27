@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/about",
     "/privacy",
+    "/projects/mirvac",
     "/projects/kings-cross",
     "/projects/google-gemini-paddys",
     "/projects/barangaroo",

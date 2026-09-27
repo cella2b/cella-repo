@@ -4,8 +4,8 @@ import { ArrowUpRight } from "lucide-react"
 import { featuredWork } from "@/lib/featured-work"
 import { workNotes } from "@/lib/work-notes"
 
-export function FlowWork() {
-  return <div className="flow-work">{featuredWork.map((project, index) => {
+export function FlowWork({ compact = false }: { compact?: boolean }) {
+  return <div className="flow-work">{(compact ? featuredWork.filter(project => ["kings-cross", "pure-milford"].includes(project.id)) : featuredWork).map((project, index) => {
     const notes = workNotes[project.id]
     const href = notes.caseStudy || project.href
     const external = href.startsWith("https://")

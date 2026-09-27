@@ -22,3 +22,10 @@ const originalVideo = Buffer.concat(await Promise.all(originalParts.map(name => 
 if (createHash("sha256").update(originalVideo).digest("hex") !== "962da7ed2fecbc175c6cf13542413b5dca8f1cde464dd330fb132608aad86119") throw new Error("Original cover film checksum mismatch")
 await writeFile(new URL("../public/video/cella-original-cover.mp4", import.meta.url), originalVideo)
 console.log(`Prepared original CELLA cover film (${originalVideo.byteLength} bytes)`)
+
+// Approved Mirvac portfolio film, optimised for on-demand playback.
+const mirvacSource = new URL("../assets/mirvac-video/", import.meta.url)
+const mirvacParts = (await readdir(mirvacSource)).filter(name => /^\d{2}\.part$/.test(name)).sort()
+const mirvacVideo = Buffer.concat(await Promise.all(mirvacParts.map(name => readFile(new URL(name, mirvacSource)))))
+if (createHash("sha256").update(mirvacVideo).digest("hex") !== "3e6cf1b53d629cd3b9a63bfc3c3cc6a41cc738b093370fd8feef24232738b928") throw new Error("Mirvac film checksum mismatch")
+await writeFile(new URL("../public/video/mirvac-shed.mp4", import.meta.url), mirvacVideo)

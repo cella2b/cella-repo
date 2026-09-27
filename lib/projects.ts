@@ -1,4 +1,5 @@
 export const projectLinks = [
+  { href: "/projects/mirvac", label: "Mirvac" },
   { href: "/projects/kings-cross", label: "Kings Cross" },
   { href: "/projects/google-gemini-paddys", label: "Google x Paddy's" },
   { href: "/projects/barangaroo", label: "Barangaroo" },
