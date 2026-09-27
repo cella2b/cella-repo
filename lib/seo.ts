@@ -7,7 +7,7 @@ export const SITE_DESCRIPTION =
 
 export const DEFAULT_SOCIAL_IMAGE = {
   url: "/share-image",
-  alt: "CELLA. Good places. Great stories. Sydney content creation and creator partnerships.",
+  alt: "CELLA. Content with personality. Strategy with purpose.",
   width: 1200,
   height: 630,
 }

@@ -44,3 +44,14 @@ The per-instance attempt limiter is a modest abuse brake, not a distributed secu
 ## Release checks
 
 Build and test on a feature branch, inspect a Vercel preview, check every route and the enquiry journey, then merge to main. Recheck the custom domain, private headers and existing kit access. Do not claim improved search rankings or Core Web Vitals without measured evidence.
+
+
+## Editorial redesign preview (September 2026)
+
+The public design uses an ivory and wine palette, Cormorant Garamond and DM Sans, inspired by Cella's current photography and Instagram typography. These are visual approximations, not a claim to match the exact Instagram font. The two primary offers are Content and Strategy; existing coaching routes and protected partner kits are retained.
+
+The original home film is restored at `public/video/cella-original-cover.mp4`, a silent, web-compatible H.264 rendition (960×540) of the original 16-second film. Original source: https://hebbkx1anhila5yf.public.blob.vercel-storage.com/copy_609EA116-4303-4201-A986-82779EE24CCC-fSh9zYmlnaJhudebiyaAnN2AZzr5d0.mov . The hero respects reduced motion and data-saving preferences and provides a pause button and poster.
+
+`/review` provides phone, tablet and desktop frame widths on preview deployments only. It returns 404 in Vercel production and is noindex.
+
+The current A$29 Sydney guide draft is integrated from `product/sydney-date-nights`. The guide and shop remain noindex while checkout and private fulfilment await connection. See `docs/sydney-date-nights-launch.md`; no paid files are exposed. The enquiry form explicitly opens an email draft; the visitor reviews and sends it in their mail app. No automated sending is claimed.

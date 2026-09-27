@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { SiteHeader } from "@/components/site-header"
-import { services } from "@/lib/services"
+import { services, supportingServices } from "@/lib/services"
 import { ServiceData } from "@/components/page-structured-data"
 import { ServiceQuestions } from "@/components/working-together"
 
@@ -25,7 +25,7 @@ export function ServiceDetailPage({
   audience,
   cta,
 }: ServiceDetailPageProps) {
-  const service = services.find(item => item.number === number)!
+  const service = [...services, ...supportingServices].find(item => item.number === number)!
   return (
     <main id="main-content" tabIndex={-1} className="cella-home min-h-screen">
       <ServiceData title={title} description={intro} path={service.href} />

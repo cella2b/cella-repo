@@ -32,3 +32,5 @@ next-env.d.ts
 access.json
 rates.json
 /public/video/cella-cover.mp4
+
+!public/video/cella-original-cover.mp4

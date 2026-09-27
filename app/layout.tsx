@@ -1,11 +1,12 @@
 import type React from "react"
 import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
-import { Oswald, Montserrat } from "next/font/google"
+import { Oswald, DM_Sans, Cormorant_Garamond } from "next/font/google"
 import { SiteAnalytics } from "@/components/site-analytics"
 import { SiteStructuredData } from "@/components/site-structured-data"
 import { DEFAULT_SOCIAL_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo"
 import "./globals.css"
+import "./editorial.css"
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -14,9 +15,10 @@ const oswald = Oswald({
   display: "swap",
 })
 
-const montserrat = Montserrat({ variable: "--font-body", subsets: ["latin"], weight: ["400", "500", "600"], display: "swap" })
+const bodyFont = DM_Sans({ variable: "--font-body", subsets: ["latin"], display: "swap" })
+const editorial = Cormorant_Garamond({ variable: "--font-editorial", subsets: ["latin"], weight: ["400", "500", "600"], style: ["normal", "italic"], display: "swap" })
 
-export const viewport: Viewport = { themeColor: "#0a0a0f", colorScheme: "dark" }
+export const viewport: Viewport = { themeColor: "#f7f4ed", colorScheme: "light" }
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -60,7 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-AU">
-      <body className={`${oswald.variable} ${montserrat.variable}`}>
+      <body className={`${oswald.variable} ${bodyFont.variable} ${editorial.variable}`}>
         <SiteStructuredData />
         {children}
         <Suspense fallback={null}>

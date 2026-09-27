@@ -4,7 +4,7 @@ export default function SocialStrategyPage() {
   return (
     <ServiceDetailPage
       number="02"
-      title="Social Strategy & Management"
+      title="Content strategy"
       intro="A clear plan for what to say, where to say it and how to keep showing up. Strategy and ongoing social support for your business."
       deliverables={[
         {

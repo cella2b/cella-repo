@@ -20,7 +20,7 @@ export default function ServicesPage() {
               Services
             </h1>
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              Content for your channels. Stories for your audience. Practical support for your next chapter.
+              Content that captures your brand. Strategy that gives it direction.
               Made in Sydney, for hospitality, travel and lifestyle businesses near and far.
             </p>
           </div>
@@ -50,7 +50,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="cella-section cella-partnership-note" aria-label="Creator partnerships">
-        <div><p className="cella-eyebrow">Your brand, through the CELLA lens</p><h2>CREATOR PARTNERSHIPS.</h2><p className="cella-section-description mt-6">For campaigns published through @cella.channel, explore food, travel and experience-led collaborations.</p></div>
+        <div><p className="cella-eyebrow">Your brand, through the CELLA lens</p><h2>Creator partnerships.</h2><p className="cella-section-description mt-6">For campaigns published through @cella.channel, explore food, travel and experience-led collaborations.</p></div>
         <Link href="/services/content-creation#partnerships" className="cella-button">Explore partnerships <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
 

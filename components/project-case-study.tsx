@@ -41,7 +41,7 @@ export function ProjectCaseStudy({
   impact,
 }: ProjectCaseStudyProps) {
   return (
-    <main id="main-content" tabIndex={-1} className="min-h-screen bg-background text-foreground">
+    <main id="main-content" tabIndex={-1} className="cella-home min-h-screen bg-background text-foreground">
       <BreadcrumbData items={[{ name: "Work", path: "/portfolio" }, { name: title, path: activePath }]} />
       <a className="cella-skip-link" href="#project-story">Skip to project</a>
       <nav aria-label="Project navigation" className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 p-6 backdrop-blur-lg md:p-8">

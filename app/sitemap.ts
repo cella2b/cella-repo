@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/coaching",
     "/portfolio",
     "/contact",
+    "/about",
+    "/privacy",
     "/projects/kings-cross",
     "/projects/google-gemini-paddys",
     "/projects/barangaroo",
