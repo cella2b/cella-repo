@@ -55,3 +55,5 @@ The original home film is restored at `public/video/cella-original-cover.mp4`, a
 `/review` provides phone, tablet and desktop frame widths on preview deployments only. It returns 404 in Vercel production and is noindex.
 
 The current A$29 Sydney guide draft is integrated from `product/sydney-date-nights`. The guide and shop remain noindex while checkout and private fulfilment await connection. See `docs/sydney-date-nights-launch.md`; no paid files are exposed. The enquiry form explicitly opens an email draft; the visitor reviews and sends it in their mail app. No automated sending is claimed.
+
+The original film is reconstructed at build time from `assets/original-video/*.part`. The build verifies its SHA-256 checksum before writing the browser MP4. These source files are outside the public directory.

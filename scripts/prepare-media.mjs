@@ -13,3 +13,12 @@ if (createHash("sha256").update(video).digest("hex") !== "4292532b429fe79cc8be92
 await mkdir(new URL("../public/video/", import.meta.url), { recursive: true })
 await writeFile(new URL("../public/video/cella-cover.mp4", import.meta.url), video)
 console.log(`Prepared CELLA cover film (${video.byteLength} bytes)`)
+
+// Restore the original homepage film from binary source pieces.
+const originalSource = new URL("../assets/original-video/", import.meta.url)
+const originalParts = (await readdir(originalSource)).filter(name => /^\d{2}\.part$/.test(name)).sort()
+if (originalParts.length !== 12) throw new Error("Original cover film source is incomplete")
+const originalVideo = Buffer.concat(await Promise.all(originalParts.map(name => readFile(new URL(name, originalSource)))))
+if (createHash("sha256").update(originalVideo).digest("hex") !== "962da7ed2fecbc175c6cf13542413b5dca8f1cde464dd330fb132608aad86119") throw new Error("Original cover film checksum mismatch")
+await writeFile(new URL("../public/video/cella-original-cover.mp4", import.meta.url), originalVideo)
+console.log(`Prepared original CELLA cover film (${originalVideo.byteLength} bytes)`)
