@@ -29,7 +29,7 @@ export function MoreWork() {
 
 export function CampaignResults() {
   return <section id="results" className="cella-section cella-results" aria-labelledby="results-heading">
-    <div className="cella-results-intro"><div><p className="cella-eyebrow">A story people shared</p><h2 id="results-heading">GOOD LUCK.<br />GREAT FOOD.</h2></div><div><p>A dining story for Merivale’s Good Luck Restaurant Lounge, sharing its 2-for-1 crab offer and the experience around the table.</p><p className="cella-results-caption">Instagram insights supplied December 2024. Results for this campaign at that time.</p></div></div>
+    <div className="cella-results-intro"><div><p className="cella-eyebrow">A story people shared</p><h2 id="results-heading">Good Luck.<br /><em>Great food.</em></h2></div><div><p>A dining story for Merivale’s Good Luck Restaurant Lounge, sharing its 2-for-1 crab offer and the experience around the table.</p><p className="cella-results-caption">Instagram insights supplied December 2024. Results for this campaign at that time.</p></div></div>
     <dl className="cella-metrics"><div><dt>Instagram accounts reached</dt><dd>13,903</dd></div><div><dt>Shares</dt><dd>330</dd></div><div><dt>Saves</dt><dd>181</dd></div></dl>
   </section>
 }

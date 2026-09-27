@@ -4,9 +4,12 @@ import { useEffect, useRef, useState, type FormEvent } from "react"
 import { ArrowUpRight, Check, Copy } from "lucide-react"
 import { track } from "@vercel/analytics"
 import { enquiryServices as services } from "@/lib/services"
+import { creativeDirections } from "@/lib/creative-directions"
 
 export function EnquiryForm() {
   const [selected, setSelected] = useState("")
+  const [message, setMessage] = useState("")
+  const [suggestedBrief, setSuggestedBrief] = useState(false)
   const [draft, setDraft] = useState("")
   const [mailto, setMailto] = useState("")
   const [copyStatus, setCopyStatus] = useState("")
@@ -14,9 +17,12 @@ export function EnquiryForm() {
   const draftRef = useRef<HTMLTextAreaElement>(null)
 
   useEffect(() => {
-    const query = new URLSearchParams(window.location.search).get("service")
+    const params = new URLSearchParams(window.location.search)
+    const query = params.get("service")
     const requested = query === "Social Strategy" ? "Social Strategy & Management" : query
     if (requested && services.includes(requested)) setSelected(requested)
+    const direction = creativeDirections.find(item => item.id === params.get("goal"))
+    if (direction) { setMessage(direction.brief); setSuggestedBrief(true) }
   }, [])
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -69,7 +75,7 @@ export function EnquiryForm() {
                 <div><label className="cella-field-label" htmlFor="timing">Project timing <span>Optional</span></label><input className="cella-field" id="timing" name="timing" placeholder="A date, month or flexible" maxLength={100} /></div>
                 <div><label className="cella-field-label" htmlFor="budget">Budget <span>Optional</span></label><input className="cella-field" id="budget" name="budget" placeholder="Your budget and currency" maxLength={100} /></div>
               </div>
-              <div><label className="cella-field-label" htmlFor="message">A little about your project</label><textarea className="cella-field min-h-40" id="message" name="message" rows={5} required maxLength={2500} placeholder="What would you like to create? Share your business, the experience and your goals." /></div>
+              <div><label className="cella-field-label" htmlFor="message">A little about your project</label>{suggestedBrief && <p id="brief-note" className="enquiry-brief-note">Your chosen direction is below. Make it your own.</p>}<textarea className="cella-field min-h-40" id="message" name="message" rows={5} required maxLength={2500} value={message} onChange={event => setMessage(event.target.value)} aria-describedby={suggestedBrief ? "brief-note" : undefined} placeholder="What would you like to create? Share your business, the experience and your goals." /></div>
               {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
               <div><button type="submit" className="cella-button w-full sm:w-auto">Open email draft <ArrowUpRight size={19} /></button><p className="mt-4 text-sm leading-6 text-[#716660]">This opens a draft in your email app. Review and send it there to complete your enquiry.</p></div>
             </form>
