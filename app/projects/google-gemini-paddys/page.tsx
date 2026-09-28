@@ -26,7 +26,7 @@ export default function GoogleGeminiPaddysPage() {
         {
           title: "The Experience",
           paragraphs: [
-            "A morning at Paddy's Markets Flemington with Google Australia, exploring how Google Lens and Gemini can help with finding ingredients and getting ideas for what to cook. I joined the invited creator event and shared the experience through my own food-focused perspective.",
+            "A morning at Paddy's Markets Flemington with Google Australia, exploring how Google Lens and Gemini can help with finding ingredients and getting ideas for what to cook. Marcella joined the invited creator event and shared the experience through @cella.channel’s food-focused perspective.",
           ],
         },
         {

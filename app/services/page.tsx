@@ -20,8 +20,8 @@ export default function ServicesPage() {
               Services
             </h1>
             <p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              Content that captures your brand. Strategy that gives it direction.
-              Made in Sydney, for hospitality, travel and lifestyle businesses near and far.
+              Content creation and creative strategy shaped around your business.
+              From the first brief to an ongoing brand partnership, we bring a clear idea to every campaign.
             </p>
           </div>
         </div>
@@ -50,7 +50,7 @@ export default function ServicesPage() {
       </section>
 
       <section className="cella-section cella-partnership-note" aria-label="Creator partnerships">
-        <div><p className="cella-eyebrow">Your brand, through the CELLA lens</p><h2>Creator partnerships.</h2><p className="cella-section-description mt-6">For campaigns published through @cella.channel, explore food, travel and experience-led collaborations.</p></div>
+        <div><p className="cella-eyebrow">Your brand, through the CELLA lens</p><h2>Brand partnerships.</h2><p className="cella-section-description mt-6">Campaigns and ongoing collaborations published through @cella.channel, built around your brand and the story you want to share.</p></div>
         <Link href="/services/content-creation#partnerships" className="cella-button">Explore partnerships <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>
 
@@ -62,19 +62,19 @@ export default function ServicesPage() {
           <div>
             <p className="mb-5 text-xs uppercase tracking-[0.3em] text-purple-300">Not sure where to start?</p>
             <h2 className="text-4xl font-bold uppercase leading-[0.95] tracking-tight md:text-6xl">
-              Tell me what you are building.
+              Tell us what you want to create.
             </h2>
           </div>
           <div className="md:justify-self-end">
             <p className="mb-8 max-w-lg text-lg leading-relaxed text-muted-foreground">
-              Share your goals, audience and what is currently getting in the way. I will recommend the clearest next
-              step for your brand.
+              Share your goals, audience and brief. We’ll shape a detailed proposal around the content,
+              strategy and support your brand needs.
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-3 border border-foreground bg-foreground px-7 py-4 text-xs font-medium uppercase tracking-[0.2em] text-background transition-colors hover:bg-card hover:text-foreground"
             >
-              Start a conversation
+              Enquire now
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

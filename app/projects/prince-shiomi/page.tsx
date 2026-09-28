@@ -26,13 +26,13 @@ export default function PrinceShiomiPage() {
         {
           title: "A Traveller's Perspective",
           paragraphs: [
-            "My travel content looks at places through the details that shape a visit: where to stay, what to eat and how a place feels. Japan is part of that wider food, travel and experience portfolio.",
+            "CELLA’s travel content looks at places through the details that shape a visit: where to stay, what to eat and how a place feels. Japan is part of that wider food, travel and experience portfolio.",
           ],
         },
         {
           title: "For Hotels & Destinations",
           paragraphs: [
-            "For a hotel or destination story, I start with the experience you want to share and the people you want to reach. We can discuss content for your own channels, or a creator partnership shared with my audience.",
+            "For a hotel or destination story, CELLA starts with the experience you want to share and the people you want to reach. The brief can cover content for your own channels or a brand partnership published through @cella.channel.",
           ],
         },
       ]}

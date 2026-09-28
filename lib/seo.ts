@@ -3,11 +3,11 @@ import type { Metadata } from "next"
 export const SITE_URL = "https://www.heycella.com"
 export const SITE_NAME = "CELLA"
 export const SITE_DESCRIPTION =
-  "Social-first content and strategy for hospitality, travel, lifestyle and experience-led brands, created by Marcella in Sydney."
+  "CELLA is a Sydney creative studio partnering with businesses and brands on content creation, creative strategy and brand campaigns."
 
 export const DEFAULT_SOCIAL_IMAGE = {
   url: "/share-image",
-  alt: "CELLA. Content with personality. Strategy with purpose.",
+  alt: "CELLA creative studio",
   width: 1200,
   height: 630,
 }

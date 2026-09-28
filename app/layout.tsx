@@ -22,19 +22,19 @@ export const viewport: Viewport = { themeColor: "#f7f4ed", colorScheme: "light" 
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "CELLA | Sydney Content Creator",
+  title: "CELLA | Content & Creative Strategy Studio",
   description: SITE_DESCRIPTION,
   openGraph: {
     type: "website",
     locale: "en_AU",
     siteName: SITE_NAME,
-    title: "CELLA | Sydney Content Creator",
+    title: "CELLA | Content & Creative Strategy Studio",
     description: SITE_DESCRIPTION,
     images: [DEFAULT_SOCIAL_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CELLA | Sydney Content Creator",
+    title: "CELLA | Content & Creative Strategy Studio",
     description: SITE_DESCRIPTION,
     images: [DEFAULT_SOCIAL_IMAGE],
   },

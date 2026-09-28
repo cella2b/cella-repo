@@ -106,3 +106,51 @@ html{scroll-behavior:auto}
 @media(max-width:750px){.brand-story-choices{flex-direction:column;gap:0;border:0;margin:15px 0 35px}.brand-story-choices>button{font-size:2rem;padding:15px 0;min-height:65px;border-bottom:1px solid #d7cec4}.brand-story-stage{grid-template-columns:1fr;gap:40px}.cella-home .brand-story-copy h3{font-size:2.9rem}.brand-story-copy>p:not(.cella-eyebrow){font-size:.86rem}.brand-proof{font-size:.61rem;gap:12px 15px}.brand-story-film{justify-self:center;max-width:380px}.brand-film-cover{min-height:490px}.brand-story-film iframe{height:620px}.brand-more{gap:12px;margin-top:35px;flex-direction:column}.brand-more>a{min-height:44px}.flow-follow-on{margin-top:65px}.brand-case-facts{grid-template-columns:1fr;gap:25px;margin-bottom:45px}.brand-case-facts dd{font-size:2rem}.brand-case-notes{grid-template-columns:1fr;gap:35px;margin-bottom:55px}.brand-case-posts{grid-template-columns:1fr;gap:30px}.brand-case-intro{font-size:.9rem}}
 
 .brand-story-film>video{display:block;width:100%;aspect-ratio:9/16;object-fit:contain;background:#211b19}.mirvac-native-film{display:flex;align-items:center;gap:50px;margin:35px 0 60px}.mirvac-native-film video{width:min(100%,360px);aspect-ratio:9/16;background:#211b19}.mirvac-native-film p{max-width:330px;font:italic 2rem/1.3 var(--font-editorial),Georgia,serif;color:#682c37}@media(max-width:750px){.mirvac-native-film{flex-direction:column;align-items:start;gap:25px}.mirvac-native-film p{font-size:1.8rem}}
+
+/* Studio direction: strong typography, a clear enquiry path and a film-led opening. */
+.cella-home{--foreground:#161616;--card-foreground:#161616;--cella-purple:#791d35;color:#161616}
+.cella-home h1,.cella-home h2,.cella-home h3{font-family:var(--font-body),Arial,Helvetica,sans-serif;font-weight:700;letter-spacing:-.045em}
+.cella-home h1 em,.cella-home h2 em,.cella-home h3 em{font-style:normal;font-weight:inherit}
+.cella-home h2{font-size:clamp(2.4rem,4.5vw,4.8rem)}
+.cella-home .studio-cover{min-height:760px;min-height:max(760px,100svh);height:auto;display:flex;align-items:flex-end;padding:150px 6% 100px;clip-path:none}
+.cella-home .studio-cover .cella-cover-copy{position:relative;inset:auto;max-width:1100px;width:100%;text-align:left;margin:0}
+.cella-home .studio-cover .cella-cover-copy h1{font-size:clamp(2.6rem,6.1vw,6.5rem);line-height:1.02;font-weight:700;letter-spacing:-.055em;max-width:1100px}
+.cella-home .studio-cover .cella-cover-copy>p:not(.cella-eyebrow){font-size:1rem;line-height:1.65;max-width:570px;margin:25px 0 0}
+.cella-home .studio-cover .cella-cover-copy>.cella-eyebrow{font-size:.7rem;letter-spacing:.14em;margin-bottom:24px}
+.cella-home .studio-cover .cella-actions{justify-content:flex-start;gap:20px 32px;margin-top:28px}
+.cella-home .studio-cover .cella-text-link{color:#fff;min-height:48px}
+.cella-home .studio-cover .cella-cover-shade{background:linear-gradient(90deg,#101010bf 0%,#10101085 53%,#10101015 100%),linear-gradient(0deg,#10101066,transparent 60%)}
+.cella-fluid .cella-cover-toggle{min-width:44px;min-height:44px}
+.cella-home .editorial-intro{padding-top:80px;padding-bottom:80px}
+.cella-home .editorial-intro h2{font-size:clamp(2.4rem,4.2vw,4.5rem)}
+.cella-home .editorial-intro>div>p{font-size:1rem}
+.cella-home #work{padding-top:70px;padding-bottom:90px}
+.cella-home #work h2{font-size:clamp(2.5rem,5.5vw,5.8rem)}
+.cella-home #work>.cella-section-heading{margin-bottom:48px}
+.cella-home .studio-services{background:#161616;border-radius:0;padding-top:90px;padding-bottom:90px}
+.cella-home .studio-services .cella-section-description{max-width:430px;color:#ddd4d0;font-size:1rem}
+.cella-home .studio-services .craft-service-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin-top:48px!important}
+.cella-home .studio-services .craft-service-links>a{border-top:1px solid #fff5;padding-top:25px;align-items:flex-start}
+.cella-home .studio-services .craft-service-links h3{font-size:clamp(1.7rem,2.4vw,2.6rem);margin-bottom:18px}
+.cella-home .studio-services .craft-service-links p{font-size:1rem;color:#ddd4d0}
+.cella-home .studio-services .cella-eyebrow{color:#d4b7bf}
+.cella-home .editorial-cta{background:#791d35;color:#f7f4ed}
+.cella-home .editorial-cta .cella-eyebrow{color:#f1d9e0}
+.cella-home .editorial-cta .cella-button{background:#f7f4ed;color:#161616}
+.studio-cta-copy{max-width:500px;margin:25px auto 0;line-height:1.7;font-size:1rem}
+.cella-home .brand-story-copy h3{font-size:clamp(2rem,3.5vw,3.8rem)}
+.cella-home .brand-story-copy>p:not(.cella-eyebrow),.cella-home .flow-details>p{font-size:1rem}
+.cella-home :focus-visible,.editorial-header :focus-visible,.cella-footer :focus-visible{outline:3px solid #a12a49;outline-offset:5px}
+.cella-home .studio-cover :focus-visible,.cella-home .studio-services :focus-visible,.cella-home .editorial-cta :focus-visible,.editorial-header-cinematic:not(.has-scrolled) :focus-visible{outline-color:#fff}
+@media(max-width:750px){
+  .cella-home .studio-cover{min-height:max(700px,100svh);padding:140px 6% 95px}
+  .cella-home .studio-cover .cella-cover-copy h1{font-size:clamp(1.85rem,7.9vw,3.7rem)}
+  .cella-home .studio-cover .cella-cover-copy>p:not(.cella-eyebrow){font-size:1rem;max-width:440px}
+  .cella-home .studio-cover .cella-cover-copy>.cella-eyebrow{font-size:.62rem;letter-spacing:.1em}
+  .cella-home .editorial-intro{padding-block:55px}
+  .cella-home .studio-services{padding-block:65px}
+  .cella-home .studio-services .craft-service-links{grid-template-columns:1fr;gap:30px}
+  .cella-home .studio-services .craft-service-links h3{font-size:2rem}
+  .cella-home #work{padding-block:55px}
+}
+@media(prefers-reduced-motion:reduce){.cella-fluid .cella-cover-media{transform:none}}

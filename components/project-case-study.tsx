@@ -120,7 +120,7 @@ export function ProjectCaseStudy({
           {deliverables.length > 0 ? (
           <section className="mb-16 border-b border-border/30 pb-16">
             <div className="grid gap-8 md:grid-cols-[0.55fr_1.45fr]">
-              <h2 className="text-2xl font-bold uppercase tracking-wide text-foreground md:text-3xl">What I delivered</h2>
+              <h2 className="text-2xl font-bold uppercase tracking-wide text-foreground md:text-3xl">The deliverables</h2>
               <ul className="grid gap-6 sm:grid-cols-2">
                 {deliverables.map((item) => (
                   <li key={item} className="flex items-start gap-4">

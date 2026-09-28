@@ -26,13 +26,13 @@ export default function BarangarooPage() {
         {
           title: "Overview",
           paragraphs: [
-            "Food, live music and a reason to step outside. My Barangaroo work explores the waterfront through dining, events and the experiences people can make part of their day.",
+            "Food, live music and a reason to step outside. CELLA’s Barangaroo work explores the waterfront through dining, events and the experiences people can make part of their day.",
           ],
         },
         {
           title: "Spring in the Streets",
           paragraphs: [
-            "Created for Placemaking NSW through Keep Left, this September 2025 campaign brought Spring in the Streets to Instagram, TikTok and Stories. I captured the event, food offerings, live music and street activities, then developed the content through client review before posting.",
+            "Created for Placemaking NSW through Keep Left, this September 2025 campaign brought Spring in the Streets to Instagram, TikTok and Stories. CELLA captured the event, food offerings, live music and street activities, then developed the content through client review before posting.",
             "The final video was also supplied for the client's own advertising use. The published work below shows the campaign as it appeared on Instagram.",
           ],
         },

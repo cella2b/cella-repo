@@ -3,7 +3,7 @@ import { ProjectCaseStudy } from "@/components/project-case-study"
 
 export const metadata = createPageMetadata({
   title: "Pure Milford & South Island Travel | CELLA",
-  description: "A hosted Pure Milford travel partnership and independent TranzAlpine travel storytelling from New Zealand's South Island.",
+  description: "A hosted Pure Milford travel partnership and personal TranzAlpine travel content from New Zealand's South Island.",
   path: "/projects/milford-sound",
   image: "/images/projects/milford-sound.jpg",
   imageAlt: "Milford Sound, New Zealand",
@@ -26,7 +26,7 @@ export default function MilfordSoundPage() {
         {
           title: "Pure Milford",
           paragraphs: [
-            "A hosted partnership following Pure Milford's coach and cruise journey, from the road through Fiordland to the scenery and wildlife of Milford Sound. I captured the experience from a traveller's perspective and delivered the video to the operator in June 2024.",
+            "A hosted partnership following Pure Milford's coach and cruise journey, from the road through Fiordland to the scenery and wildlife of Milford Sound. CELLA captured the experience from a traveller's perspective and delivered the video to the operator in June 2024.",
           ],
         },
         {
@@ -36,9 +36,9 @@ export default function MilfordSoundPage() {
           ],
         },
         {
-          title: "Independent TranzAlpine Story",
+          title: "Personal TranzAlpine Travel Content",
           paragraphs: [
-            "The TranzAlpine Reel is an independent travel story from the same South Island trip. It sits alongside the Pure Milford partnership as a separate example of my personal travel content.",
+            "The TranzAlpine Reel is personal travel content from the same South Island trip, not a commissioned brand partnership. It sits alongside the Pure Milford partnership as a separate example of Marcella’s travel storytelling.",
           ],
         },
       ]}
@@ -49,7 +49,7 @@ export default function MilfordSoundPage() {
       ]}
       videos={[
         { src: "https://www.instagram.com/reel/C_FfYv1qBgr/embed/captioned", title: "Pure Milford hosted travel partnership" },
-        { src: "https://www.instagram.com/reel/C9qQOO8K51S/embed/captioned", title: "Independent TranzAlpine travel story" },
+        { src: "https://www.instagram.com/reel/C9qQOO8K51S/embed/captioned", title: "Personal TranzAlpine travel content" },
       ]}
     />
   )

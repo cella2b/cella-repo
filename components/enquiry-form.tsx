@@ -69,7 +69,7 @@ export function EnquiryForm() {
                 <div><label className="cella-field-label" htmlFor="brand">Business / brand</label><input className="cella-field" id="brand" name="brand" autoComplete="organization" required maxLength={150} /></div>
               </div>
               <div><label className="cella-field-label" htmlFor="email">Email address</label><input className="cella-field" type="email" id="email" name="email" autoComplete="email" required maxLength={254} /></div>
-              <div><label className="cella-field-label" htmlFor="service">What can I help with?</label><select className="cella-field" id="service" name="service" value={selected} onChange={event => setSelected(event.target.value)}><option value="">Let’s discuss the options</option>{services.map(service => <option key={service}>{service}</option>)}</select></div>
+              <div><label className="cella-field-label" htmlFor="service">How can we help?</label><select className="cella-field" id="service" name="service" value={selected} onChange={event => setSelected(event.target.value)}><option value="">Let’s discuss the options</option>{services.map(service => <option key={service}>{service}</option>)}</select></div>
               <div><label className="cella-field-label" htmlFor="location">Where is your business? <span>Optional</span></label><input className="cella-field" id="location" name="location" placeholder="City, country" maxLength={150} /></div>
               <div className="grid gap-6 sm:grid-cols-2">
                 <div><label className="cella-field-label" htmlFor="timing">Project timing <span>Optional</span></label><input className="cella-field" id="timing" name="timing" placeholder="A date, month or flexible" maxLength={100} /></div>

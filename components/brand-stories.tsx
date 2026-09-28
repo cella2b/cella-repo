@@ -16,7 +16,7 @@ export function BrandStories() {
       <div className="brand-story-copy" key={story.id}>
         <p className="cella-eyebrow">{story.type}</p><h3 className="craft-enter">{story.headline}</h3><p>{story.description}</p>
         <ul className="brand-proof" aria-label="Project scope">{story.proof.map(item=><li key={item}>{item}</li>)}</ul>
-        <details className="flow-details"><summary>My role <span aria-hidden="true">+</span></summary><p>{story.role}</p></details>
+        <details className="flow-details"><summary>The role <span aria-hidden="true">+</span></summary><p>{story.role}</p></details>
         <details className="flow-details"><summary>The thinking <span aria-hidden="true">+</span></summary><p>{story.thought}</p></details>
         {story.caseStudy && <Link href={story.caseStudy} className="cella-text-link">Explore the full story <ArrowUpRight size={17} /></Link>}
       </div>

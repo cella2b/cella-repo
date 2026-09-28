@@ -47,7 +47,7 @@ export function ServiceDetailPage({
                 {title}
               </h1>
             </div>
-            <div><p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">{intro}</p><Link href={`/contact?service=${encodeURIComponent(service.enquiry)}`} className="cella-button mt-7">Discuss your project <ArrowRight size={18} aria-hidden="true" /></Link></div>
+            <div><p className="max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">{intro}</p><Link href={`/contact?service=${encodeURIComponent(service.enquiry)}`} className="cella-button mt-7">Enquire now <ArrowRight size={18} aria-hidden="true" /></Link></div>
           </div>
         </div>
       </section>
@@ -86,7 +86,7 @@ export function ServiceDetailPage({
       </section>
 
       {number === "01" && <section id="partnerships" className="cella-section cella-partnership-note">
-        <div><p className="cella-eyebrow">Publishing through @cella.channel</p><h2>LET’S TELL<br />YOUR STORY.</h2><p className="cella-section-description mt-6">Creator partnerships introduce your food, destination or experience to the CELLA community. Instagram Reels, TikTok and Stories are scoped to your campaign, separately from content for your own channels.</p></div>
+        <div><p className="cella-eyebrow">Publishing through @cella.channel</p><h2>LET’S TELL<br />YOUR STORY.</h2><p className="cella-section-description mt-6">Brand partnerships bring your product, destination or experience into the stories shared through @cella.channel. Instagram Reels, TikTok and Stories are scoped to your campaign, separately from content for your own channels.</p></div>
         <Link href="/contact?service=Brand%20Partnership" className="cella-button">Discuss a partnership <ArrowRight size={18} aria-hidden="true" /></Link>
       </section>}
 
@@ -102,7 +102,7 @@ export function ServiceDetailPage({
             href={`/contact?service=${encodeURIComponent(service.enquiry)}`}
             className="inline-flex shrink-0 items-center gap-3 border border-background bg-background px-7 py-4 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-colors hover:bg-foreground hover:text-background"
           >
-            Let&apos;s Talk
+            Enquire now
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
