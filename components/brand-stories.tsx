@@ -1,6 +1,7 @@
 "use client"
 
-import { useId, useState } from "react"
+import { useState, type PointerEvent } from "react"
+import * as Accordion from "@radix-ui/react-accordion"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, Play, Plus } from "lucide-react"
@@ -36,17 +37,48 @@ function ProjectMedia({ project }: { project: PortfolioProject }) {
   return null
 }
 
-function ProjectDropdown({ project, index, group }: { project: PortfolioProject; index: number; group: string }) {
-  const [open, setOpen] = useState(false)
+const previewArtwork: Record<string, { src: string; logo?: boolean }> = {
+  mirvac: { src: "/images/projects/mirvac-shed.jpg" },
+  kitchenaid: { src: "/images/brands/kitchenaid-logo.png", logo: true },
+  placemaking: { src: "/images/projects/barangaroo-house.jpg" },
+  merivale: { src: "/images/brands/merivale-logo.png", logo: true },
+  google: { src: "/images/projects/paddys-markets.jpg" },
+}
+
+function movePreview(event: PointerEvent<HTMLButtonElement>) {
+  if (event.pointerType !== "mouse" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+  const button = event.currentTarget
+  const bounds = button.getBoundingClientRect()
+  const x = Math.max(115, Math.min(bounds.width - 115, event.clientX - bounds.left + 100))
+  const y = Math.max(160, Math.min(window.innerHeight - 160, event.clientY)) - bounds.top
+  button.style.setProperty("--preview-x", `${x}px`)
+  button.style.setProperty("--preview-y", `${y}px`)
+  button.style.setProperty("--preview-turn", `${((event.clientX - bounds.left) / bounds.width - .5) * 10}deg`)
+}
+
+function ProjectDropdown({ project, index }: { project: PortfolioProject; index: number }) {
+  const artwork = previewArtwork[project.id] ?? (project.image ? { src: project.image.src, logo: false } : undefined)
   const hasMedia = Boolean(project.video || project.posts?.length || project.image)
   const links = [...(project.posts ?? []), ...(project.links ?? [])]
-  return <details className="project-dropdown" name={group} id={`work-${project.id}`} onToggle={event => setOpen(event.currentTarget.open)}>
-    <summary className="project-dropdown-summary">
+  return <Accordion.Item className="project-dropdown" value={project.id} id={`work-${project.id}`}>
+    <Accordion.Header className="project-dropdown-heading">
+    <Accordion.Trigger className="project-dropdown-summary" onPointerMove={movePreview} onFocus={event => {
+      event.currentTarget.style.removeProperty("--preview-x")
+      event.currentTarget.style.removeProperty("--preview-y")
+      event.currentTarget.style.removeProperty("--preview-turn")
+    }}>
+      <span className={`project-hover-preview${artwork?.logo ? " is-logo" : ""}`} aria-hidden="true">
+        <span className="project-preview-label">CELLA / SELECTED WORK</span>
+        {artwork ? <Image src={artwork.src} alt="" width={230} height={240} sizes="230px" /> : <span className="project-preview-title">{project.brand}</span>}
+        <span className="project-preview-caption">{project.headline}<ArrowUpRight size={15} /></span>
+      </span>
       <span className="project-dropdown-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-      <h3>{project.brand}</h3>
+      <span className="project-dropdown-brand">{project.brand}</span>
       <span className="project-dropdown-category">{project.category}</span>
       <span className="project-dropdown-toggle" aria-hidden="true"><Plus size={22} /></span>
-    </summary>
+    </Accordion.Trigger>
+    </Accordion.Header>
+    <Accordion.Content className="project-folder">
     <div className={`project-dropdown-body${hasMedia ? " has-media" : ""}`}>
       <div className="project-dropdown-copy">
         <h4>{project.headline}</h4>
@@ -63,15 +95,18 @@ function ProjectDropdown({ project, index, group }: { project: PortfolioProject;
           {links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="cella-text-link">{link.label} <ArrowUpRight size={16} aria-hidden="true" /></a>)}
         </div> : null}
       </div>
-      {open && hasMedia ? <ProjectMedia project={project} /> : null}
+      {hasMedia ? <ProjectMedia project={project} /> : null}
     </div>
-  </details>
+    </Accordion.Content>
+  </Accordion.Item>
 }
 
 export function BrandStories() {
-  const group = useId()
+  const [active, setActive] = useState("")
   return <div className="project-dropdowns">
     <p className="project-dropdown-hint">Explore a brand to see the work.</p>
-    {portfolioProjects.map((project, index) => <ProjectDropdown key={project.id} project={project} index={index} group={group} />)}
+    <Accordion.Root type="single" collapsible value={active} onValueChange={setActive}>
+    {portfolioProjects.map((project, index) => <ProjectDropdown key={project.id} project={project} index={index} />)}
+    </Accordion.Root>
   </div>
 }
