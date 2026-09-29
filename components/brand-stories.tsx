@@ -1,30 +1,77 @@
 "use client"
 
 import { useId, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight, Play } from "lucide-react"
-import { brandStories } from "@/lib/brand-stories"
+import { ArrowUpRight, Play, Plus } from "lucide-react"
+import { portfolioProjects, type PortfolioProject } from "@/lib/portfolio-projects"
+
+function ProjectMedia({ project }: { project: PortfolioProject }) {
+  const [loaded, setLoaded] = useState(false)
+  if (project.video) {
+    return <figure className="project-dropdown-film">
+      <video controls playsInline preload="none" poster={project.video.poster} aria-label={project.video.title}>
+        <source src={project.video.src} type="video/mp4" />
+      </video>
+      <figcaption>{project.video.title}</figcaption>
+    </figure>
+  }
+  if (project.posts?.length) {
+    return <div className="project-dropdown-film">
+      {loaded ? <iframe src={`${project.posts[0].href}embed/`} title={`${project.brand}: published content`} allow="encrypted-media; fullscreen" /> :
+        <button className="brand-film-cover" type="button" onClick={() => setLoaded(true)} aria-label={`Play ${project.brand} content`}>
+          <span className="cella-eyebrow">Watch the work</span>
+          <span className="brand-film-name">{project.brand}</span>
+          <span className="brand-film-play"><Play size={27} aria-hidden="true" /></span>
+          <span>Play this story</span>
+          <small>Loads the original Instagram post</small>
+        </button>}
+    </div>
+  }
+  if (project.image) {
+    return <div className="project-dropdown-image">
+      <Image src={project.image.src} alt={project.image.alt} width={900} height={900} sizes="(max-width: 750px) 88vw, 36vw" />
+    </div>
+  }
+  return null
+}
+
+function ProjectDropdown({ project, index, group }: { project: PortfolioProject; index: number; group: string }) {
+  const [open, setOpen] = useState(false)
+  const hasMedia = Boolean(project.video || project.posts?.length || project.image)
+  const links = [...(project.posts ?? []), ...(project.links ?? [])]
+  return <details className="project-dropdown" name={group} id={`work-${project.id}`} onToggle={event => setOpen(event.currentTarget.open)}>
+    <summary className="project-dropdown-summary">
+      <span className="project-dropdown-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+      <h3>{project.brand}</h3>
+      <span className="project-dropdown-category">{project.category}</span>
+      <span className="project-dropdown-toggle" aria-hidden="true"><Plus size={22} /></span>
+    </summary>
+    <div className={`project-dropdown-body${hasMedia ? " has-media" : ""}`}>
+      <div className="project-dropdown-copy">
+        <h4>{project.headline}</h4>
+        <p>{project.description}</p>
+        {project.scope?.length ? <ul className="brand-proof" aria-label="Project scope">{project.scope.map(item => <li key={item}>{item}</li>)}</ul> : null}
+        {project.role ? <div className="project-dropdown-note"><h5>CELLA’s role</h5><p>{project.role}</p></div> : null}
+        {project.thought ? <div className="project-dropdown-note"><h5>The thinking</h5><p>{project.thought}</p></div> : null}
+        {project.results ? <div className="project-dropdown-results">
+          <dl>{project.results.metrics.map(metric => <div key={metric.label}><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}</dl>
+          <p>{project.results.caption}</p>
+        </div> : null}
+        {project.caseStudy || links.length ? <div className="project-dropdown-links">
+          {project.caseStudy ? <Link href={project.caseStudy} className="cella-text-link">Explore the full project <ArrowUpRight size={17} aria-hidden="true" /></Link> : null}
+          {links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="cella-text-link">{link.label} <ArrowUpRight size={16} aria-hidden="true" /></a>)}
+        </div> : null}
+      </div>
+      {open && hasMedia ? <ProjectMedia project={project} /> : null}
+    </div>
+  </details>
+}
 
 export function BrandStories() {
-  const [selected, setSelected] = useState(0)
-  const [loaded, setLoaded] = useState(false)
-  const id = useId()
-  const story = brandStories[selected]
-  return <div className="brand-stories">
-    <div className="brand-story-choices" role="group" aria-label="Choose a brand story">{brandStories.map((item,index)=><button type="button" key={item.id} aria-pressed={selected===index} aria-controls={`${id}-story`} onClick={()=>{setSelected(index);setLoaded(false)}}><span>0{index+1}</span>{item.brand}<ArrowUpRight size={18} /></button>)}</div>
-    <div className="brand-story-stage" id={`${id}-story`}>
-      <div className="brand-story-copy" key={story.id}>
-        <p className="cella-eyebrow">{story.type}</p><h3 className="craft-enter">{story.headline}</h3><p>{story.description}</p>
-        <ul className="brand-proof" aria-label="Project scope">{story.proof.map(item=><li key={item}>{item}</li>)}</ul>
-        <details className="flow-details"><summary>The role <span aria-hidden="true">+</span></summary><p>{story.role}</p></details>
-        <details className="flow-details"><summary>The thinking <span aria-hidden="true">+</span></summary><p>{story.thought}</p></details>
-        {story.caseStudy && <Link href={story.caseStudy} className="cella-text-link">Explore the full story <ArrowUpRight size={17} /></Link>}
-      </div>
-      <div className="brand-story-film">
-        {story.id === "mirvac" ? <video key="mirvac-film" controls playsInline preload="none" poster="/images/projects/mirvac-shed.jpg" aria-label="Mirvac: The Shed at Birkenhead Point"><source src="/video/mirvac-shed.mp4" type="video/mp4" /></video> : loaded ? <iframe key={story.id} src={`${story.permalink}embed/`} title={`${story.brand}: published creator content`} loading="lazy" allow="encrypted-media; fullscreen" /> : <button className="brand-film-cover" type="button" onClick={()=>setLoaded(true)}><span className="cella-eyebrow">Watch the published work</span><span className="brand-film-name">{story.brand}</span><span className="brand-film-play"><Play size={27} /></span><span>Play this story</span><small>Loads the original Instagram post</small></button>}
-        <a href={story.permalink} target="_blank" rel="noopener noreferrer">Open on Instagram <ArrowUpRight size={16} /></a>
-      </div>
-    </div>
-    <div className="brand-more"><span>More brand stories</span><Link href="/projects/google-gemini-paddys">Google · creator event <ArrowUpRight size={15}/></Link><Link href="/projects/doordash-opentable">DoorDash · reservations campaign <ArrowUpRight size={15}/></Link></div>
+  const group = useId()
+  return <div className="project-dropdowns">
+    <p className="project-dropdown-hint">Explore a brand to see the work.</p>
+    {portfolioProjects.map((project, index) => <ProjectDropdown key={project.id} project={project} index={index} group={group} />)}
   </div>
 }

@@ -154,3 +154,58 @@ html{scroll-behavior:auto}
   .cella-home #work{padding-block:55px}
 }
 @media(prefers-reduced-motion:reduce){.cella-fluid .cella-cover-media{transform:none}}
+
+/* A single, browsable project index shared by the homepage and portfolio. */
+.project-dropdown-hint{font-size:.8rem;color:#736760;margin:0 0 24px}
+.project-dropdown{border-top:1px solid #d7cec4;scroll-margin-top:110px}
+.project-dropdown:last-child{border-bottom:1px solid #d7cec4}
+.project-dropdown-summary{display:grid;grid-template-columns:35px minmax(0,1fr) minmax(150px,250px) 44px;align-items:center;gap:22px;min-height:108px;padding:22px 0;list-style:none;cursor:pointer;transition:color .2s}
+.project-dropdown-summary::-webkit-details-marker{display:none}
+.project-dropdown-summary::marker{content:""}
+.project-dropdown-summary:hover,.project-dropdown[open]>.project-dropdown-summary{color:#791d35}
+.project-dropdown-number{font-size:.65rem;color:#846958;font-variant-numeric:tabular-nums}
+.cella-home .project-dropdown-summary h3{font-size:clamp(1.4rem,2.5vw,2.6rem);line-height:1.15;margin:0;letter-spacing:-.04em;overflow-wrap:anywhere}
+.project-dropdown-category{font-size:.74rem;line-height:1.6;color:#736760}
+.project-dropdown-toggle{width:44px;height:44px;display:grid;place-items:center;border:1px solid #d7cec4;border-radius:50%;transition:background .2s,color .2s}
+.project-dropdown-toggle svg{transition:transform .2s}
+.project-dropdown[open] .project-dropdown-toggle{background:#791d35;color:#f7f4ed;border-color:#791d35}
+.project-dropdown[open] .project-dropdown-toggle svg{transform:rotate(45deg)}
+.project-dropdown-body{padding:18px 66px 52px 57px}
+.project-dropdown-body.has-media{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.8fr);gap:9%;align-items:start}
+.project-dropdown-copy{min-width:0;max-width:760px}
+.cella-home .project-dropdown-copy h4{font-family:var(--font-body),Arial,sans-serif;font-size:clamp(1.6rem,2.4vw,2.5rem);font-weight:600;line-height:1.18;letter-spacing:-.035em;margin:0 0 22px;max-width:620px}
+.project-dropdown-copy p{font-size:.96rem;line-height:1.85;color:#736760;margin:0}
+.project-dropdown-note{margin-top:26px}
+.cella-home .project-dropdown-note h5{font-family:var(--font-body),Arial,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:0 0 9px;color:#791d35}
+.project-dropdown-links{display:flex;flex-wrap:wrap;gap:4px 26px;margin-top:28px}
+.project-dropdown-links .cella-text-link{min-height:44px;font-size:.77rem;color:#791d35}
+.project-dropdown-film{width:100%;max-width:340px;justify-self:end;min-width:0;margin:0}
+.project-dropdown-film video{display:block;width:100%;aspect-ratio:9/16;object-fit:contain;background:#211b19}
+.project-dropdown-film iframe{display:block;width:100%;height:620px;border:0;background:#fff}
+.project-dropdown-film .brand-film-cover{min-height:0;aspect-ratio:9/16;padding:25px 20px;gap:18px}
+.project-dropdown-film .brand-film-name{font-size:clamp(2.5rem,3.5vw,3.3rem);overflow-wrap:anywhere}
+.project-dropdown-film .brand-film-play{width:66px;height:66px;flex-shrink:0;margin:12px 0}
+.project-dropdown-film figcaption{font-size:.72rem;line-height:1.6;color:#736760;margin-top:12px}
+.project-dropdown-image{width:100%;max-width:440px;justify-self:end}
+.project-dropdown-image img{display:block;width:100%;height:auto}
+.project-dropdown-results{margin-top:32px}
+.project-dropdown-results dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-block:1px solid #d7cec4;padding-block:24px}
+.project-dropdown-results dt{font-size:.72rem;line-height:1.5;color:#736760}
+.project-dropdown-results dd{font-size:clamp(1.7rem,3.2vw,2.7rem);font-weight:600;letter-spacing:-.04em;color:#791d35;margin-top:10px}
+.project-dropdown-results>p{font-size:.7rem;margin-top:16px}
+@media(max-width:750px){
+  .project-dropdown-summary{grid-template-columns:23px minmax(0,1fr) 44px;gap:6px 12px;min-height:96px;padding:20px 0}
+  .project-dropdown-number{grid-column:1;grid-row:1/3;align-self:start;padding-top:7px}
+  .cella-home .project-dropdown-summary h3{grid-column:2;grid-row:1;font-size:clamp(1.3rem,5.4vw,2rem)}
+  .project-dropdown-category{grid-column:2;grid-row:2;font-size:.66rem}
+  .project-dropdown-toggle{grid-column:3;grid-row:1/3}
+  .project-dropdown-body,.project-dropdown-body.has-media{padding:10px 0 35px;display:block}
+  .cella-home .project-dropdown-copy h4{font-size:1.7rem}
+  .project-dropdown-copy p{font-size:.9rem}
+  .project-dropdown-film,.project-dropdown-image{margin:30px auto 0}
+  .project-dropdown-film .brand-film-cover{min-height:420px}
+  .project-dropdown-results dl{gap:14px}
+  .project-dropdown-results dt{font-size:.65rem}
+  .project-dropdown-results dd{font-size:1.8rem}
+}
+@media(prefers-reduced-motion:reduce){.project-dropdown-summary,.project-dropdown-toggle,.project-dropdown-toggle svg{transition:none}}
