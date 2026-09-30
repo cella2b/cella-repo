@@ -22,7 +22,7 @@ export function SiteHeader({ cinematic = false }: { cinematic?: boolean }) {
     const update = () => {
       frame = 0
       const current = sections.map(item => ({ id: item.id, bounds: document.getElementById(item.id)?.getBoundingClientRect() }))
-        .find(item => item.bounds && item.bounds.top <= 180 && item.bounds.bottom > 180)
+        .find(item => item.bounds && item.bounds.top <= window.innerHeight * .4 && item.bounds.bottom > window.innerHeight * .4)
       setSection(current?.id ?? "")
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
