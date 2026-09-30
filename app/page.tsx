@@ -4,7 +4,6 @@ import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
 import { Footer } from "@/components/footer"
 import { CoverVideo } from "@/components/cover-video"
-import { CellaImprint } from "@/components/cella-imprint"
 import { BrandStories } from "@/components/brand-stories"
 import { ScrollChoreography } from "@/components/scroll-choreography"
 import { services } from "@/lib/services"
@@ -20,5 +19,5 @@ return <><SiteHeader cinematic /><main id="main-content" tabIndex={-1} className
 <section id="services" className="cella-section cella-services craft-services studio-services"><div className="cella-section-heading"><div><p className="cella-eyebrow">How we work together</p><h2>From the first idea.<br />Through every chapter.</h2></div><p className="cella-section-description">We start with your business, audience and goals. Together, we shape the creative direction, agree the scope and produce content with a clear role in your brand’s story.</p></div><div className="craft-service-links">{services.map(service => <Link key={service.href} href={`/contact?service=${encodeURIComponent(service.enquiry)}`}><div><span className="cella-eyebrow">{service.number}</span><h3>{service.title}</h3><p>{service.description}</p></div><ArrowUpRight size={25} aria-hidden="true" /></Link>)}<Link href="/contact?service=Brand%20Partnership"><div><span className="cella-eyebrow">03</span><h3>Brand partnerships</h3><p>Campaigns and ongoing collaborations through @cella.channel, connecting your brand with a personal approach to storytelling.</p></div><ArrowUpRight size={25} aria-hidden="true" /></Link></div></section>
 <section className="cella-section editorial-quote"><p className="cella-eyebrow">A word from the other side of the brief</p><figure><blockquote>“Really enjoyed working with you… Videos are my favourite so far. Super authentic and warm.”</blockquote><figcaption>Justin · Kings Cross</figcaption></figure></section>
 <section id="contact" className="cella-section editorial-cta"><p className="cella-eyebrow">Let’s work together</p><h2>What’s next<br />for your brand?</h2><p className="studio-cta-copy">Share your brief, goals and timing. Enquire for a detailed proposal shaped around your business.</p><Link href="/contact" className="cella-button">Enquire now <ArrowUpRight size={18} /></Link></section>
-<CellaImprint /></main><Footer /></>
+</main><Footer /></>
 }

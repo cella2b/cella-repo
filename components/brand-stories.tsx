@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, type PointerEvent } from "react"
+import { useState } from "react"
 import * as Accordion from "@radix-ui/react-accordion"
 import Image from "next/image"
 import Link from "next/link"
@@ -37,41 +37,12 @@ function ProjectMedia({ project }: { project: PortfolioProject }) {
   return null
 }
 
-const previewArtwork: Record<string, { src: string; logo?: boolean }> = {
-  mirvac: { src: "/images/projects/mirvac-shed.jpg" },
-  kitchenaid: { src: "/images/brands/kitchenaid-logo.png", logo: true },
-  placemaking: { src: "/images/projects/barangaroo-house.jpg" },
-  merivale: { src: "/images/brands/merivale-logo.png", logo: true },
-  google: { src: "/images/projects/paddys-markets.jpg" },
-}
-
-function movePreview(event: PointerEvent<HTMLButtonElement>) {
-  if (event.pointerType !== "mouse" || !window.matchMedia("(hover: hover) and (pointer: fine)").matches || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-  const button = event.currentTarget
-  const bounds = button.getBoundingClientRect()
-  const x = Math.max(115, Math.min(bounds.width - 115, event.clientX - bounds.left + 100))
-  const y = Math.max(160, Math.min(window.innerHeight - 160, event.clientY)) - bounds.top
-  button.style.setProperty("--preview-x", `${x}px`)
-  button.style.setProperty("--preview-y", `${y}px`)
-  button.style.setProperty("--preview-turn", `${((event.clientX - bounds.left) / bounds.width - .5) * 10}deg`)
-}
-
 function ProjectDropdown({ project, index }: { project: PortfolioProject; index: number }) {
-  const artwork = previewArtwork[project.id] ?? (project.image ? { src: project.image.src, logo: false } : undefined)
   const hasMedia = Boolean(project.video || project.posts?.length || project.image)
   const links = [...(project.posts ?? []), ...(project.links ?? [])]
   return <Accordion.Item className="project-dropdown" value={project.id} id={`work-${project.id}`}>
     <Accordion.Header className="project-dropdown-heading">
-    <Accordion.Trigger className="project-dropdown-summary" onPointerMove={movePreview} onFocus={event => {
-      event.currentTarget.style.removeProperty("--preview-x")
-      event.currentTarget.style.removeProperty("--preview-y")
-      event.currentTarget.style.removeProperty("--preview-turn")
-    }}>
-      <span className={`project-hover-preview${artwork?.logo ? " is-logo" : ""}`} aria-hidden="true">
-        <span className="project-preview-label">CELLA / SELECTED WORK</span>
-        {artwork ? <Image src={artwork.src} alt="" width={230} height={240} sizes="230px" /> : <span className="project-preview-title">{project.brand}</span>}
-        <span className="project-preview-caption">{project.headline}<ArrowUpRight size={15} /></span>
-      </span>
+    <Accordion.Trigger className="project-dropdown-summary">
       <span className="project-dropdown-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
       <span className="project-dropdown-brand">{project.brand}</span>
       <span className="project-dropdown-category">{project.category}</span>
@@ -90,10 +61,11 @@ function ProjectDropdown({ project, index }: { project: PortfolioProject; index:
           <dl>{project.results.metrics.map(metric => <div key={metric.label}><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}</dl>
           <p>{project.results.caption}</p>
         </div> : null}
-        {project.caseStudy || links.length ? <div className="project-dropdown-links">
+        {<div className="project-dropdown-links">
+          <Link href="/contact" className="cella-text-link">Discuss a similar project <ArrowUpRight size={17} aria-hidden="true" /></Link>
           {project.caseStudy ? <Link href={project.caseStudy} className="cella-text-link">Explore the full project <ArrowUpRight size={17} aria-hidden="true" /></Link> : null}
           {links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="cella-text-link">{link.label} <ArrowUpRight size={16} aria-hidden="true" /></a>)}
-        </div> : null}
+        </div>}
       </div>
       {hasMedia ? <ProjectMedia project={project} /> : null}
     </div>
@@ -101,12 +73,29 @@ function ProjectDropdown({ project, index }: { project: PortfolioProject; index:
   </Accordion.Item>
 }
 
+const workFilters = ["All work", "Food & hospitality", "Products & technology", "Places & travel"] as const
+type WorkFilter = typeof workFilters[number]
+const projectSectors: Record<string, WorkFilter> = {
+  mirvac: "Places & travel", placemaking: "Places & travel", "kings-cross": "Places & travel",
+  "pure-milford": "Places & travel", japan: "Places & travel", kitchenaid: "Products & technology",
+  google: "Products & technology", merivale: "Food & hospitality", doordash: "Food & hospitality",
+  penelopes: "Food & hospitality", parramatta: "Food & hospitality",
+}
+
 export function BrandStories() {
   const [active, setActive] = useState("")
+  const [filter, setFilter] = useState<WorkFilter>("All work")
+  const projects = portfolioProjects.filter(project => filter === "All work" || projectSectors[project.id] === filter)
   return <div className="project-dropdowns">
-    <p className="project-dropdown-hint">Explore a brand to see the work.</p>
-    <Accordion.Root type="single" collapsible value={active} onValueChange={setActive}>
-    {portfolioProjects.map((project, index) => <ProjectDropdown key={project.id} project={project} index={index} />)}
+    <div className="work-filters" role="group" aria-label="Filter projects by sector">
+      {workFilters.map(sector => <button key={sector} type="button" aria-pressed={sector === filter} onClick={() => {
+        setFilter(sector)
+        setActive("")
+      }}>{sector}<span aria-hidden="true">{sector === "All work" ? portfolioProjects.length : portfolioProjects.filter(project => projectSectors[project.id] === sector).length}</span></button>)}
+    </div>
+    <p className="project-dropdown-hint" role="status" aria-live="polite">{projects.length} projects · Select a brand to explore the work.</p>
+    <Accordion.Root key={filter} className="work-filter-results" type="single" collapsible value={active} onValueChange={setActive}>
+    {projects.map(project => <ProjectDropdown key={project.id} project={project} index={portfolioProjects.indexOf(project)} />)}
     </Accordion.Root>
   </div>
 }
