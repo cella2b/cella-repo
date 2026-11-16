@@ -22,7 +22,7 @@ const interval = 15 * 60 * 1000
 
 function gate(error = "") {
   return `<!doctype html>
-<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="same-origin">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex"><title>Private media kit | CELLA</title>
 <style>
 :root{color-scheme:light;font:100%/1.5 system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:#faf3ed;color:#27151d}
@@ -39,19 +39,25 @@ a{color:#651638;text-underline-offset:.2em}:focus-visible{outline:3px solid #722
 <p>Enter the access code Marcella shared with you.</p>
 <form method="post" autocomplete="off">
 <label for="access">Access code</label>
-<input id="access" type="password" name="access" maxlength="128" autocomplete="off" required${error ? ' aria-invalid="true" aria-describedby="error"' : ""}>
+<input id="access" type="password" name="access" maxlength="128" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" required${error ? ' aria-invalid="true" aria-describedby="error"' : ""}>
 <button type="submit">Open media kit</button>
 ${error ? `<p id="error" class="error" role="alert">${error}</p>` : ""}
 </form><p class="help">Need help? <a href="mailto:info@heycella.com">Email Marcella</a>.</p></main></body></html>`
 }
 
-function respond(body: string, status = 200) {
-  return new Response(body, { status, headers: status === 429 ? { ...headers, "Retry-After": "900" } : headers })
+function respond(body: string, status = 200, locked = true) {
+  const responseHeaders = { ...headers, "Referrer-Policy": locked ? "same-origin" : "no-referrer" }
+  return new Response(body, { status, headers: status === 429 ? { ...responseHeaders, "Retry-After": "900" } : responseHeaders })
 }
 
 function validOrigin(request: Request) {
   const supplied = request.headers.get("origin")
-  if (!supplied) return request.headers.get("sec-fetch-site") !== "cross-site"
+  const fetchSite = request.headers.get("sec-fetch-site")
+  if (fetchSite === "cross-site") return false
+  if (!supplied) return fetchSite !== "same-site"
+  // Same-origin native form submits may serialise Origin as null when the
+  // document has no-referrer or a restrictive in-app browser referrer policy.
+  if (supplied === "null") return fetchSite === "same-origin"
   const url = new URL(request.url)
   const host = request.headers.get("host") ?? url.host
   if (!host || /[\s/\\?#@,]/.test(host)) return false
@@ -105,7 +111,9 @@ export async function POST(request: Request) {
     return respond(gate("Use the access form to open the kit."), 415)
   }
   let access: string | null
-  try { access = (await readForm(request))?.trim() ?? null } catch { access = null }
+  try {
+    access = (await readForm(request))?.trim().toLowerCase().replace(/[\u2010-\u2015\u2212]/g, "-") ?? null
+  } catch { access = null }
   const invalid = "That code did not open the kit. Check it and try again."
   if (!access || access.length > 128) return respond(gate(invalid), 400)
 
@@ -120,7 +128,7 @@ export async function POST(request: Request) {
     const clear = Buffer.concat([decipher.update(encrypted.subarray(0, -16)), decipher.final()])
     const html = brotliDecompressSync(clear).toString("utf8")
     attempts.delete(client)
-    return respond(html)
+    return respond(html, 200, false)
   } catch {
     return respond(gate(invalid), 401)
   }
