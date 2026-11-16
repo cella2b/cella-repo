@@ -12,7 +12,7 @@ const headers = {
   "Cache-Control": "private, no-store, max-age=0",
   "X-Robots-Tag": "noindex, nofollow, noarchive, nosnippet, noimageindex",
   "Referrer-Policy": "no-referrer",
-  "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'",
+  "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'",
   "X-Content-Type-Options": "nosniff",
   "X-Frame-Options": "DENY",
 }
