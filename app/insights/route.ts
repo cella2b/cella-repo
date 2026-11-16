@@ -1,12 +1,24 @@
-import { createDecipheriv, pbkdf2 } from "node:crypto"
-import { promisify } from "node:util"
+import { createDecipheriv, createHmac, timingSafeEqual } from "node:crypto"
 import { brotliDecompressSync } from "node:zlib"
 import { vault } from "./vault"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
-const deriveKey = promisify(pbkdf2)
+const vaultContext = Buffer.from("private-analytics:payload:v2")
+const verifierContext = "private-analytics:viewer:v2:"
+const componentPattern = /^[A-Za-z0-9_-]{43}$/
+
+function readRuntimeSecret() {
+  const fields = process.env.CELLA_INSIGHTS_RUNTIME_SECRET?.split(".")
+  if (!fields || fields.length !== 4 || fields[0] !== "v2" || !fields.slice(1).every((field) => componentPattern.test(field))) return null
+  const [, encryptionKey, verificationKey, verifier] = fields
+  return {
+    encryptionKey: Buffer.from(encryptionKey, "base64url"),
+    verificationKey: Buffer.from(verificationKey, "base64url"),
+    verifier: Buffer.from(verifier, "base64url"),
+  }
+}
 const headers = {
   "Content-Type": "text/html; charset=utf-8",
   "Cache-Control": "private, no-store, max-age=0",
@@ -120,16 +132,23 @@ export async function POST(request: Request) {
   const client = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown"
   if (!recordAttempt(client)) return respond(gate("Too many attempts. Please try again in 15 minutes."), 429)
 
+  const secret = readRuntimeSecret()
+  const unavailable = "The kit is temporarily unavailable. Please try again shortly."
+  if (!secret) return respond(gate(unavailable), 503)
+
+  const suppliedVerifier = createHmac("sha256", secret.verificationKey).update(verifierContext).update(access).digest()
+  if (!timingSafeEqual(suppliedVerifier, secret.verifier)) return respond(gate(invalid), 401)
+
   try {
     const encrypted = Buffer.from(vault.payload, "base64")
-    const key = await deriveKey(access, Buffer.from(vault.salt, "base64"), vault.iterations, 32, "sha256")
-    const decipher = createDecipheriv("aes-256-gcm", key, Buffer.from(vault.iv, "base64"))
+    const decipher = createDecipheriv("aes-256-gcm", secret.encryptionKey, Buffer.from(vault.iv, "base64"))
+    decipher.setAAD(vaultContext)
     decipher.setAuthTag(encrypted.subarray(-16))
     const clear = Buffer.concat([decipher.update(encrypted.subarray(0, -16)), decipher.final()])
     const html = brotliDecompressSync(clear).toString("utf8")
     attempts.delete(client)
     return respond(html, 200, false)
   } catch {
-    return respond(gate(invalid), 401)
+    return respond(gate(unavailable), 503)
   }
 }
