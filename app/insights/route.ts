@@ -37,16 +37,17 @@ function gate(error = "") {
 <html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="same-origin">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex"><title>Private media kit | CELLA</title>
 <style>
-:root{color-scheme:light;font:100%/1.5 system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:#faf3ed;color:#27151d}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:1.15rem}
-main{width:min(100%,29rem);padding:clamp(1.25rem,6vw,3rem);background:#fffaf6;border:1px solid #decbd1;border-radius:1.25rem}
-.wordmark{color:#651638;font-size:1.05rem;font-weight:900;letter-spacing:.13em}
+:root{color-scheme:dark;font:100%/1.5 system-ui,-apple-system,BlinkMacSystemFont,sans-serif;background:#0b0a0d;color:#f4f0fa;--panel:#151219;--field:#151019;--accent:#c3a7ff;--muted:#bcb7c5;--edge:#71657f;--pressed:#140a23;--error:#ffb8c1}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:1.15rem;background:radial-gradient(ellipse at 82% 5%,#201330 0%,#0b0a0d 55%)}
+main{width:min(100%,29rem);padding:clamp(1.25rem,6vw,3rem);background:var(--panel);border:1px solid #59486d;border-radius:1.25rem}
+.wordmark{color:var(--accent);font-size:1.05rem;font-weight:900;letter-spacing:.13em}
 h1{font-size:clamp(2.1rem,8vw,3.4rem);line-height:1.03;letter-spacing:-.05em;margin:.9rem 0 1rem}
-p{margin:0 0 1.4rem;color:#5c4a51}label{display:block;font-weight:700;margin-bottom:.4rem}
-input,button{width:100%;font:inherit;border-radius:.6rem;min-height:3rem}input{background:#fff;border:1px solid #856f79;padding:.5rem .8rem}
-button{margin-top:.7rem;border:0;background:#651638;color:#fff;font-weight:750;padding:.6rem;cursor:pointer}button:hover{background:#481028}
-a{color:#651638;text-underline-offset:.2em}:focus-visible{outline:3px solid #722047;outline-offset:3px}
-.help{font-size:.9rem;margin:1rem 0 0}.error{margin:.8rem 0 0;color:#8d1237;font-weight:650}
+p{margin:0 0 1.4rem;color:var(--muted)}label{display:block;color:#f4f0fa;font-weight:700;margin-bottom:.4rem}
+input,button{width:100%;font:inherit;border-radius:.6rem;min-height:3rem}input{background:var(--field);color:#f4f0fa;caret-color:var(--accent);border:1px solid var(--edge);padding:.5rem .8rem;font-size:16px}
+input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #151019 inset;-webkit-text-fill-color:#f4f0fa}input[aria-invalid=true]{border-color:var(--error)}
+button{margin-top:.7rem;border:1px solid var(--accent);background:var(--accent);color:var(--pressed);font-weight:750;padding:.6rem;cursor:pointer}button:hover{background:#d3bfff}button:active{background:#b79aef}
+a{color:var(--accent);text-underline-offset:.2em}a:hover{color:#e0ceff}:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.help{font-size:.9rem;margin:1rem 0 0}.error{margin:.8rem 0 0;color:var(--error);font-weight:650}
 </style></head><body><main><span class="wordmark">CELLA</span><h1>Private media kit</h1>
 <p>Enter the access code Marcella shared with you.</p>
 <form method="post" action="/insights" autocomplete="off">
